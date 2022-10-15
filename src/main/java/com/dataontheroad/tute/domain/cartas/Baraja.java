@@ -1,4 +1,4 @@
-package com.dataontheroad.tute.domain;
+package com.dataontheroad.tute.domain.cartas;
 
 import java.util.*;
 

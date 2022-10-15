@@ -1,5 +1,6 @@
 package com.dataontheroad.tute.domain;
 
+import com.dataontheroad.tute.domain.jugador.Jugador;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

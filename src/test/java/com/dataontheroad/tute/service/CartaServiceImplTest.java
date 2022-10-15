@@ -1,7 +1,9 @@
 package com.dataontheroad.tute.service;
 
-import com.dataontheroad.tute.domain.Carta;
-import com.dataontheroad.tute.domain.CartaEnum;
+import com.dataontheroad.tute.domain.cartas.Carta;
+import com.dataontheroad.tute.domain.cartas.CartaEnum;
+import com.dataontheroad.tute.service.cartas.CartaService;
+import com.dataontheroad.tute.service.cartas.CartaServiceImpl;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

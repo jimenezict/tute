@@ -1,8 +1,10 @@
 package com.dataontheroad.tute.service;
 
-import com.dataontheroad.tute.domain.Baraja;
-import com.dataontheroad.tute.domain.Carta;
-import com.dataontheroad.tute.domain.CartaEnum;
+import com.dataontheroad.tute.domain.cartas.Baraja;
+import com.dataontheroad.tute.domain.cartas.Carta;
+import com.dataontheroad.tute.domain.cartas.CartaEnum;
+import com.dataontheroad.tute.service.cartas.BarajaService;
+import com.dataontheroad.tute.service.cartas.BarajaServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

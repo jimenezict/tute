@@ -1,7 +1,7 @@
-package com.dataontheroad.tute.service;
+package com.dataontheroad.tute.service.jugador;
 
-import com.dataontheroad.tute.domain.Carta;
-import com.dataontheroad.tute.domain.Jugador;
+import com.dataontheroad.tute.domain.cartas.Carta;
+import com.dataontheroad.tute.domain.jugador.Jugador;
 
 import java.util.List;
 

@@ -1,4 +1,6 @@
-package com.dataontheroad.tute.domain;
+package com.dataontheroad.tute.domain.jugador;
+
+import com.dataontheroad.tute.domain.cartas.Carta;
 
 import java.util.ArrayList;
 import java.util.List;

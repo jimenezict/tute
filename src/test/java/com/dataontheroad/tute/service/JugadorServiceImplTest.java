@@ -1,8 +1,10 @@
 package com.dataontheroad.tute.service;
 
-import com.dataontheroad.tute.domain.Carta;
-import com.dataontheroad.tute.domain.CartaEnum;
-import com.dataontheroad.tute.domain.Jugador;
+import com.dataontheroad.tute.domain.cartas.Carta;
+import com.dataontheroad.tute.domain.cartas.CartaEnum;
+import com.dataontheroad.tute.domain.jugador.Jugador;
+import com.dataontheroad.tute.service.jugador.JugadorService;
+import com.dataontheroad.tute.service.jugador.JugadorServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -78,6 +80,40 @@ class JugadorServiceImplTest {
 
         assertEquals(jugador.getPuntuacion(), 30);
         assertEquals(jugador.getDescartes().size(), 9);
+    }
+
+    @Test
+    public void cuandoElJugadorTieneLaCartaTirarla() {
+        List<Carta> mano1 = new ArrayList<Carta>();
+        mano1.add(new Carta(CartaEnum.ESPADA, 1));
+        Carta cartaMuestra = new Carta(CartaEnum.ESPADA, 2);
+        mano1.add(cartaMuestra);
+        mano1.add(new Carta(CartaEnum.ESPADA, 3));
+        jugador.setMano(mano1);
+
+        boolean exito = jugadorService.tirarCarta(jugador, cartaMuestra);
+
+        assertTrue(exito);
+        assertEquals(jugador.getMano().size(), 2);
+        assertFalse(jugador.getMano().contains(cartaMuestra));
+
+    }
+
+    @Test
+    public void cuandoElJugadorNoTieneLaCartaErrorAlTirarla() {
+        List<Carta> mano1 = new ArrayList<Carta>();
+        mano1.add(new Carta(CartaEnum.ESPADA, 1));
+        mano1.add(new Carta(CartaEnum.ESPADA, 2));
+        mano1.add(new Carta(CartaEnum.ESPADA, 3));
+
+        Carta cartaMuestra = new Carta(CartaEnum.ESPADA, 4);
+        jugador.setMano(mano1);
+
+        boolean exito = jugadorService.tirarCarta(jugador, cartaMuestra);
+
+        assertFalse(exito);
+        assertEquals(jugador.getMano().size(), 3);
+        assertFalse(jugador.getMano().contains(cartaMuestra));
     }
 
 }

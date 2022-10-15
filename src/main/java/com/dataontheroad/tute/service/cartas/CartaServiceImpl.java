@@ -1,7 +1,7 @@
-package com.dataontheroad.tute.service;
+package com.dataontheroad.tute.service.cartas;
 
-import com.dataontheroad.tute.domain.Carta;
-import com.dataontheroad.tute.domain.CartaEnum;
+import com.dataontheroad.tute.domain.cartas.Carta;
+import com.dataontheroad.tute.domain.cartas.CartaEnum;
 import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
 

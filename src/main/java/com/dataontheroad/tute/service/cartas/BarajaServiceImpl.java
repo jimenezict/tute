@@ -1,10 +1,9 @@
-package com.dataontheroad.tute.service;
+package com.dataontheroad.tute.service.cartas;
 
-import com.dataontheroad.tute.domain.Baraja;
-import com.dataontheroad.tute.domain.Carta;
+import com.dataontheroad.tute.domain.cartas.Baraja;
+import com.dataontheroad.tute.domain.cartas.Carta;
 import org.springframework.stereotype.Component;
 
-import java.util.Collection;
 import java.util.Collections;
 
 @Component
