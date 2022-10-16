@@ -50,29 +50,29 @@ class RondaServiceImplJugadorJuegaCartaTest {
     }
 
     @Test
-    public void cadaJugadorJuegaUnaCarta() {
+    void cadaJugadorJuegaUnaCarta() {
         rondaService.jugadorJuegaCarta(ronda, mesa.getJugadorList().get(0), mesa.getJugadorList().get(0).getMano().get(0), cartaMuestra);
 
-        assertEquals(mesa.getJugadorList().get(0).getMano().size(), 2);
-        assertEquals(mesa.getJugadorList().get(1).getMano().size(), 3);
-        assertEquals(mesa.getJugadorList().get(2).getMano().size(), 3);
+        assertEquals(2, mesa.getJugadorList().get(0).getMano().size());
+        assertEquals(3, mesa.getJugadorList().get(1).getMano().size());
+        assertEquals(3, mesa.getJugadorList().get(2).getMano().size());
 
-        assertEquals(ronda.getCartaMesaList().size(), 1);
+        assertEquals(1, ronda.getCartaMesaList().size());
         assertNotNull(ronda.getCartaMasAlta());
         assertNotNull(ronda.getJugadorGanador());
-        assertEquals(ronda.getCartaMesaList().size(), 1);
+        assertEquals(1, ronda.getCartaMesaList().size());
 
         rondaService.jugadorJuegaCarta(ronda, mesa.getJugadorList().get(1), mesa.getJugadorList().get(1).getMano().get(0), cartaMuestra);
 
-        assertEquals(mesa.getJugadorList().get(0).getMano().size(), 2);
-        assertEquals(mesa.getJugadorList().get(1).getMano().size(), 2);
-        assertEquals(mesa.getJugadorList().get(2).getMano().size(), 3);
+        assertEquals(2, mesa.getJugadorList().get(0).getMano().size());
+        assertEquals(2, mesa.getJugadorList().get(1).getMano().size());
+        assertEquals(3, mesa.getJugadorList().get(2).getMano().size());
 
         rondaService.jugadorJuegaCarta(ronda, mesa.getJugadorList().get(2), mesa.getJugadorList().get(2).getMano().get(0), cartaMuestra);
 
-        assertEquals(mesa.getJugadorList().get(0).getMano().size(), 2);
-        assertEquals(mesa.getJugadorList().get(1).getMano().size(), 2);
-        assertEquals(mesa.getJugadorList().get(2).getMano().size(), 2);
+        assertEquals(2, mesa.getJugadorList().get(0).getMano().size());
+        assertEquals(2, mesa.getJugadorList().get(1).getMano().size());
+        assertEquals(2, mesa.getJugadorList().get(2).getMano().size());
     }
 
 
