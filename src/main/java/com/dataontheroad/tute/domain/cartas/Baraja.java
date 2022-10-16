@@ -21,4 +21,7 @@ public class Baraja {
         return baraja;
     }
 
+    public void setBaraja(List<Carta> baraja) {
+        this.baraja = baraja;
+    }
 }

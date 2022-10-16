@@ -21,10 +21,11 @@ public class RondaServiceImpl implements RondaService {
             Carta carta = barajaService.cogerCarta(baraja);
             if(isNull(carta)) {
                 if(!isNull(mesa.getCartaMuestra())) {
-                    carta = barajaService.cogerCarta(baraja);
+                    carta = mesa.getCartaMuestra();
                     mesa.setCartaMuestra(null);
+                } else {
+                    return false;
                 }
-                return false;
             }
             jugadorService.robarCarta(jugador, carta);
         }

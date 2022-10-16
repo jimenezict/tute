@@ -46,17 +46,46 @@ class RondaServiceImplTest {
     public void seEjecutaRondaInicialConTresJugadores() {
         Carta muestraInicial = mesa.getCartaMuestra();
         int tamanoBarajaInicial = mesa.getBaraja().getBaraja().size();
-        rondaService.iniciarRonda(mesa, barajaService, jugadorService);
+        boolean exito = rondaService.iniciarRonda(mesa, barajaService, jugadorService);
         int tamanoBarajaFinal = mesa.getBaraja().getBaraja().size();
         Carta muestraFinal = mesa.getCartaMuestra();
         assertTrue(muestraInicial.equals(muestraFinal));
 
+        assertTrue(exito);
         assertEquals(mesa.getJugadorList().get(0).getMano().size(), 3);
         assertEquals(mesa.getJugadorList().get(1).getMano().size(), 3);
         assertEquals(mesa.getJugadorList().get(2).getMano().size(), 3);
         assertEquals(tamanoBarajaInicial - 3, tamanoBarajaFinal);
+    }
 
+    @Test
+    public void seEjecutaRondaFinalConTresJugadores3CartasEnMesa() {
+        mesa.getBaraja().setBaraja(mesa.getBaraja().getBaraja().subList(0,2));
+        boolean exito = rondaService.iniciarRonda(mesa, barajaService, jugadorService);
+        int tamanoBarajaFinal = mesa.getBaraja().getBaraja().size();
+        Carta muestraFinal = mesa.getCartaMuestra();
 
+        assertTrue(exito);
+        assertEquals(mesa.getJugadorList().get(0).getMano().size(), 3);
+        assertEquals(mesa.getJugadorList().get(1).getMano().size(), 3);
+        assertEquals(mesa.getJugadorList().get(2).getMano().size(), 3);
+        assertEquals(0, tamanoBarajaFinal);
+        assertNull(muestraFinal);
+    }
+
+    @Test
+    public void seEjecutaRondaFinalConTresJugadores2CartasEnMesa() {
+        mesa.getBaraja().setBaraja(mesa.getBaraja().getBaraja().subList(0,1));
+        boolean exito = rondaService.iniciarRonda(mesa, barajaService, jugadorService);
+        int tamanoBarajaFinal = mesa.getBaraja().getBaraja().size();
+        Carta muestraFinal = mesa.getCartaMuestra();
+
+        assertFalse(exito);
+        assertEquals(mesa.getJugadorList().get(0).getMano().size(), 3);
+        assertEquals(mesa.getJugadorList().get(1).getMano().size(), 3);
+        assertEquals(mesa.getJugadorList().get(2).getMano().size(), 3);
+        assertEquals(0, tamanoBarajaFinal);
+        assertNull(muestraFinal);
     }
 
 }
