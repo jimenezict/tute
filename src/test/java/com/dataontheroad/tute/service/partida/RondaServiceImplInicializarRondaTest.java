@@ -3,6 +3,7 @@ package com.dataontheroad.tute.service.partida;
 import com.dataontheroad.tute.domain.cartas.Carta;
 import com.dataontheroad.tute.domain.jugador.Jugador;
 import com.dataontheroad.tute.domain.mesa.Mesa;
+import com.dataontheroad.tute.domain.partida.Ronda;
 import com.dataontheroad.tute.service.cartas.BarajaService;
 import com.dataontheroad.tute.service.cartas.BarajaServiceImpl;
 import com.dataontheroad.tute.service.jugador.JugadorService;
@@ -18,9 +19,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
 
-class RondaServiceImplTest {
+class RondaServiceImplInicializarRondaTest {
 
     Mesa mesa;
+    Ronda ronda;
     RondaService rondaService;
     BarajaService barajaService;
     JugadorService jugadorService;
@@ -39,6 +41,7 @@ class RondaServiceImplTest {
         jugadorList.add(new Jugador());
 
         mesa = mesaService.crearMesa(barajaService, jugadorList);
+        ronda = new Ronda();
 
     }
 
@@ -46,7 +49,7 @@ class RondaServiceImplTest {
     public void seEjecutaRondaInicialConTresJugadores() {
         Carta muestraInicial = mesa.getCartaMuestra();
         int tamanoBarajaInicial = mesa.getBaraja().getBaraja().size();
-        boolean exito = rondaService.iniciarRonda(mesa, barajaService, jugadorService);
+        boolean exito = rondaService.iniciarRonda(mesa, ronda, barajaService, jugadorService);
         int tamanoBarajaFinal = mesa.getBaraja().getBaraja().size();
         Carta muestraFinal = mesa.getCartaMuestra();
         assertTrue(muestraInicial.equals(muestraFinal));
@@ -56,12 +59,16 @@ class RondaServiceImplTest {
         assertEquals(mesa.getJugadorList().get(1).getMano().size(), 3);
         assertEquals(mesa.getJugadorList().get(2).getMano().size(), 3);
         assertEquals(tamanoBarajaInicial - 3, tamanoBarajaFinal);
+
+        assertNull(ronda.getCartaMasAlta());
+        assertNull(ronda.getJugadorGanador());
+        assertEquals(ronda.getCartaMesaList().size(), 0);
     }
 
     @Test
     public void seEjecutaRondaFinalConTresJugadores3CartasEnMesa() {
         mesa.getBaraja().setBaraja(mesa.getBaraja().getBaraja().subList(0,2));
-        boolean exito = rondaService.iniciarRonda(mesa, barajaService, jugadorService);
+        boolean exito = rondaService.iniciarRonda(mesa, ronda, barajaService, jugadorService);
         int tamanoBarajaFinal = mesa.getBaraja().getBaraja().size();
         Carta muestraFinal = mesa.getCartaMuestra();
 
@@ -76,7 +83,7 @@ class RondaServiceImplTest {
     @Test
     public void seEjecutaRondaFinalConTresJugadores2CartasEnMesa() {
         mesa.getBaraja().setBaraja(mesa.getBaraja().getBaraja().subList(0,1));
-        boolean exito = rondaService.iniciarRonda(mesa, barajaService, jugadorService);
+        boolean exito = rondaService.iniciarRonda(mesa, ronda, barajaService, jugadorService);
         int tamanoBarajaFinal = mesa.getBaraja().getBaraja().size();
         Carta muestraFinal = mesa.getCartaMuestra();
 
