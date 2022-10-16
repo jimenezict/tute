@@ -31,9 +31,7 @@ public class RondaServiceImpl implements RondaService {
             jugadorService.robarCarta(jugador, carta);
         }
 
-        ronda.setCartaMasAlta(null);
-        ronda.setJugadorGanador(null);
-        ronda.setCartaMasAlta(null);
+        actualizaRondaConNuevoJugadorGanadorAndCartaMasAlta(ronda, null, null);
 
         return true;
     }
@@ -45,13 +43,35 @@ public class RondaServiceImpl implements RondaService {
     }
 
     @Override
-    public Carta jugadorJuegaCarta(Mesa mesa, Ronda ronda, Jugador jugador, Carta carta) {
-        ronda.getCartaMesaList().add(carta);
-        if(ronda.getJugadorInicial().equals(jugador)) {
-            ronda.setCartaMasAlta(carta);
-            ronda.setJugadorGanador(jugador);
+    public void jugadorJuegaCarta(Ronda ronda, Jugador jugador, Carta carta, Carta cartaMuestra) {
+        jugadorTiraCartaAMesa(ronda, jugador, carta);
+
+        if(esJugadorInicial(ronda, jugador)) {
+            actualizaRondaConNuevoJugadorGanadorAndCartaMasAlta(ronda, jugador, carta);
+        } else {
+            if(ganaAcartaMasAlta(ronda.getCartaMasAlta(), cartaMuestra, carta)) {
+                actualizaRondaConNuevoJugadorGanadorAndCartaMasAlta(ronda, jugador, carta);
+            }
         }
-        return null;
+    }
+
+    private static void actualizaRondaConNuevoJugadorGanadorAndCartaMasAlta(Ronda ronda, Jugador jugador, Carta carta) {
+        ronda.setCartaMasAlta(carta);
+        ronda.setJugadorGanador(jugador);
+    }
+
+    private static boolean esJugadorInicial(Ronda ronda, Jugador jugador) {
+        return ronda.getJugadorInicial().equals(jugador);
+    }
+
+    private static void jugadorTiraCartaAMesa(Ronda ronda, Jugador jugador, Carta carta) {
+        ronda.getCartaMesaList().add(carta);
+        jugador.getMano().remove(carta);
+    }
+
+    private static boolean ganaAcartaMasAlta(Carta cartaMasAlta, Carta cartaMuestra, Carta carta) {
+        // TODO: method to be implemented
+        return false;
     }
 
     private static Jugador obtenJugadorGanadorDeLaRonda(Mesa mesa, Ronda ronda) {

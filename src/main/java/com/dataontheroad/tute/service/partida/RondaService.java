@@ -13,5 +13,5 @@ public interface RondaService {
 
     void finalizarRonda(Mesa mesa, Ronda ronda);
 
-    Carta jugadorJuegaCarta(Mesa mesa, Ronda ronda, Jugador jugador, Carta carta);
+    void jugadorJuegaCarta(Ronda ronda, Jugador jugador, Carta carta, Carta cartaMuestra);
 }
