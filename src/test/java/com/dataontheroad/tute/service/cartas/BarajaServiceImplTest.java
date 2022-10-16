@@ -25,7 +25,7 @@ class BarajaServiceImplTest {
         Carta carta1 = new Carta(CartaEnum.ESPADA, 1);
         Carta carta40 = new Carta(CartaEnum.ORO, 12);
 
-        assertEquals(baraja.getListaCartasBaraja().size(), 40);
+        assertEquals(40, baraja.getListaCartasBaraja().size());
         assertFalse(carta1.equals(baraja.getListaCartasBaraja().get(0)) && carta40.equals(baraja.getListaCartasBaraja().get(39)));
     }
 
@@ -36,14 +36,14 @@ class BarajaServiceImplTest {
         assertTrue(carta1.getNumero() <= 12);
         assertTrue(carta1.getNumero() >= 1);
         assertNotNull(carta1.getPalo());
-        assertEquals(baraja.getListaCartasBaraja().size(), 39);
+        assertEquals(39, baraja.getListaCartasBaraja().size());
 
         Carta carta2 = barajaService.cogerCarta(baraja);
 
         assertTrue(carta2.getNumero() <= 12);
         assertTrue(carta2.getNumero() >= 1);
         assertNotNull(carta2.getPalo());
-        assertEquals(baraja.getListaCartasBaraja().size(), 38);
+        assertEquals(38, baraja.getListaCartasBaraja().size());
     }
 
 }

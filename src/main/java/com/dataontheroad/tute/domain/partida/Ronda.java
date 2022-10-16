@@ -14,7 +14,7 @@ public class Ronda {
     private Jugador jugadorGanador;
 
     public Ronda() {
-        cartaMesaList = new ArrayList<Carta>();
+        cartaMesaList = new ArrayList<>();
     }
 
     public List<Carta> getCartaMesaList() {

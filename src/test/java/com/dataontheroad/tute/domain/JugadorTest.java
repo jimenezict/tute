@@ -12,7 +12,7 @@ class JugadorTest {
         Jugador jugador = new Jugador();
         assertTrue(jugador.getMano().isEmpty());
         assertTrue(jugador.getDescartes().isEmpty());
-        assertEquals(jugador.getPuntuacion(), 0);
+        assertEquals(0, jugador.getPuntuacion());
     }
 
     @Test

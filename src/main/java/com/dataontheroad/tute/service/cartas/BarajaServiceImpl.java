@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 
+import static org.springframework.util.ObjectUtils.isEmpty;
+
 @Component
 public class BarajaServiceImpl implements BarajaService {
     @Override
@@ -20,6 +22,6 @@ public class BarajaServiceImpl implements BarajaService {
 
     @Override
     public Carta cogerCarta(Baraja baraja) {
-        return baraja.getListaCartasBaraja().size() > 0 ? baraja.getListaCartasBaraja().remove(0) : null;
+        return !isEmpty(baraja.getListaCartasBaraja()) ? baraja.getListaCartasBaraja().remove(0) : null;
     }
 }

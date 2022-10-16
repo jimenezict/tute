@@ -51,7 +51,7 @@ class RondaServiceImplInicializarRondaTest {
         boolean exito = rondaService.iniciarRonda(mesa, ronda, barajaService, jugadorService);
         int tamanoBarajaFinal = mesa.getBaraja().getListaCartasBaraja().size();
         Carta muestraFinal = mesa.getCartaMuestra();
-        assertTrue(muestraInicial.equals(muestraFinal));
+        assertEquals(muestraInicial, muestraFinal);
 
         assertTrue(exito);
         assertTodosLosJugadoresTienenTresCartas();
@@ -59,7 +59,7 @@ class RondaServiceImplInicializarRondaTest {
 
         assertNull(ronda.getCartaMasAlta());
         assertNull(ronda.getJugadorGanador());
-        assertEquals(ronda.getCartaMesaList().size(), 0);
+        assertEquals(0, ronda.getCartaMesaList().size());
     }
 
     @Test

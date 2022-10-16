@@ -33,12 +33,12 @@ class MesaServiceImplTest {
 
         Mesa mesa = mesaService.crearMesa(barajaService, jugadorList);
         assertNotNull(mesa.getCartaMuestra());
-        assertEquals(mesa.getBaraja().getListaCartasBaraja().size(), 30);
-        assertEquals(mesa.getJugadorList().size(), 3);
+        assertEquals(30, mesa.getBaraja().getListaCartasBaraja().size());
+        assertEquals(3, mesa.getJugadorList().size());
 
-        assertEquals(mesa.getJugadorList().get(0).getMano().size(), 3);
-        assertEquals(mesa.getJugadorList().get(1).getMano().size(), 3);
-        assertEquals(mesa.getJugadorList().get(2).getMano().size(), 3);
+        assertEquals(3, mesa.getJugadorList().get(0).getMano().size());
+        assertEquals(3, mesa.getJugadorList().get(1).getMano().size());
+        assertEquals(3, mesa.getJugadorList().get(2).getMano().size());
     }
 
 }

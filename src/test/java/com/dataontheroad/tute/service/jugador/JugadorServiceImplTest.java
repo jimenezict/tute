@@ -31,7 +31,7 @@ class JugadorServiceImplTest {
         jugador.setMano(mano1);
         boolean exito = jugadorService.robarCarta(jugador, new Carta(CartaEnum.ESPADA, 4));
         assertFalse(exito);
-        assertEquals(jugador.getMano().size(), 3);
+        assertEquals(3, jugador.getMano().size());
         assertFalse(jugador.getMano().contains(new Carta(CartaEnum.ESPADA, 4)));
     }
 
@@ -43,7 +43,7 @@ class JugadorServiceImplTest {
         jugador.setMano(mano1);
         boolean exito = jugadorService.robarCarta(jugador, new Carta(CartaEnum.ESPADA, 4));
         assertTrue(exito);
-        assertEquals(jugador.getMano().size(), 3);
+        assertEquals(3, jugador.getMano().size());
         assertTrue(jugador.getMano().contains(new Carta(CartaEnum.ESPADA, 4)));
     }
 
@@ -56,8 +56,8 @@ class JugadorServiceImplTest {
 
         jugadorService.ganarMano(jugador, mano1);
 
-        assertEquals(jugador.getPuntuacion(), 21);
-        assertEquals(jugador.getDescartes().size(), 3);
+        assertEquals(21, jugador.getPuntuacion());
+        assertEquals(3,jugador.getDescartes().size());
 
         List<Carta> mano2 = new ArrayList<Carta>();
         mano2.add(new Carta(CartaEnum.ESPADA, 4));
@@ -66,8 +66,8 @@ class JugadorServiceImplTest {
 
         jugadorService.ganarMano(jugador, mano2);
 
-        assertEquals(jugador.getPuntuacion(), 21);
-        assertEquals(jugador.getDescartes().size(), 6);
+        assertEquals(21, jugador.getPuntuacion());
+        assertEquals(6,jugador.getDescartes().size());
 
         List<Carta> mano3 = new ArrayList<Carta>();
         mano3.add(new Carta(CartaEnum.ESPADA, 10));
@@ -76,8 +76,8 @@ class JugadorServiceImplTest {
 
         jugadorService.ganarMano(jugador, mano3);
 
-        assertEquals(jugador.getPuntuacion(), 30);
-        assertEquals(jugador.getDescartes().size(), 9);
+        assertEquals(30, jugador.getPuntuacion());
+        assertEquals(9, jugador.getDescartes().size());
     }
 
     @Test
@@ -92,7 +92,7 @@ class JugadorServiceImplTest {
         boolean exito = jugadorService.tirarCarta(jugador, cartaMuestra);
 
         assertTrue(exito);
-        assertEquals(jugador.getMano().size(), 2);
+        assertEquals(2, jugador.getMano().size());
         assertFalse(jugador.getMano().contains(cartaMuestra));
 
     }
@@ -110,7 +110,7 @@ class JugadorServiceImplTest {
         boolean exito = jugadorService.tirarCarta(jugador, cartaMuestra);
 
         assertFalse(exito);
-        assertEquals(jugador.getMano().size(), 3);
+        assertEquals(3, jugador.getMano().size());
         assertFalse(jugador.getMano().contains(cartaMuestra));
     }
 
