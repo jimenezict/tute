@@ -2,34 +2,33 @@ package com.dataontheroad.tute.service.cartas;
 
 import com.dataontheroad.tute.domain.cartas.Carta;
 import com.dataontheroad.tute.domain.cartas.CartaEnum;
-import com.dataontheroad.tute.service.cartas.CartaService;
-import com.dataontheroad.tute.service.cartas.CartaServiceImpl;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class CartaServiceImplTest {
 
     @Test
-    public void numeroNegativoEsCartaNoValida() {
+    void numeroNegativoEsCartaNoValida() {
         CartaService cartaService = new CartaServiceImpl();
         assertNull(cartaService.crearCarta(CartaEnum.BASTO, -3));
     }
 
     @Test
-    public void numeroGrandeEsCartaNoValida() {
+    void numeroGrandeEsCartaNoValida() {
         CartaService cartaService = new CartaServiceImpl();
         assertNull(cartaService.crearCarta(CartaEnum.BASTO, 13));
     }
 
     @Test
-    public void paloNuloEsCartaNoValida() {
+    void paloNuloEsCartaNoValida() {
         CartaService cartaService = new CartaServiceImpl();
         assertNull(cartaService.crearCarta(null, 4));
     }
 
     @Test
-    public void paloEspadaNumero3EsCartaValida() {
+    void paloEspadaNumero3EsCartaValida() {
         CartaService cartaService = new CartaServiceImpl();
         Carta carta = cartaService.crearCarta(CartaEnum.ESPADA, 3);
         assertEquals(3, carta.getNumero());

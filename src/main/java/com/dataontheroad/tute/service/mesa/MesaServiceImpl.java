@@ -5,7 +5,6 @@ import com.dataontheroad.tute.domain.cartas.Carta;
 import com.dataontheroad.tute.domain.jugador.Jugador;
 import com.dataontheroad.tute.domain.mesa.Mesa;
 import com.dataontheroad.tute.service.cartas.BarajaService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;

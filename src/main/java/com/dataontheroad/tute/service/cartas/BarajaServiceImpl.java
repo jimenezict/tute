@@ -15,11 +15,11 @@ public class BarajaServiceImpl implements BarajaService {
 
     @Override
     public void mezclar(Baraja baraja) {
-        Collections.shuffle(baraja.getBaraja());
+        Collections.shuffle(baraja.getListaCartasBaraja());
     }
 
     @Override
     public Carta cogerCarta(Baraja baraja) {
-        return baraja.getBaraja().size() > 0 ? baraja.getBaraja().remove(0) : null;
+        return baraja.getListaCartasBaraja().size() > 0 ? baraja.getListaCartasBaraja().remove(0) : null;
     }
 }

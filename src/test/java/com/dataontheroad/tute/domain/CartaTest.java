@@ -4,12 +4,13 @@ import com.dataontheroad.tute.domain.cartas.Carta;
 import com.dataontheroad.tute.domain.cartas.CartaEnum;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CartaTest {
 
     @Test
-    public void dosCartasIgualesRetornanTrue(){
+    void dosCartasIgualesRetornanTrue(){
         Carta carta1 = new Carta(CartaEnum.COPA,3);
         Carta carta2 = new Carta(CartaEnum.COPA, 3);
 
@@ -18,7 +19,7 @@ class CartaTest {
     }
 
     @Test
-    public void dosCartasDiferentesRetornanFalso(){
+    void dosCartasDiferentesRetornanFalso(){
         Carta carta1 = new Carta(CartaEnum.COPA,3);
         Carta carta2 = new Carta(CartaEnum.ORO, 3);
 

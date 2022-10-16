@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class JugadorTest {
 
     @Test
-    public void jugadorInicializado() {
+    void jugadorInicializado() {
         Jugador jugador = new Jugador();
         assertTrue(jugador.getMano().isEmpty());
         assertTrue(jugador.getDescartes().isEmpty());
@@ -16,7 +16,7 @@ class JugadorTest {
     }
 
     @Test
-    public void jugadoresNoTienenMismoId() {
+    void jugadoresNoTienenMismoId() {
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
         assertNotEquals(jugador1.getId(), jugador2.getId());

@@ -3,8 +3,6 @@ package com.dataontheroad.tute.service.jugador;
 import com.dataontheroad.tute.domain.cartas.Carta;
 import com.dataontheroad.tute.domain.cartas.CartaEnum;
 import com.dataontheroad.tute.domain.jugador.Jugador;
-import com.dataontheroad.tute.service.jugador.JugadorService;
-import com.dataontheroad.tute.service.jugador.JugadorServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +23,7 @@ class JugadorServiceImplTest {
     }
 
     @Test
-    public void cuandoJugadorTieneTresCartasNoPuedeRobarMas() {
+    void cuandoJugadorTieneTresCartasNoPuedeRobarMas() {
         List<Carta> mano1 = new ArrayList<Carta>();
         mano1.add(new Carta(CartaEnum.ESPADA, 1));
         mano1.add(new Carta(CartaEnum.ESPADA, 2));
@@ -38,7 +36,7 @@ class JugadorServiceImplTest {
     }
 
     @Test
-    public void cuandoJugadorTieneDosCartasPuedeRobarMas() {
+    void cuandoJugadorTieneDosCartasPuedeRobarMas() {
         List<Carta> mano1 = new ArrayList<Carta>();
         mano1.add(new Carta(CartaEnum.ESPADA, 1));
         mano1.add(new Carta(CartaEnum.ESPADA, 2));
@@ -50,7 +48,7 @@ class JugadorServiceImplTest {
     }
 
     @Test
-    public void jugadorHaGanadoVariasManos() {
+    void jugadorHaGanadoVariasManos() {
         List<Carta> mano1 = new ArrayList<Carta>();
         mano1.add(new Carta(CartaEnum.ESPADA, 1));
         mano1.add(new Carta(CartaEnum.ESPADA, 2));
@@ -83,7 +81,7 @@ class JugadorServiceImplTest {
     }
 
     @Test
-    public void cuandoElJugadorTieneLaCartaTirarla() {
+    void cuandoElJugadorTieneLaCartaTirarla() {
         List<Carta> mano1 = new ArrayList<Carta>();
         mano1.add(new Carta(CartaEnum.ESPADA, 1));
         Carta cartaMuestra = new Carta(CartaEnum.ESPADA, 2);
@@ -100,7 +98,7 @@ class JugadorServiceImplTest {
     }
 
     @Test
-    public void cuandoElJugadorNoTieneLaCartaErrorAlTirarla() {
+    void cuandoElJugadorNoTieneLaCartaErrorAlTirarla() {
         List<Carta> mano1 = new ArrayList<Carta>();
         mano1.add(new Carta(CartaEnum.ESPADA, 1));
         mano1.add(new Carta(CartaEnum.ESPADA, 2));

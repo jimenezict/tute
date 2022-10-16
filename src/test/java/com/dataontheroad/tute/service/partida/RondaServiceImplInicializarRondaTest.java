@@ -13,11 +13,10 @@ import com.dataontheroad.tute.service.mesa.MesaServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class RondaServiceImplInicializarRondaTest {
 
@@ -46,18 +45,16 @@ class RondaServiceImplInicializarRondaTest {
     }
 
     @Test
-    public void seEjecutaRondaInicialConTresJugadores() {
+    void seEjecutaRondaInicialConTresJugadores() {
         Carta muestraInicial = mesa.getCartaMuestra();
-        int tamanoBarajaInicial = mesa.getBaraja().getBaraja().size();
+        int tamanoBarajaInicial = mesa.getBaraja().getListaCartasBaraja().size();
         boolean exito = rondaService.iniciarRonda(mesa, ronda, barajaService, jugadorService);
-        int tamanoBarajaFinal = mesa.getBaraja().getBaraja().size();
+        int tamanoBarajaFinal = mesa.getBaraja().getListaCartasBaraja().size();
         Carta muestraFinal = mesa.getCartaMuestra();
         assertTrue(muestraInicial.equals(muestraFinal));
 
         assertTrue(exito);
-        assertEquals(mesa.getJugadorList().get(0).getMano().size(), 3);
-        assertEquals(mesa.getJugadorList().get(1).getMano().size(), 3);
-        assertEquals(mesa.getJugadorList().get(2).getMano().size(), 3);
+        assertTodosLosJugadoresTienenTresCartas();
         assertEquals(tamanoBarajaInicial - 3, tamanoBarajaFinal);
 
         assertNull(ronda.getCartaMasAlta());
@@ -66,33 +63,34 @@ class RondaServiceImplInicializarRondaTest {
     }
 
     @Test
-    public void seEjecutaRondaFinalConTresJugadores3CartasEnMesa() {
-        mesa.getBaraja().setBaraja(mesa.getBaraja().getBaraja().subList(0,2));
+    void seEjecutaRondaFinalConTresJugadores3CartasEnMesa() {
+        mesa.getBaraja().setListaCartasBaraja(mesa.getBaraja().getListaCartasBaraja().subList(0,2));
         boolean exito = rondaService.iniciarRonda(mesa, ronda, barajaService, jugadorService);
-        int tamanoBarajaFinal = mesa.getBaraja().getBaraja().size();
+        int tamanoBarajaFinal = mesa.getBaraja().getListaCartasBaraja().size();
         Carta muestraFinal = mesa.getCartaMuestra();
 
         assertTrue(exito);
-        assertEquals(mesa.getJugadorList().get(0).getMano().size(), 3);
-        assertEquals(mesa.getJugadorList().get(1).getMano().size(), 3);
-        assertEquals(mesa.getJugadorList().get(2).getMano().size(), 3);
+        assertTodosLosJugadoresTienenTresCartas();
         assertEquals(0, tamanoBarajaFinal);
         assertNull(muestraFinal);
     }
 
     @Test
-    public void seEjecutaRondaFinalConTresJugadores2CartasEnMesa() {
-        mesa.getBaraja().setBaraja(mesa.getBaraja().getBaraja().subList(0,1));
+    void seEjecutaRondaFinalConTresJugadores2CartasEnMesa() {
+        mesa.getBaraja().setListaCartasBaraja(mesa.getBaraja().getListaCartasBaraja().subList(0,1));
         boolean exito = rondaService.iniciarRonda(mesa, ronda, barajaService, jugadorService);
-        int tamanoBarajaFinal = mesa.getBaraja().getBaraja().size();
+        int tamanoBarajaFinal = mesa.getBaraja().getListaCartasBaraja().size();
         Carta muestraFinal = mesa.getCartaMuestra();
 
         assertFalse(exito);
-        assertEquals(mesa.getJugadorList().get(0).getMano().size(), 3);
-        assertEquals(mesa.getJugadorList().get(1).getMano().size(), 3);
-        assertEquals(mesa.getJugadorList().get(2).getMano().size(), 3);
+        assertTodosLosJugadoresTienenTresCartas();
         assertEquals(0, tamanoBarajaFinal);
         assertNull(muestraFinal);
     }
 
+    private void assertTodosLosJugadoresTienenTresCartas() {
+        assertEquals(3, mesa.getJugadorList().get(0).getMano().size());
+        assertEquals(3, mesa.getJugadorList().get(1).getMano().size());
+        assertEquals(3, mesa.getJugadorList().get(2).getMano().size());
+    }
 }
