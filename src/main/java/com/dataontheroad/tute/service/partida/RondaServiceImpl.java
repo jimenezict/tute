@@ -70,8 +70,7 @@ public class RondaServiceImpl implements RondaService {
     }
 
     private static boolean ganaAcartaMasAlta(Carta cartaMasAlta, Carta cartaMuestra, Carta carta) {
-        // TODO: method to be implemented
-        return false;
+        return CartaMasAltaHelper.cartaMasAlta(cartaMasAlta, cartaMuestra, carta);
     }
 
     private static Jugador obtenJugadorGanadorDeLaRonda(Mesa mesa, Ronda ronda) {
