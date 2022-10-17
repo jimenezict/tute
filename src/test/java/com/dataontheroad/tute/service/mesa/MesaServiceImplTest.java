@@ -16,12 +16,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class MesaServiceImplTest {
 
     MesaService mesaService;
-    BarajaService barajaService;
 
     @BeforeEach
     public void setUp() {
         mesaService = new MesaServiceImpl();
-        barajaService = new BarajaServiceImpl();
     }
 
     @Test
@@ -31,7 +29,7 @@ class MesaServiceImplTest {
         jugadorList.add(new Jugador());
         jugadorList.add(new Jugador());
 
-        Mesa mesa = mesaService.crearMesa(barajaService, jugadorList);
+        Mesa mesa = mesaService.crearMesa(jugadorList);
         assertNotNull(mesa.getCartaMuestra());
         assertEquals(30, mesa.getBaraja().getListaCartasBaraja().size());
         assertEquals(3, mesa.getJugadorList().size());

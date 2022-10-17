@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface MesaService {
 
-    Mesa crearMesa(BarajaService barajaService, List<Jugador> listaJugadores);
+    Mesa crearMesa( List<Jugador> listaJugadores);
 }

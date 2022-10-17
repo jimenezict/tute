@@ -5,18 +5,17 @@ import com.dataontheroad.tute.domain.cartas.Carta;
 import com.dataontheroad.tute.domain.jugador.Jugador;
 import com.dataontheroad.tute.domain.mesa.Mesa;
 import com.dataontheroad.tute.service.cartas.BarajaService;
+import com.dataontheroad.tute.service.cartas.BarajaServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MesaServiceImpl implements MesaService {
 
-    BarajaService barajaService;
-
     @Override
-    public Mesa crearMesa(BarajaService barajaService, List<Jugador> listaJugadores) {
+    public Mesa crearMesa(List<Jugador> listaJugadores) {
         Mesa mesa = new Mesa();
-        this.barajaService = barajaService;
+        BarajaService barajaService = new BarajaServiceImpl();
 
         crearJugadores(listaJugadores, mesa);
         crearBaraja(mesa);
@@ -24,9 +23,9 @@ public class MesaServiceImpl implements MesaService {
 
         for(Jugador jugador: listaJugadores) {
             List<Carta> cartasIniciales = new ArrayList<>();
-            cartasIniciales.add(this.barajaService.cogerCarta(mesa.getBaraja()));
-            cartasIniciales.add(this.barajaService.cogerCarta(mesa.getBaraja()));
-            cartasIniciales.add(this.barajaService.cogerCarta(mesa.getBaraja()));
+            cartasIniciales.add(barajaService.cogerCarta(mesa.getBaraja()));
+            cartasIniciales.add(barajaService.cogerCarta(mesa.getBaraja()));
+            cartasIniciales.add(barajaService.cogerCarta(mesa.getBaraja()));
             jugador.setMano(cartasIniciales);
         }
 
@@ -34,6 +33,7 @@ public class MesaServiceImpl implements MesaService {
     }
 
     private void cogerCartaMuestra(Mesa mesa) {
+        BarajaService barajaService = new BarajaServiceImpl();
         mesa.setCartaMuestra(barajaService.cogerCarta(mesa.getBaraja()));
     }
 
@@ -42,6 +42,7 @@ public class MesaServiceImpl implements MesaService {
     }
 
     private void crearBaraja(Mesa mesa) {
+        BarajaService barajaService = new BarajaServiceImpl();
         Baraja baraja = new Baraja();
         barajaService.mezclar(baraja);
         mesa.setBaraja(baraja);

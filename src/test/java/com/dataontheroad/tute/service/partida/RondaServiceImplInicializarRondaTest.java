@@ -39,7 +39,7 @@ class RondaServiceImplInicializarRondaTest {
         jugadorList.add(new Jugador());
         jugadorList.add(new Jugador());
 
-        mesa = mesaService.crearMesa(barajaService, jugadorList);
+        mesa = mesaService.crearMesa(jugadorList);
         ronda = new Ronda();
 
     }

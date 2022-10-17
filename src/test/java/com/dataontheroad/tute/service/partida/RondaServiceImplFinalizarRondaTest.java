@@ -26,14 +26,12 @@ class RondaServiceImplFinalizarRondaTest {
     Mesa mesa;
     Ronda ronda;
     RondaService rondaService;
-    BarajaService barajaService;
     JugadorService jugadorService;
     MesaService mesaService;
 
     @BeforeEach
     public void setUp() {
         rondaService = new RondaServiceImpl();
-        barajaService = new BarajaServiceImpl();
         jugadorService = new JugadorServiceImpl();
         mesaService = new MesaServiceImpl();
 
@@ -42,7 +40,7 @@ class RondaServiceImplFinalizarRondaTest {
         jugadorList.add(new Jugador());
         jugadorList.add(new Jugador());
 
-        mesa = mesaService.crearMesa(barajaService, jugadorList);
+        mesa = mesaService.crearMesa(jugadorList);
         ronda = new Ronda();
         ronda.setJugadorGanador(mesa.getJugadorList().get(2));
         List<Carta> cartaMesa = new ArrayList<>();
