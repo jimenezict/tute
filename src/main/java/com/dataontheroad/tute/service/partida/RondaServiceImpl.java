@@ -7,6 +7,7 @@ import com.dataontheroad.tute.domain.mesa.Mesa;
 import com.dataontheroad.tute.domain.partida.Ronda;
 import com.dataontheroad.tute.service.cartas.BarajaService;
 import com.dataontheroad.tute.service.jugador.JugadorService;
+import com.dataontheroad.tute.service.jugador.JugadorServiceImpl;
 import org.springframework.stereotype.Component;
 
 import static java.util.Objects.isNull;
@@ -78,7 +79,7 @@ public class RondaServiceImpl implements RondaService {
     }
 
     private static void jugadorGanadorTomaLasCartasDeLaMesa(Ronda ronda, Jugador jugadorGanador) {
-        jugadorGanador.getDescartes().addAll(ronda.getCartaMesaList());
+        (new JugadorServiceImpl()).ganarMano(jugadorGanador, ronda.getCartaMesaList());
     }
 
 }
