@@ -12,9 +12,7 @@ public class JugadorServiceImpl implements JugadorService {
         jugador.getDescartes().addAll(cartaList);
         jugador.setPuntuacion(
                 jugador.getPuntuacion()
-                + calcularPuntuacion(cartaList.get(0))
-                + calcularPuntuacion(cartaList.get(1))
-                + calcularPuntuacion(cartaList.get(2))
+                + cartaList.stream().mapToInt(o -> this.calcularPuntuacion(o)).sum()
         );
     }
 

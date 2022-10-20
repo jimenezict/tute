@@ -27,7 +27,7 @@ class PartidaServiceImplTest {
         Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
         (new PartidaServiceImpl()).ejecutarPartida(partida);
 
-        for(int i= 0; i < 4; i++) {
+        for(int i= 0; i < listJugadores.size(); i++) {
             assertEquals(0, partida.getMesa().getJugadorList().get(i).getMano().size());
         }
 
@@ -35,7 +35,7 @@ class PartidaServiceImplTest {
                 + partida.getMesa().getJugadorList().stream().mapToInt(jugador -> jugador.getDescartes().size()).sum();
 
 
-        assertEquals(10, partida.getNumRonda());
+        assertEquals(40/listJugadores.size(), partida.getNumRonda());
         assertEquals(120, partida.getMesa().getJugadorList().stream().mapToInt(jugador -> jugador.getPuntuacion()).sum());
         assertEquals(40, cartasTotales);
     }

@@ -49,7 +49,6 @@ public class PartidaServiceImpl implements PartidaService {
             numRonda ++;
         } while (!partida.getMesa().getJugadorList().get(0).getMano().isEmpty());
 
-        rondaService.finalizarRonda(partida.getMesa(), ronda);
         partida.setNumRonda(numRonda);
     }
 
