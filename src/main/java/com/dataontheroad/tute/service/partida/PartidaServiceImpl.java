@@ -53,7 +53,11 @@ public class PartidaServiceImpl implements PartidaService {
     }
 
     private static boolean esLaUltimaRonda(Partida partida, RondaService rondaService, Ronda ronda) {
-        return rondaService.iniciarRonda(partida.getMesa(), ronda, new BarajaServiceImpl(), new JugadorServiceImpl()) || !partida.getMesa().getJugadorList().get(0).getMano().isEmpty();
+        if(partida.getMesa().getBaraja().getListaCartasBaraja().size() + 1
+                < partida.getMesa().getJugadorList().size())
+            return true;
+        return rondaService.iniciarRonda(partida.getMesa(), ronda, new BarajaServiceImpl(), new JugadorServiceImpl())
+                || !partida.getMesa().getJugadorList().get(0).getMano().isEmpty();
     }
 
     private static Jugador getSiguienteJugadorActivo(Partida partida, Jugador jugadorActivo) {
