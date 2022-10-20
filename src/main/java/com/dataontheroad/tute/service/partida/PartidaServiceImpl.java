@@ -27,32 +27,34 @@ public class PartidaServiceImpl implements PartidaService {
 
     @Override
     public void ejecutarPartida(Partida partida) {
-        int jugadorCount, rondaCount = 0;
         RondaService rondaService = new RondaServiceImpl();
         Ronda ronda;
+        int numRonda = 0;
         Jugador jugadorActivo = generarJugadorInicialDeLaPrimeraRonda(partida);
         Carta cartaMuestra = partida.getMesa().getCartaMuestra();
 
         do {
-            logger.info("Empezando Ronda: " + rondaCount);
-            jugadorCount = 0;
+            int jugadorCount = 0;
             ronda = new Ronda();
             ronda.setJugadorInicial(jugadorActivo);
-            rondaCount++;
 
             do {
-                logger.info("Jugador Numero: " + jugadorCount + " con id: " + jugadorActivo.getId() + "");
                 (new RondaServiceImpl()).jugadorJuegaCarta(ronda, jugadorActivo,jugadorActivo.getMano().get(0), cartaMuestra);
                 jugadorCount ++;
                 jugadorActivo = getSiguienteJugadorActivo(partida, jugadorActivo);
             } while (jugadorCount < partida.getMesa().getJugadorList().size());
 
-            rondaService.finalizarRonda(partida.getMesa(), ronda);
-            jugadorActivo = ronda.getJugadorGanador();
-            logger.info("Terminando Ronda: " + (int) (rondaCount - 1));
-        } while (rondaService.iniciarRonda(partida.getMesa(), ronda, new BarajaServiceImpl(), new JugadorServiceImpl()) && !partida.getMesa().getJugadorList().get(0).getMano().isEmpty());
+            jugadorActivo = rondaService.finalizarRonda(partida.getMesa(), ronda);
+            esLaUltimaRonda(partida, rondaService, ronda);
+            numRonda ++;
+        } while (!partida.getMesa().getJugadorList().get(0).getMano().isEmpty());
 
-        partida.getMesa();
+        rondaService.finalizarRonda(partida.getMesa(), ronda);
+        partida.setNumRonda(numRonda);
+    }
+
+    private static boolean esLaUltimaRonda(Partida partida, RondaService rondaService, Ronda ronda) {
+        return rondaService.iniciarRonda(partida.getMesa(), ronda, new BarajaServiceImpl(), new JugadorServiceImpl()) || !partida.getMesa().getJugadorList().get(0).getMano().isEmpty();
     }
 
     private static Jugador getSiguienteJugadorActivo(Partida partida, Jugador jugadorActivo) {

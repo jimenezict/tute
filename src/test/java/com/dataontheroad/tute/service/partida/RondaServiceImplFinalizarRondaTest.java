@@ -17,8 +17,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.util.ObjectUtils.isEmpty;
 
 class RondaServiceImplFinalizarRondaTest {
@@ -52,11 +51,12 @@ class RondaServiceImplFinalizarRondaTest {
 
     @Test
     void alAcabarRondaJugadorDosTieneTresCartasEnDescartes() {
-        rondaService.finalizarRonda(mesa, ronda);
+        Jugador jugador = rondaService.finalizarRonda(mesa, ronda);
 
         assertTrue(isEmpty(mesa.getJugadorList().get(0).getDescartes()));
         assertTrue(isEmpty(mesa.getJugadorList().get(1).getDescartes()));
         assertFalse(isEmpty(mesa.getJugadorList().get(2).getDescartes()));
+        assertNotNull(jugador);
     }
 
 }

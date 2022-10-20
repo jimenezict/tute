@@ -38,9 +38,10 @@ public class RondaServiceImpl implements RondaService {
     }
 
     @Override
-    public void finalizarRonda(Mesa mesa, Ronda ronda) {
+    public Jugador finalizarRonda(Mesa mesa, Ronda ronda) {
         Jugador jugadorGanador = obtenJugadorGanadorDeLaRonda(mesa, ronda);
         jugadorGanadorTomaLasCartasDeLaMesa(ronda, jugadorGanador);
+        return jugadorGanador;
     }
 
     @Override

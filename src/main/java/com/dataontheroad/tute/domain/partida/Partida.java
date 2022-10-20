@@ -12,6 +12,7 @@ public class Partida {
     private Mesa mesa;
     private Ronda ronda;
     private LocalDateTime inicioPartida;
+    private int numRonda;
 
     public Partida(List<Jugador> jugadorList) {
         mesa = (new MesaServiceImpl()).crearMesa(jugadorList);
@@ -40,5 +41,13 @@ public class Partida {
 
     public void setInicioPartida(LocalDateTime inicioPartida) {
         this.inicioPartida = inicioPartida;
+    }
+
+    public int getNumRonda() {
+        return numRonda;
+    }
+
+    public void setNumRonda(int numRonda) {
+        this.numRonda = numRonda;
     }
 }

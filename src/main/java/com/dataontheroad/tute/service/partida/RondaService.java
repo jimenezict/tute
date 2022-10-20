@@ -11,7 +11,7 @@ public interface RondaService {
 
     boolean iniciarRonda(Mesa mesa, Ronda ronda, BarajaService barajaService, JugadorService jugadorService);
 
-    void finalizarRonda(Mesa mesa, Ronda ronda);
+    Jugador finalizarRonda(Mesa mesa, Ronda ronda);
 
     void jugadorJuegaCarta(Ronda ronda, Jugador jugador, Carta carta, Carta cartaMuestra);
 }
