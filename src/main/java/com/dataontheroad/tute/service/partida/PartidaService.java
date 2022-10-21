@@ -12,4 +12,5 @@ public interface PartidaService {
 
     void ejecutarPartida(Partida partida);
 
+    void cierrePartida(Partida partida);
 }

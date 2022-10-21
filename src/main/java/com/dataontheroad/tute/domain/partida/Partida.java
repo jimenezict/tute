@@ -13,6 +13,9 @@ public class Partida {
     private Ronda ronda;
     private LocalDateTime inicioPartida;
     private int numRonda;
+    private EstadoPartidaEnum estadoPartida;
+    private Jugador jugadorGanador;
+    private String resumenPartida;
 
     public Partida(List<Jugador> jugadorList) {
         mesa = (new MesaServiceImpl()).crearMesa(jugadorList);
@@ -49,5 +52,29 @@ public class Partida {
 
     public void setNumRonda(int numRonda) {
         this.numRonda = numRonda;
+    }
+
+    public EstadoPartidaEnum getEstadoPartida() {
+        return estadoPartida;
+    }
+
+    public void setEstadoPartida(EstadoPartidaEnum estadoPartida) {
+        this.estadoPartida = estadoPartida;
+    }
+
+    public Jugador getJugadorGanador() {
+        return jugadorGanador;
+    }
+
+    public void setJugadorGanador(Jugador jugadorGanador) {
+        this.jugadorGanador = jugadorGanador;
+    }
+
+    public String getResumenPartida() {
+        return resumenPartida;
+    }
+
+    public void setResumenPartida(String resumenPartida) {
+        this.resumenPartida = resumenPartida;
     }
 }

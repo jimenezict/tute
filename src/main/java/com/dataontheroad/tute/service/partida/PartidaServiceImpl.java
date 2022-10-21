@@ -2,26 +2,22 @@ package com.dataontheroad.tute.service.partida;
 
 import com.dataontheroad.tute.domain.cartas.Carta;
 import com.dataontheroad.tute.domain.jugador.Jugador;
+import com.dataontheroad.tute.domain.partida.EstadoPartidaEnum;
 import com.dataontheroad.tute.domain.partida.Partida;
 import com.dataontheroad.tute.domain.partida.Ronda;
-import com.dataontheroad.tute.service.cartas.BarajaService;
 import com.dataontheroad.tute.service.cartas.BarajaServiceImpl;
-import com.dataontheroad.tute.service.jugador.JugadorService;
 import com.dataontheroad.tute.service.jugador.JugadorServiceImpl;
-import com.dataontheroad.tute.service.mesa.MesaService;
-import com.dataontheroad.tute.service.mesa.MesaServiceImpl;
-import org.slf4j.Logger;
+import com.google.gson.Gson;
 
+import java.util.Comparator;
 import java.util.List;
-
-import static org.slf4j.LoggerFactory.getLogger;
 
 public class PartidaServiceImpl implements PartidaService {
 
-    Logger logger = getLogger(PartidaServiceImpl.class);
-
     @Override
     public Partida crearPartida(List<Jugador> jugadorList) {
+        Partida partida = new Partida(jugadorList);
+        partida.setEstadoPartida(EstadoPartidaEnum.INICIALIZADA);
         return new Partida(jugadorList);
     }
 
@@ -32,6 +28,7 @@ public class PartidaServiceImpl implements PartidaService {
         int numRonda = 0;
         Jugador jugadorActivo = generarJugadorInicialDeLaPrimeraRonda(partida);
         Carta cartaMuestra = partida.getMesa().getCartaMuestra();
+        partida.setEstadoPartida(EstadoPartidaEnum.EN_CURSO);
 
         do {
             int jugadorCount = 0;
@@ -39,21 +36,32 @@ public class PartidaServiceImpl implements PartidaService {
             ronda.setJugadorInicial(jugadorActivo);
 
             do {
-                (new RondaServiceImpl()).jugadorJuegaCarta(ronda, jugadorActivo,jugadorActivo.getMano().get(0), cartaMuestra);
-                jugadorCount ++;
+                (new RondaServiceImpl()).jugadorJuegaCarta(ronda, jugadorActivo, jugadorActivo.getMano().get(0), cartaMuestra);
+                jugadorCount++;
                 jugadorActivo = getSiguienteJugadorActivo(partida, jugadorActivo);
             } while (jugadorCount < partida.getMesa().getJugadorList().size());
 
             jugadorActivo = rondaService.finalizarRonda(partida.getMesa(), ronda);
             esLaUltimaRonda(partida, rondaService, ronda);
-            numRonda ++;
+            numRonda++;
         } while (!partida.getMesa().getJugadorList().get(0).getMano().isEmpty());
 
         partida.setNumRonda(numRonda);
     }
 
+    @Override
+    public void cierrePartida(Partida partida) {
+        partida.setEstadoPartida(EstadoPartidaEnum.FINALIZADA);
+        partida.setJugadorGanador(getJugadorGanador(partida));
+        partida.setResumenPartida((new Gson()).toJson(partida));
+    }
+
+    private static Jugador getJugadorGanador(Partida partida) {
+        return partida.getMesa().getJugadorList().stream().max(Comparator.comparing(Jugador::getPuntuacion)).get();
+    }
+
     private static boolean esLaUltimaRonda(Partida partida, RondaService rondaService, Ronda ronda) {
-        if(partida.getMesa().getBaraja().getListaCartasBaraja().size() + 1
+        if (partida.getMesa().getBaraja().getListaCartasBaraja().size() + 1
                 < partida.getMesa().getJugadorList().size())
             return true;
         return rondaService.iniciarRonda(partida.getMesa(), ronda, new BarajaServiceImpl(), new JugadorServiceImpl())
