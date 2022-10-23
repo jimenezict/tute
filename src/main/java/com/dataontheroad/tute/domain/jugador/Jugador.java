@@ -12,12 +12,21 @@ public class Jugador {
     private List<Carta> descartes;
     private int puntuacion;
     private int id;
+    private StrategyAbstract strategy;
 
     public Jugador() {
         mano = new ArrayList<>();
         descartes = new ArrayList<>();
         puntuacion = 0;
         id = ThreadLocalRandom.current().nextInt(0, 10000);
+    }
+
+    public Jugador(StrategyAbstract strategy) {
+        mano = new ArrayList<>();
+        descartes = new ArrayList<>();
+        puntuacion = 0;
+        id = ThreadLocalRandom.current().nextInt(0, 10000);
+        this.strategy = strategy;
     }
 
     public List<Carta> getMano() {
@@ -50,5 +59,9 @@ public class Jugador {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public StrategyAbstract getStrategy() {
+        return strategy;
     }
 }

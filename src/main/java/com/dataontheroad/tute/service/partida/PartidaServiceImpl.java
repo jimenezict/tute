@@ -36,7 +36,8 @@ public class PartidaServiceImpl implements PartidaService {
             ronda.setJugadorInicial(jugadorActivo);
 
             do {
-                (new RondaServiceImpl()).jugadorJuegaCarta(ronda, jugadorActivo, jugadorActivo.getMano().get(0), cartaMuestra);
+                Carta carta = jugadorActivo.getStrategy().jugarCarta(partida.getMesa(), jugadorActivo);
+                (new RondaServiceImpl()).jugadorJuegaCarta(ronda, jugadorActivo, carta, cartaMuestra);
                 jugadorCount++;
                 jugadorActivo = getSiguienteJugadorActivo(partida, jugadorActivo);
             } while (jugadorCount < partida.getMesa().getJugadorList().size());

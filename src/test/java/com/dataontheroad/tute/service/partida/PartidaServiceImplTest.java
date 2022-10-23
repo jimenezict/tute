@@ -1,6 +1,7 @@
 package com.dataontheroad.tute.service.partida;
 
 import com.dataontheroad.tute.domain.jugador.Jugador;
+import com.dataontheroad.tute.domain.jugador.PrimeraCartaDeLaManoStrategy;
 import com.dataontheroad.tute.domain.partida.Partida;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,8 +22,8 @@ class PartidaServiceImplTest {
     @Test
     public void pruebaPartidaDosJugadores() {
 
-        listJugadores.add(new Jugador());
-        listJugadores.add(new Jugador());
+        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
+        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
 
         Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
         (new PartidaServiceImpl()).ejecutarPartida(partida);
@@ -43,9 +44,9 @@ class PartidaServiceImplTest {
     @Test
     public void pruebaPartidaTresJugadores() {
 
-        listJugadores.add(new Jugador());
-        listJugadores.add(new Jugador());
-        listJugadores.add(new Jugador());
+        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
+        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
+        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
 
         Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
         (new PartidaServiceImpl()).ejecutarPartida(partida);
@@ -65,10 +66,10 @@ class PartidaServiceImplTest {
     @Test
     public void pruebaPartidaCuatroJugadores() {
 
-        listJugadores.add(new Jugador());
-        listJugadores.add(new Jugador());
-        listJugadores.add(new Jugador());
-        listJugadores.add(new Jugador());
+        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
+        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
+        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
+        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
 
         Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
         (new PartidaServiceImpl()).ejecutarPartida(partida);
@@ -89,11 +90,11 @@ class PartidaServiceImplTest {
     @Test
     public void pruebaPartidaCincoJugadores() {
 
-        listJugadores.add(new Jugador());
-        listJugadores.add(new Jugador());
-        listJugadores.add(new Jugador());
-        listJugadores.add(new Jugador());
-        listJugadores.add(new Jugador());
+        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
+        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
+        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
+        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
+        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
 
         Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
         (new PartidaServiceImpl()).ejecutarPartida(partida);
