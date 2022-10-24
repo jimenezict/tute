@@ -8,6 +8,7 @@ import com.dataontheroad.tute.service.cartas.BarajaService;
 import com.dataontheroad.tute.service.cartas.BarajaServiceImpl;
 import com.dataontheroad.tute.service.jugador.JugadorService;
 import com.dataontheroad.tute.service.jugador.JugadorServiceImpl;
+import com.dataontheroad.tute.service.jugador.PrimeraCartaDeLaManoStrategy;
 import com.dataontheroad.tute.service.mesa.MesaService;
 import com.dataontheroad.tute.service.mesa.MesaServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,6 +17,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.dataontheroad.tute.ObjectCreationHelper.creadorJugardor;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RondaServiceImplInicializarRondaTest {
@@ -34,10 +36,7 @@ class RondaServiceImplInicializarRondaTest {
         jugadorService = new JugadorServiceImpl();
         mesaService = new MesaServiceImpl();
 
-        List<Jugador> jugadorList = new ArrayList<>();
-        jugadorList.add(new Jugador());
-        jugadorList.add(new Jugador());
-        jugadorList.add(new Jugador());
+        List<Jugador> jugadorList = creadorJugardor(3, (new PrimeraCartaDeLaManoStrategy()));
 
         mesa = mesaService.crearMesa(jugadorList);
         ronda = new Ronda();

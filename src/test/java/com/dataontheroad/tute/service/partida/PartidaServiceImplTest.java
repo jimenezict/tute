@@ -1,13 +1,14 @@
 package com.dataontheroad.tute.service.partida;
 
 import com.dataontheroad.tute.domain.jugador.Jugador;
-import com.dataontheroad.tute.domain.jugador.PrimeraCartaDeLaManoStrategy;
+import com.dataontheroad.tute.service.jugador.PrimeraCartaDeLaManoStrategy;
 import com.dataontheroad.tute.domain.partida.Partida;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
+import static com.dataontheroad.tute.ObjectCreationHelper.creadorJugardor;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PartidaServiceImplTest {
@@ -22,10 +23,9 @@ class PartidaServiceImplTest {
     @Test
     public void pruebaPartidaDosJugadores() {
 
-        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
-        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
+        listJugadores = creadorJugardor(2, (new PrimeraCartaDeLaManoStrategy()));
 
-        Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
+                Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
         (new PartidaServiceImpl()).ejecutarPartida(partida);
 
         for(int i= 0; i < listJugadores.size(); i++) {
@@ -44,9 +44,7 @@ class PartidaServiceImplTest {
     @Test
     public void pruebaPartidaTresJugadores() {
 
-        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
-        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
-        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
+        listJugadores = creadorJugardor(3, (new PrimeraCartaDeLaManoStrategy()));
 
         Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
         (new PartidaServiceImpl()).ejecutarPartida(partida);
@@ -66,10 +64,7 @@ class PartidaServiceImplTest {
     @Test
     public void pruebaPartidaCuatroJugadores() {
 
-        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
-        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
-        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
-        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
+        listJugadores = creadorJugardor(4, (new PrimeraCartaDeLaManoStrategy()));
 
         Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
         (new PartidaServiceImpl()).ejecutarPartida(partida);
@@ -90,11 +85,7 @@ class PartidaServiceImplTest {
     @Test
     public void pruebaPartidaCincoJugadores() {
 
-        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
-        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
-        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
-        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
-        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
+        listJugadores = creadorJugardor(5, (new PrimeraCartaDeLaManoStrategy()));
 
         Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
         (new PartidaServiceImpl()).ejecutarPartida(partida);

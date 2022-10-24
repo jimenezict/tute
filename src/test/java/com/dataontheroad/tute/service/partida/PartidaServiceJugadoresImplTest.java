@@ -1,7 +1,7 @@
 package com.dataontheroad.tute.service.partida;
 
 import com.dataontheroad.tute.domain.jugador.Jugador;
-import com.dataontheroad.tute.domain.jugador.PrimeraCartaDeLaManoStrategy;
+import com.dataontheroad.tute.service.jugador.PrimeraCartaDeLaManoStrategy;
 import com.dataontheroad.tute.domain.partida.Partida;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 
 import java.util.ArrayList;
 
+import static com.dataontheroad.tute.ObjectCreationHelper.creadorJugardor;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.slf4j.LoggerFactory.getLogger;
 
@@ -25,8 +26,7 @@ class PartidaServicePartidasCompletasImplTest {
     @Test
     public void pruebaPartidaDosJugadores() {
 
-        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
-        listJugadores.add(new Jugador(new PrimeraCartaDeLaManoStrategy()));
+        listJugadores = creadorJugardor(2, (new PrimeraCartaDeLaManoStrategy()));
 
         Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
         (new PartidaServiceImpl()).ejecutarPartida(partida);

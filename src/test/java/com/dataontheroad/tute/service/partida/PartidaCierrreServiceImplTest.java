@@ -3,11 +3,13 @@ package com.dataontheroad.tute.service.partida;
 import com.dataontheroad.tute.domain.jugador.Jugador;
 import com.dataontheroad.tute.domain.partida.EstadoPartidaEnum;
 import com.dataontheroad.tute.domain.partida.Partida;
+import com.dataontheroad.tute.service.jugador.PrimeraCartaDeLaManoStrategy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
+import static com.dataontheroad.tute.ObjectCreationHelper.creadorJugardor;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -23,8 +25,7 @@ class PartidaCierrreServiceImplTest {
     @Test
     public void pruebaCierrePartidaDosJugadoresSegundoGanador() {
 
-        listJugadores.add(new Jugador());
-        listJugadores.add(new Jugador());
+        listJugadores = creadorJugardor(2, (new PrimeraCartaDeLaManoStrategy()));
 
         Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
 
@@ -41,8 +42,7 @@ class PartidaCierrreServiceImplTest {
     @Test
     public void pruebaCierrePartidaDosJugadoresPrimerGanador() {
 
-        listJugadores.add(new Jugador());
-        listJugadores.add(new Jugador());
+        listJugadores = creadorJugardor(2, (new PrimeraCartaDeLaManoStrategy()));
 
         Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
 
