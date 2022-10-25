@@ -2,7 +2,7 @@ package com.dataontheroad.tute.experimento.domain;
 
 import com.dataontheroad.tute.domain.jugador.Jugador;
 
-import java.util.List;
+
 
 public class ExperimentoIndividual {
 
