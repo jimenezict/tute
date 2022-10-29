@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static com.dataontheroad.tute.ObjectCreationHelper.creadorJugardor;
+import static com.dataontheroad.tute.ObjectCreationHelper.creadorListaJugardoresPartidaConLaMismaEstrategia;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -25,7 +25,7 @@ class PartidaCierrreServiceImplTest {
     @Test
     public void pruebaCierrePartidaDosJugadoresSegundoGanador() {
 
-        listJugadores = creadorJugardor(2, (new PrimeraCartaDeLaManoStrategy()));
+        listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(2, (new PrimeraCartaDeLaManoStrategy()));
 
         Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
 
@@ -42,7 +42,7 @@ class PartidaCierrreServiceImplTest {
     @Test
     public void pruebaCierrePartidaDosJugadoresPrimerGanador() {
 
-        listJugadores = creadorJugardor(2, (new PrimeraCartaDeLaManoStrategy()));
+        listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(2, (new PrimeraCartaDeLaManoStrategy()));
 
         Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
 

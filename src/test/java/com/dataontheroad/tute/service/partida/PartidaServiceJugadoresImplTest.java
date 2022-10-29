@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 
 import java.util.ArrayList;
 
-import static com.dataontheroad.tute.ObjectCreationHelper.creadorJugardor;
+import static com.dataontheroad.tute.ObjectCreationHelper.creadorListaJugardoresPartidaConLaMismaEstrategia;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.slf4j.LoggerFactory.getLogger;
 
@@ -26,7 +26,7 @@ class PartidaServicePartidasCompletasImplTest {
     @Test
     public void pruebaPartidaDosJugadores() {
 
-        listJugadores = creadorJugardor(2, (new PrimeraCartaDeLaManoStrategy()));
+        listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(2, (new PrimeraCartaDeLaManoStrategy()));
 
         Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
         (new PartidaServiceImpl()).ejecutarPartida(partida);

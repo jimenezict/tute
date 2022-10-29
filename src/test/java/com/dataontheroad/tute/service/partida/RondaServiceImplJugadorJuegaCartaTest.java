@@ -15,10 +15,9 @@ import com.dataontheroad.tute.service.mesa.MesaServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static com.dataontheroad.tute.ObjectCreationHelper.creadorJugardor;
+import static com.dataontheroad.tute.ObjectCreationHelper.creadorListaJugardoresPartidaConLaMismaEstrategia;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -39,7 +38,7 @@ class RondaServiceImplJugadorJuegaCartaTest {
         jugadorService = new JugadorServiceImpl();
         mesaService = new MesaServiceImpl();
 
-        List<Jugador> jugadorList = creadorJugardor(3, (new PrimeraCartaDeLaManoStrategy()));
+        List<Jugador> jugadorList = creadorListaJugardoresPartidaConLaMismaEstrategia(3, (new PrimeraCartaDeLaManoStrategy()));
 
         mesa = mesaService.crearMesa(jugadorList);
         cartaMuestra = new Carta(CartaEnum.ORO, 3);

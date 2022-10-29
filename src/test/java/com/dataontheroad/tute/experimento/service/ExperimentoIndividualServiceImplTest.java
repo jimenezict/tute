@@ -1,7 +1,6 @@
 package com.dataontheroad.tute.experimento.service;
 
 import com.dataontheroad.tute.domain.jugador.Jugador;
-import com.dataontheroad.tute.domain.mesa.Mesa;
 import com.dataontheroad.tute.experimento.domain.ExperimentoIndividual;
 import com.dataontheroad.tute.service.jugador.PrimeraCartaDeLaManoStrategy;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,9 +8,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
-import static com.dataontheroad.tute.ObjectCreationHelper.creadorJugardor;
+import static com.dataontheroad.tute.ObjectCreationHelper.creadorListaJugardoresPartidaConLaMismaEstrategia;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ExperimentoIndividualServiceImplTest {
@@ -25,7 +23,7 @@ class ExperimentoIndividualServiceImplTest {
 
     @Test
     void alCrearMesaDeTresJugadoresTodoEsCorrecto() {
-        ArrayList<Jugador> listJugadores = creadorJugardor(2, (new PrimeraCartaDeLaManoStrategy()));
+        ArrayList<Jugador> listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(2, (new PrimeraCartaDeLaManoStrategy()));
         ExperimentoIndividual experimentoIndividual = experimentoIndividualService.creaExperimentoIndividual(listJugadores);
 
         assertNotNull(experimentoIndividual.getJugadorGanador());

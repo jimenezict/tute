@@ -26,10 +26,6 @@ public class ExperimentoColectivo {
         return numeroDeJugadores;
     }
 
-    public void setNumeroDeJugadores(int numeroDeJugadores) {
-        this.numeroDeJugadores = numeroDeJugadores;
-    }
-
     public int getNumeroDeExperimentos() {
         return numeroDeExperimentos;
     }
@@ -42,15 +38,7 @@ public class ExperimentoColectivo {
         return listaDeResultados;
     }
 
-    public void setListaDeResultados(List<List<Integer>> listaDeResultados) {
-        this.listaDeResultados = listaDeResultados;
-    }
-
     public List<Integer> getListaGanadores() {
         return listaGanadores;
-    }
-
-    public void setListaGanadores(List<Integer> listaGanadores) {
-        this.listaGanadores = listaGanadores;
     }
 }

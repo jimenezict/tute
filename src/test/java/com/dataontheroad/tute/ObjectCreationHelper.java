@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class ObjectCreationHelper {
 
-    public static ArrayList<Jugador> creadorJugardor(int numeroJugadores, StrategyAbstract strategyAbstract) {
+    public static ArrayList<Jugador> creadorListaJugardoresPartidaConLaMismaEstrategia(int numeroJugadores, StrategyAbstract strategyAbstract) {
         ArrayList<Jugador> listJugador = new ArrayList<>();
         for(int i=0; i < numeroJugadores; i++) {
             listJugador.add(new Jugador(strategyAbstract));

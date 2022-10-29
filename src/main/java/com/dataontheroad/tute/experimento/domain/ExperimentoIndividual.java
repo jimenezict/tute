@@ -35,10 +35,6 @@ public class ExperimentoIndividual {
         this.jugadorGanador = jugadorGanador;
     }
 
-    public int getOrdenJugadorGanador() {
-        return ordenJugadorGanador;
-    }
-
     public void setOrdenJugadorGanador(int ordenJugadorGanador) {
         this.ordenJugadorGanador = ordenJugadorGanador;
     }

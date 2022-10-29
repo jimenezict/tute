@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static com.dataontheroad.tute.ObjectCreationHelper.creadorJugardor;
+import static com.dataontheroad.tute.ObjectCreationHelper.creadorListaJugardoresPartidaConLaMismaEstrategia;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PartidaServiceImplTest {
@@ -23,7 +23,7 @@ class PartidaServiceImplTest {
     @Test
     public void pruebaPartidaDosJugadores() {
 
-        listJugadores = creadorJugardor(2, (new PrimeraCartaDeLaManoStrategy()));
+        listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(2, (new PrimeraCartaDeLaManoStrategy()));
 
                 Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
         (new PartidaServiceImpl()).ejecutarPartida(partida);
@@ -44,7 +44,7 @@ class PartidaServiceImplTest {
     @Test
     public void pruebaPartidaTresJugadores() {
 
-        listJugadores = creadorJugardor(3, (new PrimeraCartaDeLaManoStrategy()));
+        listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(3, (new PrimeraCartaDeLaManoStrategy()));
 
         Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
         (new PartidaServiceImpl()).ejecutarPartida(partida);
@@ -64,7 +64,7 @@ class PartidaServiceImplTest {
     @Test
     public void pruebaPartidaCuatroJugadores() {
 
-        listJugadores = creadorJugardor(4, (new PrimeraCartaDeLaManoStrategy()));
+        listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(4, (new PrimeraCartaDeLaManoStrategy()));
 
         Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
         (new PartidaServiceImpl()).ejecutarPartida(partida);
@@ -85,7 +85,7 @@ class PartidaServiceImplTest {
     @Test
     public void pruebaPartidaCincoJugadores() {
 
-        listJugadores = creadorJugardor(5, (new PrimeraCartaDeLaManoStrategy()));
+        listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(5, (new PrimeraCartaDeLaManoStrategy()));
 
         Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
         (new PartidaServiceImpl()).ejecutarPartida(partida);
