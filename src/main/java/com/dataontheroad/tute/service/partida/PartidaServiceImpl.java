@@ -6,6 +6,7 @@ import com.dataontheroad.tute.domain.partida.EstadoPartidaEnum;
 import com.dataontheroad.tute.domain.partida.Partida;
 import com.dataontheroad.tute.domain.partida.Ronda;
 import com.dataontheroad.tute.service.cartas.BarajaServiceImpl;
+import com.dataontheroad.tute.service.jugador.JugadorService;
 import com.dataontheroad.tute.service.jugador.JugadorServiceImpl;
 import com.google.gson.Gson;
 
@@ -16,6 +17,7 @@ public class PartidaServiceImpl implements PartidaService {
 
     @Override
     public Partida crearPartida(List<Jugador> jugadorList) {
+        inicializarJugadores(jugadorList);
         Partida partida = new Partida(jugadorList);
         partida.setEstadoPartida(EstadoPartidaEnum.INICIALIZADA);
         return new Partida(jugadorList);
@@ -55,6 +57,13 @@ public class PartidaServiceImpl implements PartidaService {
         partida.setEstadoPartida(EstadoPartidaEnum.FINALIZADA);
         partida.setJugadorGanador(getJugadorGanador(partida));
         partida.setResumenPartida((new Gson()).toJson(partida));
+    }
+
+
+
+    private static void inicializarJugadores(List<Jugador> jugadorList) {
+        JugadorService jugadorService = new JugadorServiceImpl();
+        jugadorList.forEach(jugador -> jugadorService.inicializarJugadorPartida(jugador));
     }
 
     private static Jugador getJugadorGanador(Partida partida) {

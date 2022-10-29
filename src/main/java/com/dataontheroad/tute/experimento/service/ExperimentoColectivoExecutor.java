@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ExperimentoColectivoExecutor {
 
-    public static void executar(int numeroDePartidas, List<Jugador> jugadorList) {
+    public static ExperimentoColectivo executar(int numeroDePartidas, List<Jugador> jugadorList) {
 
         ExperimentoColectivo experimentoColectivo = new ExperimentoColectivo(jugadorList.size(), numeroDePartidas);
         ExperimentoIndividualService experimentoIndividualService = new ExperimentoIndividualServiceImpl();
@@ -25,6 +25,7 @@ public class ExperimentoColectivoExecutor {
         }
 
         experimentoColectivo.setNumeroDeExperimentos(numeroDePartidas);
+        return experimentoColectivo;
 
     }
 }

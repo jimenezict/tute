@@ -12,4 +12,6 @@ public interface JugadorService {
     public boolean robarCarta(Jugador jugador, Carta carta);
 
     public boolean tirarCarta(Jugador jugador, Carta carta);
+
+    public void inicializarJugadorPartida(Jugador jugador);
 }

@@ -114,4 +114,27 @@ class JugadorServiceImplTest {
         assertFalse(jugador.getMano().contains(cartaMuestra));
     }
 
+    @Test
+    void jugadorSeInicializaCorrectamente() {
+        List<Carta> descartes = new ArrayList<Carta>();
+        descartes.add(new Carta(CartaEnum.ESPADA, 1));
+        descartes.add(new Carta(CartaEnum.ESPADA, 2));
+        descartes.add(new Carta(CartaEnum.ESPADA, 3));
+
+        List<Carta> mano = new ArrayList<Carta>();
+        mano.add(new Carta(CartaEnum.ORO, 1));
+        mano.add(new Carta(CartaEnum.ORO, 2));
+        mano.add(new Carta(CartaEnum.ORO, 3));
+
+        jugador.setPuntuacion(100);
+        jugador.setDescartes(descartes);
+        jugador.setMano(mano);
+
+        jugadorService.inicializarJugadorPartida(jugador);
+
+        assertEquals(0, jugador.getPuntuacion());
+        assertEquals(0, jugador.getMano().size());
+        assertEquals(0, jugador.getDescartes().size());
+    }
+
 }

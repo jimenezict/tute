@@ -3,6 +3,7 @@ package com.dataontheroad.tute.service.jugador;
 import com.dataontheroad.tute.domain.cartas.Carta;
 import com.dataontheroad.tute.domain.jugador.Jugador;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class JugadorServiceImpl implements JugadorService {
@@ -32,6 +33,13 @@ public class JugadorServiceImpl implements JugadorService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void inicializarJugadorPartida(Jugador jugador) {
+        jugador.setPuntuacion(0);
+        jugador.setMano(new ArrayList<>());
+        jugador.setDescartes(new ArrayList<>());
     }
 
     private int calcularPuntuacion(Carta carta) {
