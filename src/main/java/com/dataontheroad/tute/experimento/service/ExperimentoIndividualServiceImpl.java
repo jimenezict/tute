@@ -1,10 +1,10 @@
 package com.dataontheroad.tute.experimento.service;
 
-import com.dataontheroad.tute.domain.jugador.Jugador;
-import com.dataontheroad.tute.domain.partida.Partida;
+import com.dataontheroad.tute.juego.domain.jugador.Jugador;
+import com.dataontheroad.tute.juego.domain.partida.Partida;
 import com.dataontheroad.tute.experimento.domain.ExperimentoIndividual;
-import com.dataontheroad.tute.service.partida.PartidaService;
-import com.dataontheroad.tute.service.partida.PartidaServiceImpl;
+import com.dataontheroad.tute.juego.service.partida.PartidaService;
+import com.dataontheroad.tute.juego.service.partida.PartidaServiceImpl;
 
 import java.util.List;
 

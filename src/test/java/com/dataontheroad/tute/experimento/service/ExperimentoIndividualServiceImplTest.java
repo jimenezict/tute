@@ -1,8 +1,8 @@
 package com.dataontheroad.tute.experimento.service;
 
-import com.dataontheroad.tute.domain.jugador.Jugador;
+import com.dataontheroad.tute.juego.domain.jugador.Jugador;
 import com.dataontheroad.tute.experimento.domain.ExperimentoIndividual;
-import com.dataontheroad.tute.service.jugador.PrimeraCartaDeLaManoStrategy;
+import com.dataontheroad.tute.juego.service.jugador.PrimeraCartaDeLaManoStrategy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
