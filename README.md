@@ -87,3 +87,35 @@ Por otro lado, cada vez que se implemente un nuevo algoritmo queremos saber si e
 ```
 FdI = (#victorias del jugador con algoritmo bajo estudio) * 100 / (#total de experimentos)  
 ```
+
+El segundo grupo de datos relevantes es la distribución de puntación de las partidas, donde se quiere conocer la media. Al jugarse la partida sobre 120 puntos y teniendo en cuenta que en una partida teóricamente bien distribuidad, todos los jugadores tendirían a obtener el mismo porcentage. Consecuentemente, en una partida, la média teórica es de 30 puntos. El parámetro "Diferencia de Media Teoria" 
+
+&Delta;MT = Media Jugador - 30
+
+## Análisis PrimeraCartaDeLaManoStrategy
+
+Este análisis es excepcional, ya que no se compara un algoritmo A con PrimeraCartaDeLaManoStrategy, sino una experimentación donde todos los participantes juegan con el algoritmo PrimeraCartaDeLaManoStrategy. A priori, las victorias se distribuyen de forma equivalente, el FdI será 25% y el &Delta;MT = 0.
+
+Aunque cada experimentación resulte diferente, se comparten los resultados sobre una experimentación con 1000 iteraciones.
+
+| Jugador 1 | Jugador 2 | Jugador 3 | Jugador 4 |
+| -- | -- | -- | -- |
+| 235 | 246 | 272 | 247 |                                    
+
+| | Jugador 1 | Jugador 2 | Jugador 3 | Jugador 4 |
+| -- | -- | -- | -- | -- |
+| Puntuación Media | 29.037 | 29.544 | 29.848 | 31.571 |
+| &Delta;MT | -0.963 | -0.456 | 0.152 | 1.571 |  
+
+El mismo experimento sobre 10000 iteraciones muestra los siguientes resultados
+
+| Jugador 1 | Jugador 2 | Jugador 3 | Jugador 4 |
+| -- | -- | -- | -- |
+| 2391 | 2457 | 2433 | 2719 |                                    
+
+| | Jugador 1 | Jugador 2 | Jugador 3 | Jugador 4 |
+| -- | -- | -- | -- | -- |
+| Puntuación Media | 28.8707 | 29.5081 | 29.2004 | 32.4208 |
+| &Delta;MT | -1.1293 | -0.4919 |-0.7996 | 2.42 |  
+
+Se comprueba entonces, que tanto el FdI y &Delta;MT tienden hacia sus valores esperados cuando todos los participantes juegan con el algortimo PrimeraCartaDeLaManoStrategy
