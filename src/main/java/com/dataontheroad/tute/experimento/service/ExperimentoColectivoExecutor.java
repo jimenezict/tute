@@ -4,6 +4,7 @@ import com.dataontheroad.tute.juego.domain.jugador.Jugador;
 import com.dataontheroad.tute.experimento.domain.ExperimentoColectivo;
 import com.dataontheroad.tute.experimento.domain.ExperimentoIndividual;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExperimentoColectivoExecutor {
@@ -24,8 +25,18 @@ public class ExperimentoColectivoExecutor {
             }
         }
 
+        rellenaListaDeMedias(jugadorList.size(), experimentoColectivo);
+
         experimentoColectivo.setNumeroDeExperimentos(numeroDePartidas);
         return experimentoColectivo;
 
+    }
+
+    private static void rellenaListaDeMedias(int numeroJugadores, ExperimentoColectivo experimentoColectivo) {
+        List<Double> listaMedias = new ArrayList<>();
+        for(int i = 0; i < numeroJugadores; i++) {
+            listaMedias.add(experimentoColectivo.getListaDeResultados().get(i).stream().mapToInt(x -> x).average().getAsDouble());
+        }
+        experimentoColectivo.setListaMedias(listaMedias);
     }
 }

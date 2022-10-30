@@ -7,6 +7,7 @@ public class ExperimentoColectivo {
 
     private List<List<Integer>> listaDeResultados;
     private List<Integer> listaGanadores;
+    private List<Double> listaMedias;
     private int numeroDeJugadores;
     private int numeroDeExperimentos;
 
@@ -15,9 +16,11 @@ public class ExperimentoColectivo {
         this.numeroDeExperimentos = numeroDeExperimentos;
         listaDeResultados = new ArrayList<>();
         listaGanadores = new ArrayList<>();
+        listaMedias = new ArrayList<>();
 
         for(int i =0; i< numeroDeJugadores; i++) {
             listaGanadores.add(0);
+            listaMedias.add(0.0);
             listaDeResultados.add(new ArrayList<>());
         }
     }
@@ -40,5 +43,13 @@ public class ExperimentoColectivo {
 
     public List<Integer> getListaGanadores() {
         return listaGanadores;
+    }
+
+    public void setListaMedias(List<Double> listaMedias) {
+        this.listaMedias = listaMedias;
+    }
+
+    public List<Double> getListaMedias() {
+        return listaMedias;
     }
 }
