@@ -68,4 +68,22 @@ El POJO *ExperimentoColectivo* recoge los datos. Los campos más relevantes son:
 
 # Algoritmos de IA
 
-# Análisis de resultados.
+Como se ha dicho anteriormente, los algoritmos son extensiones de la classe AbstractStategy. 
+
+## PrimeraCartaDeLaManoStrategy
+
+Es el algoritmo más sencillo. Consiste en tirar la primera carta de la mano, lo que en el mundo analógico significaría tirar la carta de la izquierda. De esta forma, al robar una carta, esta pasaría a ser la de más a la derecha.
+
+Al no existir ningun racionamiento, se ha usado para comprobar la correcta implementación de la lógica del juego. Los detalles se explican en la sección *análisis de resultados*.
+
+# Análisis de resultados
+
+## Teoría del análisis
+
+Partimos de la idea que el algoritmo más sencillo es aquel donde un jugador juega una carta al azar, sin razonar porque la ha tirado. Si todos los jugadores juegan de la misma manera, significa que para un número elevado de partidas, las victorias se distribuirán uniformemente. También la distribución de puntos obtenidos por partida, tendirán a hacer lo mismo. Cada vez que se cumpla las igualdades en la distribución, diremos que el algortimo está balanceado.
+
+Por otro lado, cada vez que se implemente un nuevo algoritmo queremos saber si este es mejor que los anteriores. Para conseguirlo, diseñaremos un experimento con un número alto de iteraciones, donde un jugador usa el algortimo que queremos estudiar, y los otros jugadores de la partida, tendrán uno de los algortimos ya existentes. De forma general, para saber la bondad de un algortimo que esté bajo estudio, se comparará la diferencia de victorias en una partida a cuatro jugadores donde los tres jugadores restantes juegan con PrimeraCartaDeLaManoStrategy. A esto se le llamara "Factor De Inteligencia" (FdI)
+
+```
+FdI = (#victorias del jugador con algoritmo bajo estudio) * 100 / (#total de experimentos)  
+```
