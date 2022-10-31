@@ -2,12 +2,25 @@ package com.dataontheroad.tute.juego.service.cartas;
 
 import com.dataontheroad.tute.juego.domain.cartas.Baraja;
 import com.dataontheroad.tute.juego.domain.cartas.Carta;
+import org.springframework.stereotype.Component;
 
-public interface BarajaService {
+import java.util.Collections;
 
-    Baraja crear();
+import static org.springframework.util.ObjectUtils.isEmpty;
 
-    void mezclar(Baraja baraja);
+public class BarajaService {
 
-    Carta cogerCarta(Baraja baraja);
+    public static Baraja crearBaraja() {
+        return new Baraja();
+    }
+
+
+    public static void mezclarBaraja(Baraja baraja) {
+        Collections.shuffle(baraja.getListaCartasBaraja());
+    }
+
+
+    public static Carta cogerCartaBaraja(Baraja baraja) {
+        return !isEmpty(baraja.getListaCartasBaraja()) ? baraja.getListaCartasBaraja().remove(0) : null;
+    }
 }

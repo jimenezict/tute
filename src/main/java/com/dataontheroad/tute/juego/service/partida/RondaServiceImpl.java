@@ -5,22 +5,22 @@ import com.dataontheroad.tute.juego.domain.cartas.Carta;
 import com.dataontheroad.tute.juego.domain.jugador.Jugador;
 import com.dataontheroad.tute.juego.domain.mesa.Mesa;
 import com.dataontheroad.tute.juego.domain.partida.Ronda;
-import com.dataontheroad.tute.juego.service.cartas.BarajaService;
 import com.dataontheroad.tute.juego.service.jugador.JugadorService;
 import com.dataontheroad.tute.juego.service.jugador.JugadorServiceImpl;
 import org.springframework.stereotype.Component;
 
+import static com.dataontheroad.tute.juego.service.cartas.BarajaService.cogerCartaBaraja;
 import static java.util.Objects.isNull;
 
 @Component
 public class RondaServiceImpl implements RondaService {
 
     @Override
-    public boolean iniciarRonda(Mesa mesa, Ronda ronda, BarajaService barajaService, JugadorService jugadorService) {
+    public boolean iniciarRonda(Mesa mesa, Ronda ronda, JugadorService jugadorService) {
         Baraja baraja = mesa.getBaraja();
 
         for (Jugador jugador: mesa.getJugadorList()) {
-            Carta carta = barajaService.cogerCarta(baraja);
+            Carta carta = cogerCartaBaraja(baraja);
             if(isNull(carta)) {
                 if(!isNull(mesa.getCartaMuestra())) {
                     carta = mesa.getCartaMuestra();

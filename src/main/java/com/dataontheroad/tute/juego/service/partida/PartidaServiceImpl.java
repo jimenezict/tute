@@ -5,7 +5,6 @@ import com.dataontheroad.tute.juego.domain.jugador.Jugador;
 import com.dataontheroad.tute.juego.domain.partida.EstadoPartidaEnum;
 import com.dataontheroad.tute.juego.domain.partida.Partida;
 import com.dataontheroad.tute.juego.domain.partida.Ronda;
-import com.dataontheroad.tute.juego.service.cartas.BarajaServiceImpl;
 import com.dataontheroad.tute.juego.service.jugador.JugadorService;
 import com.dataontheroad.tute.juego.service.jugador.JugadorServiceImpl;
 import com.google.gson.Gson;
@@ -74,7 +73,7 @@ public class PartidaServiceImpl implements PartidaService {
         if (partida.getMesa().getBaraja().getListaCartasBaraja().size() + 1
                 < partida.getMesa().getJugadorList().size())
             return true;
-        return rondaService.iniciarRonda(partida.getMesa(), ronda, new BarajaServiceImpl(), new JugadorServiceImpl())
+        return rondaService.iniciarRonda(partida.getMesa(), ronda, new JugadorServiceImpl())
                 || !partida.getMesa().getJugadorList().get(0).getMano().isEmpty();
     }
 
