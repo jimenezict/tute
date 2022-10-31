@@ -58,11 +58,11 @@ public class Jugador {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public StrategyAbstract getStrategy() {
         return strategy;
+    }
+
+    public void setStrategy(StrategyAbstract strategy) {
+        this.strategy = strategy;
     }
 }
