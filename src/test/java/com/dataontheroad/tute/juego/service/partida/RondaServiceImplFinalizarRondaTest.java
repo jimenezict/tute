@@ -6,7 +6,6 @@ import com.dataontheroad.tute.juego.domain.jugador.Jugador;
 import com.dataontheroad.tute.juego.domain.mesa.Mesa;
 import com.dataontheroad.tute.juego.domain.partida.Ronda;
 import com.dataontheroad.tute.juego.service.mesa.MesaService;
-import com.dataontheroad.tute.juego.service.mesa.MesaServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -25,8 +24,8 @@ class RondaServiceImplFinalizarRondaTest {
 
     @BeforeEach
     public void setUp() {
-        rondaService = new RondaServiceImpl();
-        mesaService = new MesaServiceImpl();
+        rondaService = new RondaService();
+        mesaService = new MesaService();
 
         List<Jugador> jugadorList = new ArrayList<>();
         jugadorList.add(new Jugador());

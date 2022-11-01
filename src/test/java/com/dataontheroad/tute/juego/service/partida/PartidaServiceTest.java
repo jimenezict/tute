@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import static com.dataontheroad.tute.ObjectCreationHelper.creadorListaJugardoresPartidaConLaMismaEstrategia;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class PartidaServiceImplTest {
+class PartidaServiceTest {
 
     ArrayList<Jugador> listJugadores;
 
@@ -25,8 +25,8 @@ class PartidaServiceImplTest {
 
         listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(2, (new PrimeraCartaDeLaManoStrategy()));
 
-                Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
-        (new PartidaServiceImpl()).ejecutarPartida(partida);
+                Partida partida = (new PartidaService()).crearPartida(listJugadores);
+        (new PartidaService()).ejecutarPartida(partida);
 
         for(int i= 0; i < listJugadores.size(); i++) {
             assertEquals(0, partida.getMesa().getJugadorList().get(i).getMano().size());
@@ -46,8 +46,8 @@ class PartidaServiceImplTest {
 
         listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(3, (new PrimeraCartaDeLaManoStrategy()));
 
-        Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
-        (new PartidaServiceImpl()).ejecutarPartida(partida);
+        Partida partida = (new PartidaService()).crearPartida(listJugadores);
+        (new PartidaService()).ejecutarPartida(partida);
 
         for(int i= 0; i < listJugadores.size(); i++) {
             assertEquals(0, partida.getMesa().getJugadorList().get(i).getMano().size());
@@ -66,8 +66,8 @@ class PartidaServiceImplTest {
 
         listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(4, (new PrimeraCartaDeLaManoStrategy()));
 
-        Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
-        (new PartidaServiceImpl()).ejecutarPartida(partida);
+        Partida partida = (new PartidaService()).crearPartida(listJugadores);
+        (new PartidaService()).ejecutarPartida(partida);
 
         for(int i= 0; i < listJugadores.size(); i++) {
             assertEquals(0, partida.getMesa().getJugadorList().get(i).getMano().size());
@@ -87,8 +87,8 @@ class PartidaServiceImplTest {
 
         listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(5, (new PrimeraCartaDeLaManoStrategy()));
 
-        Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
-        (new PartidaServiceImpl()).ejecutarPartida(partida);
+        Partida partida = (new PartidaService()).crearPartida(listJugadores);
+        (new PartidaService()).ejecutarPartida(partida);
 
         for(int i= 0; i < listJugadores.size(); i++) {
             assertEquals(0, partida.getMesa().getJugadorList().get(i).getMano().size());

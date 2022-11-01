@@ -7,7 +7,6 @@ import com.dataontheroad.tute.juego.domain.mesa.Mesa;
 import com.dataontheroad.tute.juego.domain.partida.Ronda;
 import com.dataontheroad.tute.juego.service.jugador.PrimeraCartaDeLaManoStrategy;
 import com.dataontheroad.tute.juego.service.mesa.MesaService;
-import com.dataontheroad.tute.juego.service.mesa.MesaServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -27,8 +26,8 @@ class RondaServiceImplJugadorJuegaCartaTest {
 
     @BeforeEach
     public void setUp() {
-        rondaService = new RondaServiceImpl();
-        mesaService = new MesaServiceImpl();
+        rondaService = new RondaService();
+        mesaService = new MesaService();
 
         List<Jugador> jugadorList = creadorListaJugardoresPartidaConLaMismaEstrategia(3, (new PrimeraCartaDeLaManoStrategy()));
 

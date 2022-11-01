@@ -28,9 +28,9 @@ class PartidaServicePartidasCompletasImplTest {
 
         listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(2, (new PrimeraCartaDeLaManoStrategy()));
 
-        Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
-        (new PartidaServiceImpl()).ejecutarPartida(partida);
-        (new PartidaServiceImpl()).cierrePartida(partida);
+        Partida partida = (new PartidaService()).crearPartida(listJugadores);
+        (new PartidaService()).ejecutarPartida(partida);
+        (new PartidaService()).cierrePartida(partida);
         logger.info(String.valueOf(partida.getMesa().getJugadorList().indexOf(partida.getJugadorGanador())));
     }
 

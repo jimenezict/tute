@@ -2,23 +2,16 @@ package com.dataontheroad.tute.juego.service.mesa;
 
 import com.dataontheroad.tute.juego.domain.jugador.Jugador;
 import com.dataontheroad.tute.juego.domain.mesa.Mesa;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.dataontheroad.tute.juego.service.mesa.MesaService.crearMesa;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class MesaServiceImplTest {
-
-    MesaService mesaService;
-
-    @BeforeEach
-    public void setUp() {
-        mesaService = new MesaServiceImpl();
-    }
+class MesaServiceTest {
 
     @Test
     void alCrearMesaDeTresJugadoresTodoEsCorrecto() {
@@ -27,7 +20,7 @@ class MesaServiceImplTest {
         jugadorList.add(new Jugador());
         jugadorList.add(new Jugador());
 
-        Mesa mesa = mesaService.crearMesa(jugadorList);
+        Mesa mesa = crearMesa(jugadorList);
         assertNotNull(mesa.getCartaMuestra());
         assertEquals(30, mesa.getBaraja().getListaCartasBaraja().size());
         assertEquals(3, mesa.getJugadorList().size());
