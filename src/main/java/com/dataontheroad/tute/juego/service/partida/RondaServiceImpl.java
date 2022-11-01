@@ -5,18 +5,18 @@ import com.dataontheroad.tute.juego.domain.cartas.Carta;
 import com.dataontheroad.tute.juego.domain.jugador.Jugador;
 import com.dataontheroad.tute.juego.domain.mesa.Mesa;
 import com.dataontheroad.tute.juego.domain.partida.Ronda;
-import com.dataontheroad.tute.juego.service.jugador.JugadorService;
-import com.dataontheroad.tute.juego.service.jugador.JugadorServiceImpl;
 import org.springframework.stereotype.Component;
 
 import static com.dataontheroad.tute.juego.service.cartas.BarajaService.cogerCartaBaraja;
+import static com.dataontheroad.tute.juego.service.jugador.JugadorService.ganarMano;
+import static com.dataontheroad.tute.juego.service.jugador.JugadorService.robarCarta;
 import static java.util.Objects.isNull;
 
 @Component
 public class RondaServiceImpl implements RondaService {
 
     @Override
-    public boolean iniciarRonda(Mesa mesa, Ronda ronda, JugadorService jugadorService) {
+    public boolean iniciarRonda(Mesa mesa, Ronda ronda) {
         Baraja baraja = mesa.getBaraja();
 
         for (Jugador jugador: mesa.getJugadorList()) {
@@ -29,7 +29,7 @@ public class RondaServiceImpl implements RondaService {
                     return false;
                 }
             }
-            jugadorService.robarCarta(jugador, carta);
+            robarCarta(jugador, carta);
         }
 
         actualizaRondaConNuevoJugadorGanadorAndCartaMasAlta(ronda, null, null);
@@ -80,7 +80,7 @@ public class RondaServiceImpl implements RondaService {
     }
 
     private static void jugadorGanadorTomaLasCartasDeLaMesa(Ronda ronda, Jugador jugadorGanador) {
-        (new JugadorServiceImpl()).ganarMano(jugadorGanador, ronda.getCartaMesaList());
+        ganarMano(jugadorGanador, ronda.getCartaMesaList());
     }
 
 }

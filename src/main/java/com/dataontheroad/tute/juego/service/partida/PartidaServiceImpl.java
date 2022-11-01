@@ -5,12 +5,12 @@ import com.dataontheroad.tute.juego.domain.jugador.Jugador;
 import com.dataontheroad.tute.juego.domain.partida.EstadoPartidaEnum;
 import com.dataontheroad.tute.juego.domain.partida.Partida;
 import com.dataontheroad.tute.juego.domain.partida.Ronda;
-import com.dataontheroad.tute.juego.service.jugador.JugadorService;
-import com.dataontheroad.tute.juego.service.jugador.JugadorServiceImpl;
 import com.google.gson.Gson;
 
 import java.util.Comparator;
 import java.util.List;
+
+import static com.dataontheroad.tute.juego.service.jugador.JugadorService.inicializarJugadorPartida;
 
 public class PartidaServiceImpl implements PartidaService {
 
@@ -61,8 +61,7 @@ public class PartidaServiceImpl implements PartidaService {
 
 
     private static void inicializarJugadores(List<Jugador> jugadorList) {
-        JugadorService jugadorService = new JugadorServiceImpl();
-        jugadorList.forEach(jugador -> jugadorService.inicializarJugadorPartida(jugador));
+        jugadorList.forEach(jugador -> inicializarJugadorPartida(jugador));
     }
 
     private static Jugador getJugadorGanador(Partida partida) {
@@ -73,7 +72,7 @@ public class PartidaServiceImpl implements PartidaService {
         if (partida.getMesa().getBaraja().getListaCartasBaraja().size() + 1
                 < partida.getMesa().getJugadorList().size())
             return true;
-        return rondaService.iniciarRonda(partida.getMesa(), ronda, new JugadorServiceImpl())
+        return rondaService.iniciarRonda(partida.getMesa(), ronda)
                 || !partida.getMesa().getJugadorList().get(0).getMano().isEmpty();
     }
 
