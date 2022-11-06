@@ -10,21 +10,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static com.dataontheroad.tute.ObjectCreationHelper.creadorListaJugardoresPartidaConLaMismaEstrategia;
+import static com.dataontheroad.tute.experimento.service.ExperimentoIndividualServiceImpl.creaExperimentoIndividual;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ExperimentoIndividualServiceImplTest {
 
-    private ExperimentoIndividualServiceImpl experimentoIndividualService;
-
-    @BeforeEach
-    public void ExperimentoIndividualService() {
-        experimentoIndividualService = new ExperimentoIndividualServiceImpl();
-    }
-
     @Test
     void alCrearMesaDeTresJugadoresTodoEsCorrecto() {
         ArrayList<Jugador> listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(2, (new PrimeraCartaDeLaManoStrategy()));
-        ExperimentoIndividual experimentoIndividual = experimentoIndividualService.creaExperimentoIndividual(listJugadores);
+        ExperimentoIndividual experimentoIndividual = creaExperimentoIndividual(listJugadores);
 
         assertNotNull(experimentoIndividual.getJugadorGanador());
         assertEquals(2, experimentoIndividual.getNumeroJugador());

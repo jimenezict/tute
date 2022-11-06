@@ -13,6 +13,10 @@ import static com.dataontheroad.tute.juego.service.cartas.BarajaService.*;
 
 public class MesaService {
 
+    private MesaService() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static Mesa crearMesa(List<Jugador> listaJugadores) {
         Mesa mesa = new Mesa();
 

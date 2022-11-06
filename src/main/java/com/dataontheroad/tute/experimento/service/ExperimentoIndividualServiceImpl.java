@@ -10,6 +10,10 @@ import static com.dataontheroad.tute.juego.service.partida.PartidaService.*;
 
 public class ExperimentoIndividualServiceImpl {
 
+    private ExperimentoIndividualServiceImpl() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static ExperimentoIndividual creaExperimentoIndividual(List<Jugador> jugadorList) {
         Partida partida = crearPartida(jugadorList);
         ejecutarPartida(partida);
@@ -21,7 +25,7 @@ public class ExperimentoIndividualServiceImpl {
         ExperimentoIndividual experimentoIndividual = new ExperimentoIndividual();
         experimentoIndividual.setJugadorGanador(partida.getJugadorGanador());
         experimentoIndividual.setNumeroJugador(jugadorList.size());
-        experimentoIndividual.setResultados(partida.getMesa().getJugadorList().stream().mapToInt(jugador -> jugador.getPuntuacion()).toArray());
+        experimentoIndividual.setResultados(partida.getMesa().getJugadorList().stream().mapToInt(Jugador::getPuntuacion).toArray());
         experimentoIndividual.setOrdenJugadorGanador(jugadorList.indexOf(partida.getJugadorGanador()));
         return experimentoIndividual;
     }

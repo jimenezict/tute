@@ -5,15 +5,20 @@ import com.dataontheroad.tute.juego.domain.jugador.Jugador;
 import com.dataontheroad.tute.juego.domain.partida.EstadoPartidaEnum;
 import com.dataontheroad.tute.juego.domain.partida.Partida;
 import com.dataontheroad.tute.juego.domain.partida.Ronda;
+import com.dataontheroad.tute.juego.service.jugador.JugadorService;
 import com.google.gson.Gson;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 
-import static com.dataontheroad.tute.juego.service.jugador.JugadorService.inicializarJugadorPartida;
-import static com.dataontheroad.tute.juego.service.partida.RondaService.jugadorJuegaCarta;
+import static com.dataontheroad.tute.juego.service.partida.RondaService.*;
 
 public class PartidaService {
+
+    private PartidaService() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static Partida crearPartida(List<Jugador> jugadorList) {
         inicializarJugadores(jugadorList);
@@ -23,7 +28,6 @@ public class PartidaService {
     }
 
     public static void ejecutarPartida(Partida partida) {
-        RondaService rondaService = new RondaService();
         Ronda ronda;
         int numRonda = 0;
         Jugador jugadorActivo = generarJugadorInicialDeLaPrimeraRonda(partida);
@@ -41,8 +45,8 @@ public class PartidaService {
                 jugadorCount++;
             } while (hanJugadoTodosLosJugadoresEnEstaRonda(partida, jugadorCount));
 
-            jugadorActivo = rondaService.finalizarRonda(partida.getMesa(), ronda);
-            esLaUltimaRonda(partida, rondaService, ronda);
+            jugadorActivo = finalizarRonda(partida.getMesa(), ronda);
+            esLaUltimaRonda(partida, ronda);
             numRonda++;
         } while (aunTienenLosJugadoresCartaEnLaMano(partida));
 
@@ -66,17 +70,17 @@ public class PartidaService {
 
 
     private static void inicializarJugadores(List<Jugador> jugadorList) {
-        jugadorList.forEach(jugador -> inicializarJugadorPartida(jugador));
+        jugadorList.forEach(JugadorService::inicializarJugadorPartida);
     }
 
     private static Jugador getJugadorGanador(Partida partida) {
         return partida.getMesa().getJugadorList().stream().max(Comparator.comparing(Jugador::getPuntuacion)).get();
     }
 
-    private static boolean esLaUltimaRonda(Partida partida, RondaService rondaService, Ronda ronda) {
+    private static boolean esLaUltimaRonda(Partida partida, Ronda ronda) {
         if (hanJugadoTodosLosJugadoresEnEstaRonda(partida, partida.getMesa().getBaraja().getListaCartasBaraja().size() + 1))
             return true;
-        return rondaService.iniciarRonda(partida.getMesa(), ronda)
+        return iniciarRonda(partida.getMesa(), ronda)
                 || aunTienenLosJugadoresCartaEnLaMano(partida);
     }
 
@@ -85,6 +89,7 @@ public class PartidaService {
     }
 
     private static Jugador generarJugadorInicialDeLaPrimeraRonda(Partida partida) {
-        return partida.getMesa().getJugadorList().get((int) (Math.random() * partida.getMesa().getJugadorList().size()));
+        Random r = new Random();
+        return partida.getMesa().getJugadorList().get(r.nextInt(partida.getMesa().getJugadorList().size()));
     }
 }

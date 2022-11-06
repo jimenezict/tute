@@ -41,7 +41,7 @@ public class ExperimentoColectivoExecutor {
     }
 
     private static void actualizaNumeroDePartidasGanadasDelJugadorGanador(ExperimentoColectivo experimentoColectivo, int posicionJugadorGanador) {
-        experimentoColectivo.getListaGanadores().set(posicionJugadorGanador, valueOf(experimentoColectivo.getListaGanadores().get(posicionJugadorGanador)) + 1);
+        experimentoColectivo.getListaGanadores().set(posicionJugadorGanador, experimentoColectivo.getListaGanadores().get(posicionJugadorGanador) + 1);
     }
 
     private static void rellenaListaDeMedias(int numeroJugadores, ExperimentoColectivo experimentoColectivo) {

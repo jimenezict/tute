@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class cartaMasAltaHelperTest {
+class CartaMasAltaHelperTest {
 
     Carta basto1 = new Carta(CartaEnum.BASTO, 1);
     Carta basto2 = new Carta(CartaEnum.BASTO, 2);
@@ -18,27 +18,27 @@ class cartaMasAltaHelperTest {
     Carta espada2 = new Carta(CartaEnum.ESPADA, 2);
 
     @Test
-    public void noHayCartaMasAltaEsCierto() {
+    void noHayCartaMasAltaEsCierto() {
         assertTrue(CartaMasAltaHelper.cartaMasAlta(null, basto1, basto2));
     }
 
     @Test
-    public void paloDeMuestraSuperaNumero() {
+    void paloDeMuestraSuperaNumero() {
         assertTrue(CartaMasAltaHelper.cartaMasAlta(basto2, basto1, basto3));
     }
 
     @Test
-    public void paloDeMuestraNoSuperaNumero() {
+    void paloDeMuestraNoSuperaNumero() {
         assertFalse(CartaMasAltaHelper.cartaMasAlta(basto3, basto1, basto2));
     }
 
     @Test
-    public void cartaDeMuestraEsBastoCartaMasAltaEsBastoYTiroEspadaMasBaja() {
+    void cartaDeMuestraEsBastoCartaMasAltaEsBastoYTiroEspadaMasBaja() {
         assertFalse(CartaMasAltaHelper.cartaMasAlta(basto3, basto2, espada2));
     }
 
     @Test
-    public void cartaDeMuestraEsBastoCartaMasAltaEsBastoYTiroEspadaMasAlta() {
+    void cartaDeMuestraEsBastoCartaMasAltaEsBastoYTiroEspadaMasAlta() {
         assertFalse(CartaMasAltaHelper.cartaMasAlta(basto3, basto2, espada1));
     }
 }

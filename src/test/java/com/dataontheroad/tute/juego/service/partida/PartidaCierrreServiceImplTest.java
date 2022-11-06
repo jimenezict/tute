@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static com.dataontheroad.tute.ObjectCreationHelper.creadorListaJugardoresPartidaConLaMismaEstrategia;
+import static com.dataontheroad.tute.juego.service.partida.PartidaService.cierrePartida;
 import static com.dataontheroad.tute.juego.service.partida.PartidaService.crearPartida;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -24,7 +25,7 @@ class PartidaCierrreServiceImplTest {
     }
 
     @Test
-    public void pruebaCierrePartidaDosJugadoresSegundoGanador() {
+    void pruebaCierrePartidaDosJugadoresSegundoGanador() {
 
         listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(2, (new PrimeraCartaDeLaManoStrategy()));
 
@@ -33,7 +34,7 @@ class PartidaCierrreServiceImplTest {
         partida.getMesa().getJugadorList().get(0).setPuntuacion(50);
         partida.getMesa().getJugadorList().get(1).setPuntuacion(70);
 
-        (new PartidaService()).cierrePartida(partida);
+        cierrePartida(partida);
 
         assertEquals(EstadoPartidaEnum.FINALIZADA, partida.getEstadoPartida());
         assertEquals(partida.getMesa().getJugadorList().get(1), partida.getJugadorGanador());
@@ -41,7 +42,7 @@ class PartidaCierrreServiceImplTest {
     }
 
     @Test
-    public void pruebaCierrePartidaDosJugadoresPrimerGanador() {
+    void pruebaCierrePartidaDosJugadoresPrimerGanador() {
 
         listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(2, (new PrimeraCartaDeLaManoStrategy()));
 
@@ -50,7 +51,7 @@ class PartidaCierrreServiceImplTest {
         partida.getMesa().getJugadorList().get(0).setPuntuacion(70);
         partida.getMesa().getJugadorList().get(1).setPuntuacion(50);
 
-        (new PartidaService()).cierrePartida(partida);
+        cierrePartida(partida);
 
         assertEquals(EstadoPartidaEnum.FINALIZADA, partida.getEstadoPartida());
         assertEquals(partida.getMesa().getJugadorList().get(0), partida.getJugadorGanador());

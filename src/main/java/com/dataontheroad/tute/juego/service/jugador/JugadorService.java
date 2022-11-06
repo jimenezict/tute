@@ -8,12 +8,15 @@ import java.util.List;
 
 public class JugadorService {
 
+    private JugadorService() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static void ganarMano(Jugador jugador, List<Carta> cartaList) {
         jugador.getDescartes().addAll(cartaList);
         jugador.setPuntuacion(
                 jugador.getPuntuacion()
-                + cartaList.stream().mapToInt(o -> calcularPuntuacion(o)).sum()
+                + cartaList.stream().mapToInt(JugadorService::calcularPuntuacion).sum()
         );
     }
 

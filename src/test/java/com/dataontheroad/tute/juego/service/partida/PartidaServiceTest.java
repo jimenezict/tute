@@ -23,7 +23,7 @@ class PartidaServiceTest {
     }
 
     @Test
-    public void pruebaPartidaDosJugadores() {
+    void pruebaPartidaDosJugadores() {
 
         listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(2, (new PrimeraCartaDeLaManoStrategy()));
 
@@ -44,7 +44,7 @@ class PartidaServiceTest {
     }
 
     @Test
-    public void pruebaPartidaTresJugadores() {
+    void pruebaPartidaTresJugadores() {
 
         listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(3, (new PrimeraCartaDeLaManoStrategy()));
 
@@ -64,7 +64,7 @@ class PartidaServiceTest {
     }
 
     @Test
-    public void pruebaPartidaCuatroJugadores() {
+    void pruebaPartidaCuatroJugadores() {
 
         listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(4, (new PrimeraCartaDeLaManoStrategy()));
 
@@ -85,7 +85,7 @@ class PartidaServiceTest {
     }
 
     @Test
-    public void pruebaPartidaCincoJugadores() {
+    void pruebaPartidaCincoJugadores() {
 
         listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(5, (new PrimeraCartaDeLaManoStrategy()));
 
