@@ -41,4 +41,24 @@ class CartaMasAltaHelperTest {
     void cartaDeMuestraEsBastoCartaMasAltaEsBastoYTiroEspadaMasAlta() {
         assertFalse(CartaMasAltaHelper.cartaMasAlta(basto3, basto2, espada1));
     }
+
+    @Test
+    void cartaDeMuestraEsBastoCartaMasAltaEsBastoYTiroBastoMasAlto() {
+        assertTrue(CartaMasAltaHelper.cartaMasAlta(basto2, basto1, basto4));
+    }
+
+    @Test
+    void cartaDeMuestraEsBastoCartaMasAltaEsBastoYTiroBastoMasBajo() {
+        assertFalse(CartaMasAltaHelper.cartaMasAlta(basto4, basto1, basto2));
+    }
+
+    @Test
+    void cartaDeMuestraEsEspadaCartaMasAltaEsBastoYTiroBastoMasAlto() {
+        assertTrue(CartaMasAltaHelper.cartaMasAlta(basto2, espada1, basto4));
+    }
+
+    @Test
+    void cartaDeMuestraEsEspadaCartaMasAltaEsBastoYTiroBastoMasBajo() {
+        assertFalse(CartaMasAltaHelper.cartaMasAlta(basto4, espada1, basto2));
+    }
 }

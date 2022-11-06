@@ -7,7 +7,7 @@ import com.dataontheroad.tute.experimento.domain.ExperimentoIndividual;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.dataontheroad.tute.experimento.service.ExperimentoIndividualServiceImpl.creaExperimentoIndividual;
+import static com.dataontheroad.tute.experimento.service.ExperimentoIndividualService.creaExperimentoIndividual;
 import static java.lang.Integer.valueOf;
 
 public class ExperimentoColectivoExecutor {

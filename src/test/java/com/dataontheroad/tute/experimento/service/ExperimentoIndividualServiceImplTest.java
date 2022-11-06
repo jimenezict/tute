@@ -3,14 +3,13 @@ package com.dataontheroad.tute.experimento.service;
 import com.dataontheroad.tute.juego.domain.jugador.Jugador;
 import com.dataontheroad.tute.experimento.domain.ExperimentoIndividual;
 import com.dataontheroad.tute.juego.service.jugador.PrimeraCartaDeLaManoStrategy;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import static com.dataontheroad.tute.ObjectCreationHelper.creadorListaJugardoresPartidaConLaMismaEstrategia;
-import static com.dataontheroad.tute.experimento.service.ExperimentoIndividualServiceImpl.creaExperimentoIndividual;
+import static com.dataontheroad.tute.experimento.service.ExperimentoIndividualService.creaExperimentoIndividual;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ExperimentoIndividualServiceImplTest {

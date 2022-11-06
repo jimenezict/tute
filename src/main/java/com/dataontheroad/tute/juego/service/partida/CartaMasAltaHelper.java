@@ -26,7 +26,7 @@ public class CartaMasAltaHelper {
     }
 
     private static boolean valorPonderado(int carta1, int carta2) {
-        List<Integer> miLista = new ArrayList<>(Arrays.asList(1,3,10,11,12,2,4,5,6,7));
+        List<Integer> miLista = new ArrayList<>(Arrays.asList(1,3,12,11,10,7,6,5,4,2));
         return miLista.indexOf(Integer.valueOf(carta1)) < miLista.indexOf(Integer.valueOf(carta2));
     }
 

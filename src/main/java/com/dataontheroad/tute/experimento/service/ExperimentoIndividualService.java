@@ -8,9 +8,9 @@ import java.util.List;
 
 import static com.dataontheroad.tute.juego.service.partida.PartidaService.*;
 
-public class ExperimentoIndividualServiceImpl {
+public class ExperimentoIndividualService {
 
-    private ExperimentoIndividualServiceImpl() {
+    private ExperimentoIndividualService() {
         throw new IllegalStateException("Utility class");
     }
 
