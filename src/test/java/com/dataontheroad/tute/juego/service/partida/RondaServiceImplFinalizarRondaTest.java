@@ -12,6 +12,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.dataontheroad.tute.juego.service.mesa.MesaService.crearMesa;
+import static com.dataontheroad.tute.juego.service.partida.RondaService.finalizarRonda;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.util.ObjectUtils.isEmpty;
 
@@ -19,20 +21,16 @@ class RondaServiceImplFinalizarRondaTest {
 
     Mesa mesa;
     Ronda ronda;
-    RondaService rondaService;
-    MesaService mesaService;
 
     @BeforeEach
     public void setUp() {
-        rondaService = new RondaService();
-        mesaService = new MesaService();
 
         List<Jugador> jugadorList = new ArrayList<>();
         jugadorList.add(new Jugador());
         jugadorList.add(new Jugador());
         jugadorList.add(new Jugador());
 
-        mesa = mesaService.crearMesa(jugadorList);
+        mesa = crearMesa(jugadorList);
         ronda = new Ronda();
         ronda.setJugadorGanador(mesa.getJugadorList().get(2));
         List<Carta> cartaMesa = new ArrayList<>();
@@ -44,7 +42,7 @@ class RondaServiceImplFinalizarRondaTest {
 
     @Test
     void alAcabarRondaJugadorDosTieneTresCartasEnDescartes() {
-        Jugador jugador = rondaService.finalizarRonda(mesa, ronda);
+        Jugador jugador = finalizarRonda(mesa, ronda);
 
         assertTrue(isEmpty(mesa.getJugadorList().get(0).getDescartes()));
         assertTrue(isEmpty(mesa.getJugadorList().get(1).getDescartes()));

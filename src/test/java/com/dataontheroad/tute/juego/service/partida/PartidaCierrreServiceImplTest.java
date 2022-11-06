@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static com.dataontheroad.tute.ObjectCreationHelper.creadorListaJugardoresPartidaConLaMismaEstrategia;
+import static com.dataontheroad.tute.juego.service.partida.PartidaService.crearPartida;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -27,7 +28,7 @@ class PartidaCierrreServiceImplTest {
 
         listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(2, (new PrimeraCartaDeLaManoStrategy()));
 
-        Partida partida = (new PartidaService()).crearPartida(listJugadores);
+        Partida partida = crearPartida(listJugadores);
 
         partida.getMesa().getJugadorList().get(0).setPuntuacion(50);
         partida.getMesa().getJugadorList().get(1).setPuntuacion(70);
@@ -44,7 +45,7 @@ class PartidaCierrreServiceImplTest {
 
         listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(2, (new PrimeraCartaDeLaManoStrategy()));
 
-        Partida partida = (new PartidaService()).crearPartida(listJugadores);
+        Partida partida = crearPartida(listJugadores);
 
         partida.getMesa().getJugadorList().get(0).setPuntuacion(70);
         partida.getMesa().getJugadorList().get(1).setPuntuacion(50);

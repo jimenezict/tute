@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static com.dataontheroad.tute.ObjectCreationHelper.creadorListaJugardoresPartidaConLaMismaEstrategia;
+import static com.dataontheroad.tute.juego.service.mesa.MesaService.crearMesa;
+import static com.dataontheroad.tute.juego.service.partida.RondaService.jugadorJuegaCarta;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -20,18 +22,14 @@ class RondaServiceImplJugadorJuegaCartaTest {
 
     Mesa mesa;
     Ronda ronda;
-    RondaService rondaService;
-    MesaService mesaService;
     Carta cartaMuestra;
 
     @BeforeEach
     public void setUp() {
-        rondaService = new RondaService();
-        mesaService = new MesaService();
 
         List<Jugador> jugadorList = creadorListaJugardoresPartidaConLaMismaEstrategia(3, (new PrimeraCartaDeLaManoStrategy()));
 
-        mesa = mesaService.crearMesa(jugadorList);
+        mesa = crearMesa(jugadorList);
         cartaMuestra = new Carta(CartaEnum.ORO, 3);
         mesa.setCartaMuestra(cartaMuestra);
 
@@ -41,7 +39,7 @@ class RondaServiceImplJugadorJuegaCartaTest {
 
     @Test
     void cadaJugadorJuegaUnaCarta() {
-        rondaService.jugadorJuegaCarta(ronda, mesa.getJugadorList().get(0), mesa.getJugadorList().get(0).getMano().get(0), cartaMuestra);
+        jugadorJuegaCarta(ronda, mesa.getJugadorList().get(0), mesa.getJugadorList().get(0).getMano().get(0), cartaMuestra);
 
         assertEquals(2, mesa.getJugadorList().get(0).getMano().size());
         assertEquals(3, mesa.getJugadorList().get(1).getMano().size());
@@ -52,13 +50,13 @@ class RondaServiceImplJugadorJuegaCartaTest {
         assertNotNull(ronda.getJugadorGanador());
         assertEquals(1, ronda.getCartaMesaList().size());
 
-        rondaService.jugadorJuegaCarta(ronda, mesa.getJugadorList().get(1), mesa.getJugadorList().get(1).getMano().get(0), cartaMuestra);
+        jugadorJuegaCarta(ronda, mesa.getJugadorList().get(1), mesa.getJugadorList().get(1).getMano().get(0), cartaMuestra);
 
         assertEquals(2, mesa.getJugadorList().get(0).getMano().size());
         assertEquals(2, mesa.getJugadorList().get(1).getMano().size());
         assertEquals(3, mesa.getJugadorList().get(2).getMano().size());
 
-        rondaService.jugadorJuegaCarta(ronda, mesa.getJugadorList().get(2), mesa.getJugadorList().get(2).getMano().get(0), cartaMuestra);
+        jugadorJuegaCarta(ronda, mesa.getJugadorList().get(2), mesa.getJugadorList().get(2).getMano().get(0), cartaMuestra);
 
         assertEquals(2, mesa.getJugadorList().get(0).getMano().size());
         assertEquals(2, mesa.getJugadorList().get(1).getMano().size());

@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static com.dataontheroad.tute.ObjectCreationHelper.creadorListaJugardoresPartidaConLaMismaEstrategia;
+import static com.dataontheroad.tute.juego.service.partida.PartidaService.crearPartida;
+import static com.dataontheroad.tute.juego.service.partida.PartidaService.ejecutarPartida;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PartidaServiceTest {
@@ -25,10 +27,10 @@ class PartidaServiceTest {
 
         listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(2, (new PrimeraCartaDeLaManoStrategy()));
 
-                Partida partida = (new PartidaService()).crearPartida(listJugadores);
-        (new PartidaService()).ejecutarPartida(partida);
+        Partida partida = crearPartida(listJugadores);
+        ejecutarPartida(partida);
 
-        for(int i= 0; i < listJugadores.size(); i++) {
+        for (int i = 0; i < listJugadores.size(); i++) {
             assertEquals(0, partida.getMesa().getJugadorList().get(i).getMano().size());
         }
 
@@ -36,7 +38,7 @@ class PartidaServiceTest {
                 + partida.getMesa().getJugadorList().stream().mapToInt(jugador -> jugador.getDescartes().size()).sum();
 
 
-        assertEquals(40/listJugadores.size(), partida.getNumRonda());
+        assertEquals(40 / listJugadores.size(), partida.getNumRonda());
         assertEquals(120, partida.getMesa().getJugadorList().stream().mapToInt(jugador -> jugador.getPuntuacion()).sum());
         assertEquals(40, cartasTotales);
     }
@@ -46,10 +48,10 @@ class PartidaServiceTest {
 
         listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(3, (new PrimeraCartaDeLaManoStrategy()));
 
-        Partida partida = (new PartidaService()).crearPartida(listJugadores);
-        (new PartidaService()).ejecutarPartida(partida);
+        Partida partida = crearPartida(listJugadores);
+        ejecutarPartida(partida);
 
-        for(int i= 0; i < listJugadores.size(); i++) {
+        for (int i = 0; i < listJugadores.size(); i++) {
             assertEquals(0, partida.getMesa().getJugadorList().get(i).getMano().size());
         }
 
@@ -57,7 +59,7 @@ class PartidaServiceTest {
                 + partida.getMesa().getJugadorList().stream().mapToInt(jugador -> jugador.getDescartes().size()).sum();
 
 
-        assertEquals(40/listJugadores.size(), partida.getNumRonda());
+        assertEquals(40 / listJugadores.size(), partida.getNumRonda());
         assertEquals(39, cartasTotales);
     }
 
@@ -66,10 +68,10 @@ class PartidaServiceTest {
 
         listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(4, (new PrimeraCartaDeLaManoStrategy()));
 
-        Partida partida = (new PartidaService()).crearPartida(listJugadores);
-        (new PartidaService()).ejecutarPartida(partida);
+        Partida partida = crearPartida(listJugadores);
+        ejecutarPartida(partida);
 
-        for(int i= 0; i < listJugadores.size(); i++) {
+        for (int i = 0; i < listJugadores.size(); i++) {
             assertEquals(0, partida.getMesa().getJugadorList().get(i).getMano().size());
         }
 
@@ -77,7 +79,7 @@ class PartidaServiceTest {
                 + partida.getMesa().getJugadorList().stream().mapToInt(jugador -> jugador.getDescartes().size()).sum();
 
 
-        assertEquals(40/listJugadores.size(), partida.getNumRonda());
+        assertEquals(40 / listJugadores.size(), partida.getNumRonda());
         assertEquals(120, partida.getMesa().getJugadorList().stream().mapToInt(jugador -> jugador.getPuntuacion()).sum());
         assertEquals(40, cartasTotales);
     }
@@ -87,10 +89,10 @@ class PartidaServiceTest {
 
         listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(5, (new PrimeraCartaDeLaManoStrategy()));
 
-        Partida partida = (new PartidaService()).crearPartida(listJugadores);
-        (new PartidaService()).ejecutarPartida(partida);
+        Partida partida = crearPartida(listJugadores);
+        ejecutarPartida(partida);
 
-        for(int i= 0; i < listJugadores.size(); i++) {
+        for (int i = 0; i < listJugadores.size(); i++) {
             assertEquals(0, partida.getMesa().getJugadorList().get(i).getMano().size());
         }
 
@@ -98,7 +100,7 @@ class PartidaServiceTest {
                 + partida.getMesa().getJugadorList().stream().mapToInt(jugador -> jugador.getDescartes().size()).sum();
 
 
-        assertEquals(40/listJugadores.size(), partida.getNumRonda());
+        assertEquals(40 / listJugadores.size(), partida.getNumRonda());
         assertEquals(40, cartasTotales);
     }
 
