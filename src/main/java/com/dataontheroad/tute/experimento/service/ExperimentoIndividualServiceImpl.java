@@ -8,10 +8,9 @@ import java.util.List;
 
 import static com.dataontheroad.tute.juego.service.partida.PartidaService.*;
 
-public class ExperimentoIndividualServiceImpl implements ExperimentoIndividualService {
+public class ExperimentoIndividualServiceImpl {
 
-    @Override
-    public ExperimentoIndividual creaExperimentoIndividual(List<Jugador> jugadorList) {
+    public static ExperimentoIndividual creaExperimentoIndividual(List<Jugador> jugadorList) {
         ExperimentoIndividual experimentoIndividual = new ExperimentoIndividual();
 
         Partida partida = crearPartida(jugadorList);

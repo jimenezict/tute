@@ -7,15 +7,16 @@ import com.dataontheroad.tute.experimento.domain.ExperimentoIndividual;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.dataontheroad.tute.experimento.service.ExperimentoIndividualServiceImpl.creaExperimentoIndividual;
+
 public class ExperimentoColectivoExecutor {
 
     public static ExperimentoColectivo executar(int numeroDePartidas, List<Jugador> jugadorList) {
 
         ExperimentoColectivo experimentoColectivo = new ExperimentoColectivo(jugadorList.size(), numeroDePartidas);
-        ExperimentoIndividualService experimentoIndividualService = new ExperimentoIndividualServiceImpl();
 
         for(int i= 0; i < numeroDePartidas; i++) {
-            ExperimentoIndividual experimentoIndividual = experimentoIndividualService.creaExperimentoIndividual(jugadorList);
+            ExperimentoIndividual experimentoIndividual = creaExperimentoIndividual(jugadorList);
             int posicionJugadorGanador = jugadorList.indexOf(experimentoIndividual.getJugadorGanador());
             Integer valor = Integer.valueOf(experimentoColectivo.getListaGanadores().get(posicionJugadorGanador)) + 1;
             experimentoColectivo.getListaGanadores().set(posicionJugadorGanador, valor);
