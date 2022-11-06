@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static com.dataontheroad.tute.ObjectCreationHelper.creadorListaJugardoresPartidaConLaMismaEstrategia;
+import static com.dataontheroad.tute.juego.service.partida.PartidaService.crearPartida;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -27,12 +28,12 @@ class PartidaCierrreServiceImplTest {
 
         listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(2, (new PrimeraCartaDeLaManoStrategy()));
 
-        Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
+        Partida partida = crearPartida(listJugadores);
 
         partida.getMesa().getJugadorList().get(0).setPuntuacion(50);
         partida.getMesa().getJugadorList().get(1).setPuntuacion(70);
 
-        (new PartidaServiceImpl()).cierrePartida(partida);
+        (new PartidaService()).cierrePartida(partida);
 
         assertEquals(EstadoPartidaEnum.FINALIZADA, partida.getEstadoPartida());
         assertEquals(partida.getMesa().getJugadorList().get(1), partida.getJugadorGanador());
@@ -44,12 +45,12 @@ class PartidaCierrreServiceImplTest {
 
         listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(2, (new PrimeraCartaDeLaManoStrategy()));
 
-        Partida partida = (new PartidaServiceImpl()).crearPartida(listJugadores);
+        Partida partida = crearPartida(listJugadores);
 
         partida.getMesa().getJugadorList().get(0).setPuntuacion(70);
         partida.getMesa().getJugadorList().get(1).setPuntuacion(50);
 
-        (new PartidaServiceImpl()).cierrePartida(partida);
+        (new PartidaService()).cierrePartida(partida);
 
         assertEquals(EstadoPartidaEnum.FINALIZADA, partida.getEstadoPartida());
         assertEquals(partida.getMesa().getJugadorList().get(0), partida.getJugadorGanador());

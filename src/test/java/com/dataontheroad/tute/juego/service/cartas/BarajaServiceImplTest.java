@@ -6,18 +6,17 @@ import com.dataontheroad.tute.juego.domain.cartas.CartaEnum;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static com.dataontheroad.tute.juego.service.cartas.BarajaService.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BarajaServiceImplTest {
 
-    private BarajaService barajaService;
     private Baraja baraja;
 
     @BeforeEach
     public void setUp() {
-        barajaService = new BarajaServiceImpl();
-        baraja = barajaService.crear();
-        barajaService.mezclar(baraja);
+        baraja = crearBaraja();
+        mezclarBaraja(baraja);
     }
 
     @Test
@@ -31,14 +30,14 @@ class BarajaServiceImplTest {
 
     @Test
     void cogerUnaCarta() {
-        Carta carta1 = barajaService.cogerCarta(baraja);
+        Carta carta1 = cogerCartaBaraja(baraja);
 
         assertTrue(carta1.getNumero() <= 12);
         assertTrue(carta1.getNumero() >= 1);
         assertNotNull(carta1.getPalo());
         assertEquals(39, baraja.getListaCartasBaraja().size());
 
-        Carta carta2 = barajaService.cogerCarta(baraja);
+        Carta carta2 = cogerCartaBaraja(baraja);
 
         assertTrue(carta2.getNumero() <= 12);
         assertTrue(carta2.getNumero() >= 1);

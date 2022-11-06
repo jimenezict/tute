@@ -9,17 +9,16 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.dataontheroad.tute.juego.service.jugador.JugadorService.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class JugadorServiceImplTest {
 
     Jugador jugador;
-    JugadorService jugadorService;
 
     @BeforeEach
     public void setUp() {
         jugador = new Jugador();
-        jugadorService = new JugadorServiceImpl();
     }
 
     @Test
@@ -29,7 +28,7 @@ class JugadorServiceImplTest {
         mano1.add(new Carta(CartaEnum.ESPADA, 2));
         mano1.add(new Carta(CartaEnum.ESPADA, 3));
         jugador.setMano(mano1);
-        boolean exito = jugadorService.robarCarta(jugador, new Carta(CartaEnum.ESPADA, 4));
+        boolean exito = robarCarta(jugador, new Carta(CartaEnum.ESPADA, 4));
         assertFalse(exito);
         assertEquals(3, jugador.getMano().size());
         assertFalse(jugador.getMano().contains(new Carta(CartaEnum.ESPADA, 4)));
@@ -41,7 +40,7 @@ class JugadorServiceImplTest {
         mano1.add(new Carta(CartaEnum.ESPADA, 1));
         mano1.add(new Carta(CartaEnum.ESPADA, 2));
         jugador.setMano(mano1);
-        boolean exito = jugadorService.robarCarta(jugador, new Carta(CartaEnum.ESPADA, 4));
+        boolean exito = robarCarta(jugador, new Carta(CartaEnum.ESPADA, 4));
         assertTrue(exito);
         assertEquals(3, jugador.getMano().size());
         assertTrue(jugador.getMano().contains(new Carta(CartaEnum.ESPADA, 4)));
@@ -54,7 +53,7 @@ class JugadorServiceImplTest {
         mano1.add(new Carta(CartaEnum.ESPADA, 2));
         mano1.add(new Carta(CartaEnum.ESPADA, 3));
 
-        jugadorService.ganarMano(jugador, mano1);
+        ganarMano(jugador, mano1);
 
         assertEquals(21, jugador.getPuntuacion());
         assertEquals(3,jugador.getDescartes().size());
@@ -64,7 +63,7 @@ class JugadorServiceImplTest {
         mano2.add(new Carta(CartaEnum.ESPADA, 5));
         mano2.add(new Carta(CartaEnum.ESPADA, 6));
 
-        jugadorService.ganarMano(jugador, mano2);
+        ganarMano(jugador, mano2);
 
         assertEquals(21, jugador.getPuntuacion());
         assertEquals(6,jugador.getDescartes().size());
@@ -74,7 +73,7 @@ class JugadorServiceImplTest {
         mano3.add(new Carta(CartaEnum.ESPADA, 11));
         mano3.add(new Carta(CartaEnum.ESPADA, 12));
 
-        jugadorService.ganarMano(jugador, mano3);
+        ganarMano(jugador, mano3);
 
         assertEquals(30, jugador.getPuntuacion());
         assertEquals(9, jugador.getDescartes().size());
@@ -89,7 +88,7 @@ class JugadorServiceImplTest {
         mano1.add(new Carta(CartaEnum.ESPADA, 3));
         jugador.setMano(mano1);
 
-        boolean exito = jugadorService.tirarCarta(jugador, cartaMuestra);
+        boolean exito = tirarCarta(jugador, cartaMuestra);
 
         assertTrue(exito);
         assertEquals(2, jugador.getMano().size());
@@ -107,7 +106,7 @@ class JugadorServiceImplTest {
         Carta cartaMuestra = new Carta(CartaEnum.ESPADA, 4);
         jugador.setMano(mano1);
 
-        boolean exito = jugadorService.tirarCarta(jugador, cartaMuestra);
+        boolean exito = tirarCarta(jugador, cartaMuestra);
 
         assertFalse(exito);
         assertEquals(3, jugador.getMano().size());
@@ -130,7 +129,7 @@ class JugadorServiceImplTest {
         jugador.setDescartes(descartes);
         jugador.setMano(mano);
 
-        jugadorService.inicializarJugadorPartida(jugador);
+        inicializarJugadorPartida(jugador);
 
         assertEquals(0, jugador.getPuntuacion());
         assertEquals(0, jugador.getMano().size());

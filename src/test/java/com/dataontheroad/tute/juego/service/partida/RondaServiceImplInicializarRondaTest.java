@@ -4,40 +4,29 @@ import com.dataontheroad.tute.juego.domain.cartas.Carta;
 import com.dataontheroad.tute.juego.domain.jugador.Jugador;
 import com.dataontheroad.tute.juego.domain.mesa.Mesa;
 import com.dataontheroad.tute.juego.domain.partida.Ronda;
-import com.dataontheroad.tute.juego.service.cartas.BarajaService;
-import com.dataontheroad.tute.juego.service.cartas.BarajaServiceImpl;
-import com.dataontheroad.tute.juego.service.jugador.JugadorService;
-import com.dataontheroad.tute.juego.service.jugador.JugadorServiceImpl;
 import com.dataontheroad.tute.juego.service.jugador.PrimeraCartaDeLaManoStrategy;
 import com.dataontheroad.tute.juego.service.mesa.MesaService;
-import com.dataontheroad.tute.juego.service.mesa.MesaServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static com.dataontheroad.tute.ObjectCreationHelper.creadorListaJugardoresPartidaConLaMismaEstrategia;
+import static com.dataontheroad.tute.juego.service.mesa.MesaService.crearMesa;
+import static com.dataontheroad.tute.juego.service.partida.RondaService.iniciarRonda;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RondaServiceImplInicializarRondaTest {
 
     Mesa mesa;
     Ronda ronda;
-    RondaService rondaService;
-    BarajaService barajaService;
-    JugadorService jugadorService;
-    MesaService mesaService;
 
     @BeforeEach
     public void setUp() {
-        rondaService = new RondaServiceImpl();
-        barajaService = new BarajaServiceImpl();
-        jugadorService = new JugadorServiceImpl();
-        mesaService = new MesaServiceImpl();
 
         List<Jugador> jugadorList = creadorListaJugardoresPartidaConLaMismaEstrategia(3, (new PrimeraCartaDeLaManoStrategy()));
 
-        mesa = mesaService.crearMesa(jugadorList);
+        mesa = crearMesa(jugadorList);
         ronda = new Ronda();
 
     }
@@ -46,7 +35,7 @@ class RondaServiceImplInicializarRondaTest {
     void seEjecutaRondaInicialConTresJugadores() {
         Carta muestraInicial = mesa.getCartaMuestra();
         int tamanoBarajaInicial = mesa.getBaraja().getListaCartasBaraja().size();
-        boolean exito = rondaService.iniciarRonda(mesa, ronda, barajaService, jugadorService);
+        boolean exito = iniciarRonda(mesa, ronda);
         int tamanoBarajaFinal = mesa.getBaraja().getListaCartasBaraja().size();
         Carta muestraFinal = mesa.getCartaMuestra();
         assertEquals(muestraInicial, muestraFinal);
@@ -63,7 +52,7 @@ class RondaServiceImplInicializarRondaTest {
     @Test
     void seEjecutaRondaFinalConTresJugadores3CartasEnMesa() {
         mesa.getBaraja().setListaCartasBaraja(mesa.getBaraja().getListaCartasBaraja().subList(0,2));
-        boolean exito = rondaService.iniciarRonda(mesa, ronda, barajaService, jugadorService);
+        boolean exito = iniciarRonda(mesa, ronda);
         int tamanoBarajaFinal = mesa.getBaraja().getListaCartasBaraja().size();
         Carta muestraFinal = mesa.getCartaMuestra();
 
@@ -76,7 +65,7 @@ class RondaServiceImplInicializarRondaTest {
     @Test
     void seEjecutaRondaFinalConTresJugadores2CartasEnMesa() {
         mesa.getBaraja().setListaCartasBaraja(mesa.getBaraja().getListaCartasBaraja().subList(0,1));
-        boolean exito = rondaService.iniciarRonda(mesa, ronda, barajaService, jugadorService);
+        boolean exito = iniciarRonda(mesa, ronda);
         int tamanoBarajaFinal = mesa.getBaraja().getListaCartasBaraja().size();
         Carta muestraFinal = mesa.getCartaMuestra();
 

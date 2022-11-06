@@ -2,10 +2,11 @@ package com.dataontheroad.tute.juego.domain.partida;
 
 import com.dataontheroad.tute.juego.domain.jugador.Jugador;
 import com.dataontheroad.tute.juego.domain.mesa.Mesa;
-import com.dataontheroad.tute.juego.service.mesa.MesaServiceImpl;
 import java.util.List;
 
 import java.time.LocalDateTime;
+
+import static com.dataontheroad.tute.juego.service.mesa.MesaService.crearMesa;
 
 public class Partida {
 
@@ -18,7 +19,7 @@ public class Partida {
     private String resumenPartida;
 
     public Partida(List<Jugador> jugadorList) {
-        mesa = (new MesaServiceImpl()).crearMesa(jugadorList);
+        mesa = crearMesa(jugadorList);
         inicioPartida = LocalDateTime.now();
     }
 
