@@ -11,17 +11,18 @@ import static com.dataontheroad.tute.juego.service.partida.PartidaService.*;
 public class ExperimentoIndividualServiceImpl {
 
     public static ExperimentoIndividual creaExperimentoIndividual(List<Jugador> jugadorList) {
-        ExperimentoIndividual experimentoIndividual = new ExperimentoIndividual();
-
         Partida partida = crearPartida(jugadorList);
         ejecutarPartida(partida);
         cierrePartida(partida);
+        return setearExperimento(jugadorList, partida);
+    }
 
+    private static ExperimentoIndividual setearExperimento(List<Jugador> jugadorList, Partida partida) {
+        ExperimentoIndividual experimentoIndividual = new ExperimentoIndividual();
         experimentoIndividual.setJugadorGanador(partida.getJugadorGanador());
         experimentoIndividual.setNumeroJugador(jugadorList.size());
         experimentoIndividual.setResultados(partida.getMesa().getJugadorList().stream().mapToInt(jugador -> jugador.getPuntuacion()).toArray());
         experimentoIndividual.setOrdenJugadorGanador(jugadorList.indexOf(partida.getJugadorGanador()));
-
         return experimentoIndividual;
     }
 

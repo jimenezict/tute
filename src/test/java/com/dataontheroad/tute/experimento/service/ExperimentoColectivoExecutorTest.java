@@ -18,7 +18,7 @@ class ExperimentoColectivoExecutorTest {
     private static final int NUMERO_EXPERIMENTOS =1000;
 
     @Test
-    public void ExperimentoColectivoExecutorPrimeraCartaDeLaManoStrategy() {
+    void ExperimentoColectivoExecutorPrimeraCartaDeLaManoStrategy() {
 
         List<Jugador> jugadorList = creadorListaJugardoresPartidaConLaMismaEstrategia(NUMERO_JUGADORES, (new PrimeraCartaDeLaManoStrategy()));
         ExperimentoColectivo experimentoColectivo = executar(NUMERO_EXPERIMENTOS, jugadorList);
@@ -34,7 +34,7 @@ class ExperimentoColectivoExecutorTest {
     }
 
     @Test
-    public void ExperimentoColectivoExecutorCualquierCartaDeLaMano() {
+    void ExperimentoColectivoExecutorCualquierCartaDeLaMano() {
 
         List<Jugador> jugadorList = creadorListaJugardoresPartidaConLaMismaEstrategia(NUMERO_JUGADORES, (new PrimeraCartaDeLaManoStrategy()));
         jugadorList.get(0).setStrategy((new CualquierCartaDeLaManoAleatoriamenteStrategy()));

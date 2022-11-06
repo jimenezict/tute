@@ -2,13 +2,16 @@ package com.dataontheroad.tute.juego.service.cartas;
 
 import com.dataontheroad.tute.juego.domain.cartas.Baraja;
 import com.dataontheroad.tute.juego.domain.cartas.Carta;
-import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 
 import static org.springframework.util.ObjectUtils.isEmpty;
 
 public class BarajaService {
+
+    private BarajaService() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static Baraja crearBaraja() {
         return new Baraja();

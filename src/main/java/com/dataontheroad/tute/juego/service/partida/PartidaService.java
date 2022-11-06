@@ -11,6 +11,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import static com.dataontheroad.tute.juego.service.jugador.JugadorService.inicializarJugadorPartida;
+import static com.dataontheroad.tute.juego.service.partida.RondaService.jugadorJuegaCarta;
 
 public class PartidaService {
 
@@ -35,18 +36,25 @@ public class PartidaService {
             ronda.setJugadorInicial(jugadorActivo);
 
             do {
-                Carta carta = jugadorActivo.getStrategy().jugarCarta(partida.getMesa(), jugadorActivo);
-                (new RondaService()).jugadorJuegaCarta(ronda, jugadorActivo, carta, cartaMuestra);
-                jugadorCount++;
+                jugadorJuegaCarta(ronda, jugadorActivo, jugadorActivo.getStrategy().jugarCarta(partida.getMesa(), jugadorActivo), cartaMuestra);
                 jugadorActivo = getSiguienteJugadorActivo(partida, jugadorActivo);
-            } while (jugadorCount < partida.getMesa().getJugadorList().size());
+                jugadorCount++;
+            } while (hanJugadoTodosLosJugadoresEnEstaRonda(partida, jugadorCount));
 
             jugadorActivo = rondaService.finalizarRonda(partida.getMesa(), ronda);
             esLaUltimaRonda(partida, rondaService, ronda);
             numRonda++;
-        } while (!partida.getMesa().getJugadorList().get(0).getMano().isEmpty());
+        } while (aunTienenLosJugadoresCartaEnLaMano(partida));
 
         partida.setNumRonda(numRonda);
+    }
+
+    private static boolean hanJugadoTodosLosJugadoresEnEstaRonda(Partida partida, int jugadorCount) {
+        return jugadorCount < partida.getMesa().getJugadorList().size();
+    }
+
+    private static boolean aunTienenLosJugadoresCartaEnLaMano(Partida partida) {
+        return !partida.getMesa().getJugadorList().get(0).getMano().isEmpty();
     }
 
     public static void cierrePartida(Partida partida) {
@@ -66,11 +74,10 @@ public class PartidaService {
     }
 
     private static boolean esLaUltimaRonda(Partida partida, RondaService rondaService, Ronda ronda) {
-        if (partida.getMesa().getBaraja().getListaCartasBaraja().size() + 1
-                < partida.getMesa().getJugadorList().size())
+        if (hanJugadoTodosLosJugadoresEnEstaRonda(partida, partida.getMesa().getBaraja().getListaCartasBaraja().size() + 1))
             return true;
         return rondaService.iniciarRonda(partida.getMesa(), ronda)
-                || !partida.getMesa().getJugadorList().get(0).getMano().isEmpty();
+                || aunTienenLosJugadoresCartaEnLaMano(partida);
     }
 
     private static Jugador getSiguienteJugadorActivo(Partida partida, Jugador jugadorActivo) {
