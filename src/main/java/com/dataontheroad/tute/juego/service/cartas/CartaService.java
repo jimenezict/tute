@@ -11,6 +11,10 @@ public class CartaService {
 
     private static final Logger logger = getLogger(CartaService.class);
 
+    private CartaService() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static Carta crearCarta(CartaEnum palo, Integer numero) {
         if (isNull(palo) || numero < 1 || numero > 12) {
             logger.warn("Error al crear la carta: {} - {}", numero, palo);

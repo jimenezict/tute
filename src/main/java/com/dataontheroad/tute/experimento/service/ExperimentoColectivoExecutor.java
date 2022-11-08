@@ -7,29 +7,41 @@ import com.dataontheroad.tute.experimento.domain.ExperimentoIndividual;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.dataontheroad.tute.experimento.service.ExperimentoIndividualService.creaExperimentoIndividual;
+import static java.lang.Integer.valueOf;
+
 public class ExperimentoColectivoExecutor {
+
+    private ExperimentoColectivoExecutor() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static ExperimentoColectivo executar(int numeroDePartidas, List<Jugador> jugadorList) {
 
         ExperimentoColectivo experimentoColectivo = new ExperimentoColectivo(jugadorList.size(), numeroDePartidas);
-        ExperimentoIndividualService experimentoIndividualService = new ExperimentoIndividualServiceImpl();
 
         for(int i= 0; i < numeroDePartidas; i++) {
-            ExperimentoIndividual experimentoIndividual = experimentoIndividualService.creaExperimentoIndividual(jugadorList);
-            int posicionJugadorGanador = jugadorList.indexOf(experimentoIndividual.getJugadorGanador());
-            Integer valor = Integer.valueOf(experimentoColectivo.getListaGanadores().get(posicionJugadorGanador)) + 1;
-            experimentoColectivo.getListaGanadores().set(posicionJugadorGanador, valor);
-            int[] resultados = experimentoIndividual.getResultados();
-            for(int j = 0; j < jugadorList.size(); j++) {
-                experimentoColectivo.getListaDeResultados().get(j).add(resultados[j]);
-            }
+            ExperimentoIndividual experimentoIndividual = creaExperimentoIndividual(jugadorList);
+            actualizaNumeroDePartidasGanadasDelJugadorGanador(experimentoColectivo, posicionJugadorGanadorDelExperimentoIndividual(jugadorList, experimentoIndividual));
+            actualizaResultadosDePartidaParaTodosLosJugadores(jugadorList, experimentoColectivo, experimentoIndividual.getResultados());
         }
-
         rellenaListaDeMedias(jugadorList.size(), experimentoColectivo);
-
-        experimentoColectivo.setNumeroDeExperimentos(numeroDePartidas);
         return experimentoColectivo;
 
+    }
+
+    private static int posicionJugadorGanadorDelExperimentoIndividual(List<Jugador> jugadorList, ExperimentoIndividual experimentoIndividual) {
+        return jugadorList.indexOf(experimentoIndividual.getJugadorGanador());
+    }
+
+    private static void actualizaResultadosDePartidaParaTodosLosJugadores(List<Jugador> jugadorList, ExperimentoColectivo experimentoColectivo, int[] resultados) {
+        for(int j = 0; j < jugadorList.size(); j++) {
+            experimentoColectivo.getListaDeResultados().get(j).add(resultados[j]);
+        }
+    }
+
+    private static void actualizaNumeroDePartidasGanadasDelJugadorGanador(ExperimentoColectivo experimentoColectivo, int posicionJugadorGanador) {
+        experimentoColectivo.getListaGanadores().set(posicionJugadorGanador, experimentoColectivo.getListaGanadores().get(posicionJugadorGanador) + 1);
     }
 
     private static void rellenaListaDeMedias(int numeroJugadores, ExperimentoColectivo experimentoColectivo) {

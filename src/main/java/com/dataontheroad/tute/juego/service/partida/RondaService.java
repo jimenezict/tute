@@ -13,6 +13,10 @@ import static java.util.Objects.isNull;
 
 public class RondaService {
 
+    private RondaService() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static boolean iniciarRonda(Mesa mesa, Ronda ronda) {
         Baraja baraja = mesa.getBaraja();
 
