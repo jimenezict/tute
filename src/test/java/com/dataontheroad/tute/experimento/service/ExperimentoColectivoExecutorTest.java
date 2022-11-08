@@ -4,6 +4,7 @@ import com.dataontheroad.tute.juego.domain.jugador.Jugador;
 import com.dataontheroad.tute.experimento.domain.ExperimentoColectivo;
 import com.dataontheroad.tute.juego.service.jugador.CualquierCartaDeLaManoAleatoriamenteStrategy;
 import com.dataontheroad.tute.juego.service.jugador.PrimeraCartaDeLaManoStrategy;
+import com.dataontheroad.tute.juego.service.jugador.UltimaCartaQuePuedeGanarSinoAleatorioStrategy;
 import org.junit.jupiter.api.Test;
 
 import static com.dataontheroad.tute.ObjectCreationHelper.creadorListaJugardoresPartidaConLaMismaEstrategia;
@@ -38,6 +39,23 @@ class ExperimentoColectivoExecutorTest {
 
         List<Jugador> jugadorList = creadorListaJugardoresPartidaConLaMismaEstrategia(NUMERO_JUGADORES, (new PrimeraCartaDeLaManoStrategy()));
         jugadorList.get(0).setStrategy((new CualquierCartaDeLaManoAleatoriamenteStrategy()));
+        ExperimentoColectivo experimentoColectivo = executar(NUMERO_EXPERIMENTOS, jugadorList);
+
+        assertEquals(NUMERO_JUGADORES, experimentoColectivo.getNumeroDeJugadores());
+        assertEquals(NUMERO_EXPERIMENTOS, experimentoColectivo.getNumeroDeExperimentos());
+
+        for(int i=0; i < NUMERO_JUGADORES; i++) {
+            assertEquals(30, experimentoColectivo.getListaMedias().get(i), 3.5);
+            assertEquals(NUMERO_EXPERIMENTOS, experimentoColectivo.getListaDeResultados().get(i).size());
+            assertEquals(NUMERO_EXPERIMENTOS / NUMERO_JUGADORES, experimentoColectivo.getListaGanadores().get(i), 50);
+        }
+    }
+
+    @Test
+    void ExperimentoColectivoExecutorUltimaCartaQuePuedeGanarSinoAleatorio() {
+
+        List<Jugador> jugadorList = creadorListaJugardoresPartidaConLaMismaEstrategia(NUMERO_JUGADORES, (new PrimeraCartaDeLaManoStrategy()));
+        jugadorList.get(0).setStrategy((new UltimaCartaQuePuedeGanarSinoAleatorioStrategy()));
         ExperimentoColectivo experimentoColectivo = executar(NUMERO_EXPERIMENTOS, jugadorList);
 
         assertEquals(NUMERO_JUGADORES, experimentoColectivo.getNumeroDeJugadores());
