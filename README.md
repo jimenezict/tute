@@ -28,9 +28,12 @@ La única razón para desarrollar en ese paquete es la de implementar nuevos alg
 
 Para realizar un algoritmo de IA hay que extender la clase abstracta StrategyAbstract, que consta exclusivamente del método:
 ```
-public abstract Carta jugarCarta(Mesa mesa, Jugador jugador);
+public abstract Carta jugarCarta(Ronda ronda, Carta cartaMuestra, Jugador jugador);
 ```
-Los parámetros de entrada son el Jugador, de donde se obtiene las cartas que tiene en la mano y sobre la que tomará la decisión de jugar. Del objeto mesa se obtiene la carta de muestra. Esta signatura puede variar en el futuro para que algoritmo tenga más datos para realizar la decisión.
+Los parámetros de entrada son el Jugador, de donde se obtiene las cartas que tiene en la mano y sobre la que tomará la decisión de jugar. 
+Del objeto Ronda se obtiene la carta de muestra. 
+Por ahora, el único valor que nos interesa del objeto es la cartaMuestra, si se pasara el objeto Mesa podría obtener información del resto de jugadores.
+Esta signatura puede variar en el futuro para que algoritmo tenga más datos para realizar la decisión.
 
 La Carta que retorna, es la carta que el jugador ha decidido jugar. La lógica sobre como esto impacta en la partida, está fuera de la responsabilidad de este método.
 

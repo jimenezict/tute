@@ -40,7 +40,7 @@ public class PartidaService {
             ronda.setJugadorInicial(jugadorActivo);
 
             do {
-                jugadorJuegaCarta(ronda, jugadorActivo, jugadorActivo.getStrategy().jugarCarta(partida.getMesa(), jugadorActivo), cartaMuestra);
+                jugadorJuegaCarta(ronda, jugadorActivo, jugadorActivo.getStrategy().jugarCarta(ronda, cartaMuestra, jugadorActivo), cartaMuestra);
                 jugadorActivo = getSiguienteJugadorActivo(partida, jugadorActivo);
                 jugadorCount++;
             } while (hanJugadoTodosLosJugadoresEnEstaRonda(partida, jugadorCount));

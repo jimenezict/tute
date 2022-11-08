@@ -24,7 +24,7 @@ class CualquierCartaDeLaManoAleatoriamenteStrategyTest {
     private void verificarCartaJugadaEstabaEnMano(List<Carta> cartas) {
         Jugador jugador = new Jugador();
         jugador.setMano(cartas);
-        Carta carta =strategy.jugarCarta(null, jugador);
+        Carta carta =strategy.jugarCarta(null, null, jugador);
         assertTrue(cartas.contains(carta));
     }
 
