@@ -15,7 +15,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class ExperimentoIndividualServiceImplTest {
 
     @Test
-    void alCrearMesaDeTresJugadoresTodoEsCorrecto() {
+    void
+    alCrearMesaDeTresJugadoresTodoEsCorrecto() {
         ArrayList<Jugador> listJugadores = creadorListaJugardoresPartidaConLaMismaEstrategia(2, (new PrimeraCartaDeLaManoStrategy()));
         ExperimentoIndividual experimentoIndividual = creaExperimentoIndividual(listJugadores);
 

@@ -7,14 +7,19 @@ import com.dataontheroad.tute.juego.domain.partida.Partida;
 import com.dataontheroad.tute.juego.domain.partida.Ronda;
 import com.dataontheroad.tute.juego.service.jugador.JugadorService;
 import com.google.gson.Gson;
+import org.slf4j.Logger;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
 import static com.dataontheroad.tute.juego.service.partida.RondaService.*;
+import static org.slf4j.LoggerFactory.getLogger;
+import static org.springframework.util.Assert.notNull;
 
 public class PartidaService {
+
+    private static Logger logger = getLogger(PartidaService.class);
 
     private PartidaService() {
         throw new IllegalStateException("Utility class");
@@ -34,23 +39,38 @@ public class PartidaService {
         Carta cartaMuestra = partida.getMesa().getCartaMuestra();
         partida.setEstadoPartida(EstadoPartidaEnum.EN_CURSO);
 
+        logger.info("Iniciando partida con {} jugadores y carta de muestra {{}}", partida.getMesa().getJugadorList().size(), cartaMuestra.toString());
+
         do {
             int jugadorCount = 0;
             ronda = new Ronda();
             ronda.setJugadorInicial(jugadorActivo);
+            logger.info("Iniciando ronda {} con jugador inicial {}", numRonda, jugadorActivo);
 
             do {
-                jugadorJuegaCarta(ronda, jugadorActivo, jugadorActivo.getStrategy().jugarCarta(ronda, cartaMuestra, jugadorActivo), cartaMuestra);
+                logger.info("\t Ronda {} - Orden Jugador {} - Jugador {}", numRonda, jugadorCount, jugadorActivo);
+                Carta carta = jugadorActivo.getStrategy().jugarCarta(ronda, cartaMuestra, jugadorActivo);
+                logger.info("\t\t Juega carta {}", carta.toString());
+                if(ronda.getCartaMasAlta() != null) {
+                    logger.info("\t\t Antes de jugar la carta mas alta es {}", ronda.getCartaMasAlta().toString());
+                }
+                jugadorJuegaCarta(ronda, jugadorActivo, carta, cartaMuestra);
                 jugadorActivo = getSiguienteJugadorActivo(partida, jugadorActivo);
                 jugadorCount++;
+                logger.info("\t\t Despues de jugar la carta mas alta es {}", ronda.getCartaMasAlta().toString());
+
             } while (hanJugadoTodosLosJugadoresEnEstaRonda(partida, jugadorCount));
 
             jugadorActivo = finalizarRonda(partida.getMesa(), ronda);
             esLaUltimaRonda(partida, ronda);
             numRonda++;
+            logger.info("\t Jugador {} ha ganado la ronda {}", jugadorActivo, numRonda);
+            logger.info("------------------------------------------------------");
         } while (aunTienenLosJugadoresCartaEnLaMano(partida));
 
         partida.setNumRonda(numRonda);
+        logger.info("Partida Finalizada");
+        logger.info("********************************************************************************************");
     }
 
     private static boolean hanJugadoTodosLosJugadoresEnEstaRonda(Partida partida, int jugadorCount) {
