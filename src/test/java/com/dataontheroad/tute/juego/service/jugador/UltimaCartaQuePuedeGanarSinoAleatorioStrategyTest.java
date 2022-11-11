@@ -38,6 +38,10 @@ class UltimaCartaQuePuedeGanarSinoAleatorioStrategyTest {
         jugador.getMano().set(0, crearCarta(CartaEnum.BASTO, 1));
         cartaJugada = strategy.jugarCarta(ronda, cartaMuestra, jugador);
         assertEquals(cartaJugada, cartas.get(0));
+
+        jugador.getMano().set(0, crearCarta(CartaEnum.BASTO, 5));
+        cartaJugada = strategy.jugarCarta(ronda, cartaMuestra, jugador);
+        assertEquals(cartaJugada, cartas.get(0));
     }
 
     @Test
@@ -60,6 +64,10 @@ class UltimaCartaQuePuedeGanarSinoAleatorioStrategyTest {
         assertEquals(cartaJugada, cartas.get(1));
 
         jugador.getMano().set(1, crearCarta(CartaEnum.BASTO, 1));
+        cartaJugada = strategy.jugarCarta(ronda, cartaMuestra, jugador);
+        assertEquals(cartaJugada, cartas.get(1));
+
+        jugador.getMano().set(1, crearCarta(CartaEnum.BASTO, 5));
         cartaJugada = strategy.jugarCarta(ronda, cartaMuestra, jugador);
         assertEquals(cartaJugada, cartas.get(1));
     }

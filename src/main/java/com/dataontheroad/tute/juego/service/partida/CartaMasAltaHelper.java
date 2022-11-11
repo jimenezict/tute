@@ -16,11 +16,16 @@ public class CartaMasAltaHelper {
 
     public static boolean cartaMasAlta(Carta cartaMasAlta, Carta cartaMuestra, Carta carta) {
         if(isNull(cartaMasAlta)) return true;
+
         if(carta.getPalo().equals(cartaMuestra.getPalo())) {
-            return valorPonderado(carta.getNumero(), cartaMasAlta.getNumero());
-        } else if (carta.getPalo().equals(cartaMasAlta.getPalo())) {
-            return valorPonderado(carta.getNumero(), cartaMasAlta.getNumero());
+            if(cartaMasAlta.getPalo().equals(carta.getPalo())) {
+                return valorPonderado(carta.getNumero(), cartaMasAlta.getNumero());
+            }
+            return true;
         } else {
+            if(cartaMasAlta.getPalo().equals(carta.getPalo())) {
+                return valorPonderado(carta.getNumero(), cartaMasAlta.getNumero());
+            }
             return false;
         }
     }

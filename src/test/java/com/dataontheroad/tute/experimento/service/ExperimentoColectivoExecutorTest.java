@@ -28,9 +28,7 @@ class ExperimentoColectivoExecutorTest {
         assertEquals(NUMERO_EXPERIMENTOS, experimentoColectivo.getNumeroDeExperimentos());
 
         for(int i=0; i < NUMERO_JUGADORES; i++) {
-            assertEquals(30, experimentoColectivo.getListaMedias().get(i), 3.5);
             assertEquals(NUMERO_EXPERIMENTOS, experimentoColectivo.getListaDeResultados().get(i).size());
-            assertEquals(NUMERO_EXPERIMENTOS / NUMERO_JUGADORES, experimentoColectivo.getListaGanadores().get(i), 50);
         }
     }
 
@@ -45,9 +43,7 @@ class ExperimentoColectivoExecutorTest {
         assertEquals(NUMERO_EXPERIMENTOS, experimentoColectivo.getNumeroDeExperimentos());
 
         for(int i=0; i < NUMERO_JUGADORES; i++) {
-            assertEquals(30, experimentoColectivo.getListaMedias().get(i), 3.5);
             assertEquals(NUMERO_EXPERIMENTOS, experimentoColectivo.getListaDeResultados().get(i).size());
-            assertEquals(NUMERO_EXPERIMENTOS / NUMERO_JUGADORES, experimentoColectivo.getListaGanadores().get(i), 50);
         }
     }
 
@@ -62,9 +58,7 @@ class ExperimentoColectivoExecutorTest {
         assertEquals(NUMERO_EXPERIMENTOS, experimentoColectivo.getNumeroDeExperimentos());
 
         for(int i=0; i < NUMERO_JUGADORES; i++) {
-            assertEquals(30, experimentoColectivo.getListaMedias().get(i), 3.5);
             assertEquals(NUMERO_EXPERIMENTOS, experimentoColectivo.getListaDeResultados().get(i).size());
-            assertEquals(NUMERO_EXPERIMENTOS / NUMERO_JUGADORES, experimentoColectivo.getListaGanadores().get(i), 50);
         }
     }
 

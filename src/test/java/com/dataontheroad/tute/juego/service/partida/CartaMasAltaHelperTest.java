@@ -4,6 +4,7 @@ import com.dataontheroad.tute.juego.domain.cartas.Carta;
 import com.dataontheroad.tute.juego.domain.cartas.CartaEnum;
 import org.junit.jupiter.api.Test;
 
+import static com.dataontheroad.tute.juego.service.cartas.CartaService.crearCarta;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -16,6 +17,7 @@ class CartaMasAltaHelperTest {
 
     Carta espada1 = new Carta(CartaEnum.ESPADA, 1);
     Carta espada2 = new Carta(CartaEnum.ESPADA, 2);
+    Carta espada5 = crearCarta(CartaEnum.ESPADA, 5);
 
     @Test
     void noHayCartaMasAltaEsCierto() {
@@ -61,4 +63,10 @@ class CartaMasAltaHelperTest {
     void cartaDeMuestraEsEspadaCartaMasAltaEsBastoYTiroBastoMasBajo() {
         assertFalse(CartaMasAltaHelper.cartaMasAlta(basto4, espada1, basto2));
     }
+
+    @Test
+    void cartaPaloDeMuestraPeroMenorValorQueCartaMuestra() {
+        assertTrue(CartaMasAltaHelper.cartaMasAlta(espada5, basto3, basto4));
+    }
+
 }
