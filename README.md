@@ -79,6 +79,14 @@ Es el algoritmo más sencillo. Consiste en tirar la primera carta de la mano, lo
 
 Al no existir ningun racionamiento, se ha usado para comprobar la correcta implementación de la lógica del juego. Los detalles se explican en la sección *análisis de resultados*.
 
+## UltimaCartaQuePuedeGanarSinAleatoryStrategy
+
+Se revisarán todas las cartas de izquierda a derecha y se comparará con las que hay en la mesa, si puede ganar la ronda, la última que se revise que pueda ganar la ronda será jugada por el jugador.
+
+Si ninguna carta fuera capaz de ganar a las que hay en la mesa, entonces, se juega al azar.
+
+Esta estrategia dota de un razonamiento básico, en caso de tener dos o tres cartas ganadoras, no es capaz de decir cual jugar. En caso de no tener ninguna carta ganadora, no sabe valor como realizar un descarte argumentado.
+
 # Análisis de resultados
 
 ## Teoría del análisis
