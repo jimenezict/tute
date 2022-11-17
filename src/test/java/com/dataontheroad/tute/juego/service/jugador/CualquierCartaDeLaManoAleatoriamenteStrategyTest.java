@@ -2,6 +2,8 @@ package com.dataontheroad.tute.juego.service.jugador;
 
 import com.dataontheroad.tute.juego.domain.cartas.Carta;
 import com.dataontheroad.tute.juego.domain.jugador.Jugador;
+import com.dataontheroad.tute.juego.service.jugador.strategy.CualquierCartaDeLaManoAleatoriamenteStrategy;
+import com.dataontheroad.tute.juego.service.jugador.strategy.StrategyAbstract;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 

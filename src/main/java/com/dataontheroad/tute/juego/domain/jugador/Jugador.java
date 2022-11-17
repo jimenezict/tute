@@ -1,7 +1,7 @@
 package com.dataontheroad.tute.juego.domain.jugador;
 
 import com.dataontheroad.tute.juego.domain.cartas.Carta;
-import com.dataontheroad.tute.juego.service.jugador.StrategyAbstract;
+import com.dataontheroad.tute.juego.service.jugador.strategy.StrategyAbstract;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -4,6 +4,8 @@ import com.dataontheroad.tute.juego.domain.cartas.Carta;
 import com.dataontheroad.tute.juego.domain.cartas.CartaEnum;
 import com.dataontheroad.tute.juego.domain.jugador.Jugador;
 import com.dataontheroad.tute.juego.domain.partida.Ronda;
+import com.dataontheroad.tute.juego.service.jugador.strategy.StrategyAbstract;
+import com.dataontheroad.tute.juego.service.jugador.strategy.UltimaCartaQuePuedeGanarSinoAleatorioStrategy;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

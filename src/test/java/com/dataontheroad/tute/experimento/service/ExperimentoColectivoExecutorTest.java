@@ -2,9 +2,9 @@ package com.dataontheroad.tute.experimento.service;
 
 import com.dataontheroad.tute.juego.domain.jugador.Jugador;
 import com.dataontheroad.tute.experimento.domain.ExperimentoColectivo;
-import com.dataontheroad.tute.juego.service.jugador.CualquierCartaDeLaManoAleatoriamenteStrategy;
-import com.dataontheroad.tute.juego.service.jugador.PrimeraCartaDeLaManoStrategy;
-import com.dataontheroad.tute.juego.service.jugador.UltimaCartaQuePuedeGanarSinoAleatorioStrategy;
+import com.dataontheroad.tute.juego.service.jugador.strategy.CualquierCartaDeLaManoAleatoriamenteStrategy;
+import com.dataontheroad.tute.juego.service.jugador.strategy.PrimeraCartaDeLaManoStrategy;
+import com.dataontheroad.tute.juego.service.jugador.strategy.UltimaCartaQuePuedeGanarSinoAleatorioStrategy;
 import org.junit.jupiter.api.Test;
 
 import static com.dataontheroad.tute.ObjectCreationHelper.creadorListaJugardoresPartidaConLaMismaEstrategia;

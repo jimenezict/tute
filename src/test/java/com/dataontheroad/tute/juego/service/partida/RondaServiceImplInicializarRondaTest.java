@@ -4,8 +4,7 @@ import com.dataontheroad.tute.juego.domain.cartas.Carta;
 import com.dataontheroad.tute.juego.domain.jugador.Jugador;
 import com.dataontheroad.tute.juego.domain.mesa.Mesa;
 import com.dataontheroad.tute.juego.domain.partida.Ronda;
-import com.dataontheroad.tute.juego.service.jugador.PrimeraCartaDeLaManoStrategy;
-import com.dataontheroad.tute.juego.service.mesa.MesaService;
+import com.dataontheroad.tute.juego.service.jugador.strategy.PrimeraCartaDeLaManoStrategy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
