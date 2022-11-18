@@ -87,6 +87,14 @@ Si ninguna carta fuera capaz de ganar a las que hay en la mesa, entonces, se jue
 
 Esta estrategia dota de un razonamiento básico, en caso de tener dos o tres cartas ganadoras, no es capaz de decir cual jugar. En caso de no tener ninguna carta ganadora, no sabe valor como realizar un descarte argumentado.
 
+## UltimaCartaQuePuedeGanarSinoMenorValorStrategy
+
+Este algoritmo mejora la toma de decisión cuando ninguna de las cartas en la mano, permite superar la carta de mayor valor jugada en la ronda. 
+
+Considera la de menor valor la que no tiene el mismo palo de la muestra y genere menos puntos, en caso de no puntuar, escoge la de número más bajo.
+
+Aunque la estrategía optimiza el descarte, aun puede mejorar la optimización en el caso de tener varias cartas que vencen a la carta más alta de la ronda, o para iniciar la ronda. 
+
 # Análisis de resultados
 
 ## Teoría del análisis
@@ -130,3 +138,29 @@ El mismo experimento sobre 10000 iteraciones muestra los siguientes resultados
 | &Delta;MT | -1.1293 | -0.4919 |-0.7996 | 2.42 |  
 
 Se comprueba entonces, que tanto el FdI y &Delta;MT tienden hacia sus valores esperados cuando todos los participantes juegan con el algortimo PrimeraCartaDeLaManoStrategy
+
+## UltimaCartaQuePuedeGanarSinoAleatoryStrategy
+
+Sobre 10000 experimentos:
+
+| Jugador 1 | Jugador 2 | Jugador 3 | Jugador 4 |
+| -- | -- | -- | -- |
+|  |  |  |  |
+
+| | Jugador 1 | Jugador 2 | Jugador 3 | Jugador 4 |
+| -- | -- | -- | -- | -- |
+| Puntuación Media |  |  |  |  |
+| &Delta;MT |  |  | |  |  
+
+## UltimaCartaQuePuedeGanarSinoMenorValorStrategy
+
+Sobre 10000 experimentos:
+
+| Jugador 1 | Jugador 2 | Jugador 3 | Jugador 4 |
+| -- | -- | -- | -- |
+|  |  |  |  |
+
+| | Jugador 1 | Jugador 2 | Jugador 3 | Jugador 4 |
+| -- | -- | -- | -- | -- |
+| Puntuación Media |  |  |  |  |
+| &Delta;MT |  |  | |  |  
