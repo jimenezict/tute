@@ -5,6 +5,7 @@ import com.dataontheroad.tute.juego.domain.jugador.Jugador;
 import com.dataontheroad.tute.juego.domain.partida.Ronda;
 import com.dataontheroad.tute.juego.service.partida.CartaMasAltaHelper;
 
+import static com.dataontheroad.tute.juego.service.jugador.helper.StrategyHelper.cartaMenorPeso;
 import static java.util.Objects.isNull;
 
 public class UltimaCartaQuePuedeGanarSinoMenorValorStrategy extends StrategyAbstract {
@@ -18,7 +19,7 @@ public class UltimaCartaQuePuedeGanarSinoMenorValorStrategy extends StrategyAbst
             }
         }
         if(isNull(cartaJugada)) {
-
+            return cartaMenorPeso(cartaMuestra,jugador.getMano());
         }
 
         return cartaJugada;

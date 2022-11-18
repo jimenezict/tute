@@ -40,7 +40,7 @@ class StrategyHelperTest {
         cartaMano.add(crearCarta(CartaEnum.ORO, 2));
         cartaMano.add(crearCarta(CartaEnum.ESPADA, 2));
 
-        assertEquals(cartaMenorPeso(crearCarta(CartaEnum.ESPADA,2), cartaMano), crearCarta(CartaEnum.ESPADA, 2));
+        assertEquals(cartaMenorPeso(crearCarta(CartaEnum.ESPADA,7), cartaMano), crearCarta(CartaEnum.ORO, 2));
     }
 
     @Test
@@ -50,7 +50,7 @@ class StrategyHelperTest {
         cartaMano.add(crearCarta(CartaEnum.ESPADA, 2));
         cartaMano.add(crearCarta(CartaEnum.ORO, 2));
 
-        assertEquals(cartaMenorPeso(crearCarta(CartaEnum.ESPADA,2), cartaMano), crearCarta(CartaEnum.ESPADA, 2));
+        assertEquals(cartaMenorPeso(crearCarta(CartaEnum.ESPADA,7), cartaMano), crearCarta(CartaEnum.ORO, 2));
     }
 
     @Test
@@ -60,8 +60,67 @@ class StrategyHelperTest {
         cartaMano.add(crearCarta(CartaEnum.ESPADA, 6));
         cartaMano.add(crearCarta(CartaEnum.ESPADA, 2));
 
-        assertEquals(cartaMenorPeso(crearCarta(CartaEnum.ESPADA,2), cartaMano), crearCarta(CartaEnum.ESPADA, 2));
+        assertEquals(cartaMenorPeso(crearCarta(CartaEnum.ESPADA,7), cartaMano), crearCarta(CartaEnum.ORO, 2));
     }
 
+    @Test
+    void test2_1() {
+        List<Carta> cartaMano = new ArrayList<>();
+        cartaMano.add(crearCarta(CartaEnum.ESPADA, 6));
+        cartaMano.add(crearCarta(CartaEnum.ORO, 2));
+        cartaMano.add(crearCarta(CartaEnum.ESPADA, 2));
+
+        assertEquals(cartaMenorPeso(crearCarta(CartaEnum.ORO,2), cartaMano), crearCarta(CartaEnum.ESPADA, 2));
+    }
+
+    @Test
+    void test2_2() {
+        List<Carta> cartaMano = new ArrayList<>();
+        cartaMano.add(crearCarta(CartaEnum.ESPADA, 6));
+        cartaMano.add(crearCarta(CartaEnum.ESPADA, 2));
+        cartaMano.add(crearCarta(CartaEnum.ORO, 2));
+
+        assertEquals(cartaMenorPeso(crearCarta(CartaEnum.ORO,2), cartaMano), crearCarta(CartaEnum.ESPADA, 2));
+    }
+
+    @Test
+    void test2_3() {
+        List<Carta> cartaMano = new ArrayList<>();
+        cartaMano.add(crearCarta(CartaEnum.ORO, 2));
+        cartaMano.add(crearCarta(CartaEnum.ESPADA, 6));
+        cartaMano.add(crearCarta(CartaEnum.ESPADA, 2));
+
+        assertEquals(cartaMenorPeso(crearCarta(CartaEnum.ORO,2), cartaMano), crearCarta(CartaEnum.ESPADA, 2));
+    }
+
+    @Test
+    void test3_1() {
+        List<Carta> cartaMano = new ArrayList<>();
+        cartaMano.add(crearCarta(CartaEnum.ESPADA, 6));
+        cartaMano.add(crearCarta(CartaEnum.ORO, 2));
+        cartaMano.add(crearCarta(CartaEnum.ESPADA, 2));
+
+        assertEquals(cartaMenorPeso(crearCarta(CartaEnum.COPA,2), cartaMano), crearCarta(CartaEnum.ORO, 2));
+    }
+
+    @Test
+    void test3_2() {
+        List<Carta> cartaMano = new ArrayList<>();
+        cartaMano.add(crearCarta(CartaEnum.ESPADA, 6));
+        cartaMano.add(crearCarta(CartaEnum.ESPADA, 2));
+        cartaMano.add(crearCarta(CartaEnum.ORO, 2));
+
+        assertEquals(cartaMenorPeso(crearCarta(CartaEnum.COPA,2), cartaMano), crearCarta(CartaEnum.ESPADA, 2));
+    }
+
+    @Test
+    void test3_3() {
+        List<Carta> cartaMano = new ArrayList<>();
+        cartaMano.add(crearCarta(CartaEnum.ORO, 2));
+        cartaMano.add(crearCarta(CartaEnum.ESPADA, 6));
+        cartaMano.add(crearCarta(CartaEnum.ESPADA, 2));
+
+        assertEquals(cartaMenorPeso(crearCarta(CartaEnum.COPA,2), cartaMano), crearCarta(CartaEnum.ORO, 2));
+    }
 
 }

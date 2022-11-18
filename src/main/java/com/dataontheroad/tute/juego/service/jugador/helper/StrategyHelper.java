@@ -9,19 +9,22 @@ import java.util.List;
 public class StrategyHelper {
 
     public static Carta cartaMenorPeso(Carta cartaMuestra, List<Carta> mano) {
-        Carta cartaMenor = mano.get(0);
-        for(Carta carta : mano) {
-            if(!valorPonderado(carta, cartaMenor, cartaMuestra)) {
-                cartaMenor = carta;
+        int menorEvaluacion = 1000;
+        Carta menorCarta = mano.get(0);
+
+        for(Carta carta: mano) {
+            int cartaEvaluacion = evaluacionCarta(carta, cartaMuestra);
+            if(cartaEvaluacion < menorEvaluacion) {
+                menorCarta = carta;
+                menorEvaluacion = cartaEvaluacion;
             }
         }
-        return cartaMenor;
+
+        return menorCarta;
     }
 
-    private static boolean valorPonderado(Carta carta1, Carta carta2, Carta cartaMuestra) {
-        List<Integer> miLista = new ArrayList<>(Arrays.asList(1,3,12,11,10,7,6,5,4,2));
-        return miLista.indexOf(Integer.valueOf(carta1)) < miLista.indexOf(Integer.valueOf(carta2));
+    private static int evaluacionCarta(Carta carta, Carta cartaMuestra) {
+        List<Integer> miLista = new ArrayList<>(Arrays.asList(2,4,5,6,7,10,11,12,3,1));
+        return miLista.indexOf(Integer.valueOf(carta.getNumero())) + (cartaMuestra.getPalo().equals(carta.getPalo()) ? 12 : 0);
     }
-
-    private int sumaDocenaSi
 }
