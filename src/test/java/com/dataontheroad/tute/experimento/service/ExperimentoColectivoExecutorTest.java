@@ -5,6 +5,7 @@ import com.dataontheroad.tute.experimento.domain.ExperimentoColectivo;
 import com.dataontheroad.tute.juego.service.jugador.strategy.CualquierCartaDeLaManoAleatoriamenteStrategy;
 import com.dataontheroad.tute.juego.service.jugador.strategy.PrimeraCartaDeLaManoStrategy;
 import com.dataontheroad.tute.juego.service.jugador.strategy.UltimaCartaQuePuedeGanarSinoAleatorioStrategy;
+import com.dataontheroad.tute.juego.service.jugador.strategy.UltimaCartaQuePuedeGanarSinoMenorValorStrategy;
 import org.junit.jupiter.api.Test;
 
 import static com.dataontheroad.tute.ObjectCreationHelper.creadorListaJugardoresPartidaConLaMismaEstrategia;
@@ -52,6 +53,21 @@ class ExperimentoColectivoExecutorTest {
 
         List<Jugador> jugadorList = creadorListaJugardoresPartidaConLaMismaEstrategia(NUMERO_JUGADORES, (new PrimeraCartaDeLaManoStrategy()));
         jugadorList.get(0).setStrategy((new UltimaCartaQuePuedeGanarSinoAleatorioStrategy()));
+        ExperimentoColectivo experimentoColectivo = executar(NUMERO_EXPERIMENTOS, jugadorList);
+
+        assertEquals(NUMERO_JUGADORES, experimentoColectivo.getNumeroDeJugadores());
+        assertEquals(NUMERO_EXPERIMENTOS, experimentoColectivo.getNumeroDeExperimentos());
+
+        for(int i=0; i < NUMERO_JUGADORES; i++) {
+            assertEquals(NUMERO_EXPERIMENTOS, experimentoColectivo.getListaDeResultados().get(i).size());
+        }
+    }
+
+    @Test
+    void ExperimentoColectivoUltimaCartaQuePuedeGanarSinoMenorValorStrategy() {
+
+        List<Jugador> jugadorList = creadorListaJugardoresPartidaConLaMismaEstrategia(NUMERO_JUGADORES, (new PrimeraCartaDeLaManoStrategy()));
+        jugadorList.get(0).setStrategy((new UltimaCartaQuePuedeGanarSinoMenorValorStrategy()));
         ExperimentoColectivo experimentoColectivo = executar(NUMERO_EXPERIMENTOS, jugadorList);
 
         assertEquals(NUMERO_JUGADORES, experimentoColectivo.getNumeroDeJugadores());
