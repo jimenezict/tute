@@ -157,8 +157,8 @@ Sobre 10000 experimentos:
 Sobre 10000 experimentos:
 
 | Jugador 1 | Jugador 2 | Jugador 3 | Jugador 4 |
+| -- | -- | -- | -- |
 | 4025 | 1652 | 1558 | 2765 |
-|  |  |  |  |
 
 | | Jugador 1 | Jugador 2 | Jugador 3 | Jugador 4 |
 | -- | -- | -- | -- | -- |
