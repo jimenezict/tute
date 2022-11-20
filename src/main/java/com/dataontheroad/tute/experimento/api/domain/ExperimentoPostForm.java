@@ -1,11 +1,12 @@
-package com.dataontheroad.tute.experimento.controller.domain;
+package com.dataontheroad.tute.experimento.api.domain;
 
-import com.dataontheroad.tute.juego.domain.jugador.Jugador;
 import java.util.List;
 
 public class ExperimentoPostForm {
 
     private List<Integer> strategyList;
+
+    private int numExperimentos;
 
 
     public List<Integer> getStrategyList() {
@@ -14,5 +15,14 @@ public class ExperimentoPostForm {
 
     public void setStrategyList(List<Integer> strategyList) {
         this.strategyList = strategyList;
+    }
+
+
+    public int getNumExperimentos() {
+        return numExperimentos;
+    }
+
+    public void setNumExperimentos(int numExperimentos) {
+        this.numExperimentos = numExperimentos;
     }
 }

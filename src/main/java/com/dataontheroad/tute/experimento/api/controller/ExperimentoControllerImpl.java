@@ -1,6 +1,9 @@
-package com.dataontheroad.tute.experimento.controller;
+package com.dataontheroad.tute.experimento.api.controller;
 
-import com.dataontheroad.tute.experimento.controller.domain.ExperimentoPostForm;
+import com.dataontheroad.tute.experimento.api.domain.ExperimentoPostForm;
+import com.dataontheroad.tute.experimento.api.service.ExperimentoService;
+import com.dataontheroad.tute.experimento.domain.ExperimentoColectivo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +15,9 @@ import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 public class ExperimentoControllerImpl implements ExperimentoController {
+
+    @Autowired
+    ExperimentoService experimentoService;
 
     @Override
     @GetMapping("/experimento/")
@@ -26,6 +32,7 @@ public class ExperimentoControllerImpl implements ExperimentoController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
 
+        experimentoService.ejecutarExperimento(experimentoPostForm.getStrategyList(), experimentoPostForm.getNumExperimentos());
         return ResponseEntity.ok(OK);
     }
 
