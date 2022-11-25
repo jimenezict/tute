@@ -3,6 +3,7 @@ package com.dataontheroad.tute.experimento.api.controller;
 import com.dataontheroad.tute.experimento.api.domain.ExperimentoPostForm;
 import com.dataontheroad.tute.experimento.api.service.ExperimentoService;
 import com.dataontheroad.tute.experimento.domain.ExperimentoColectivo;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,8 +33,8 @@ public class ExperimentoControllerImpl implements ExperimentoController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
 
-        experimentoService.ejecutarExperimento(experimentoPostForm.getStrategyList(), experimentoPostForm.getNumExperimentos());
-        return ResponseEntity.ok(OK);
+        ExperimentoColectivo experimentoColectivo = experimentoService.ejecutarExperimento(experimentoPostForm.getStrategyList(), experimentoPostForm.getNumExperimentos());
+        return ResponseEntity.ok((new Gson()).toJson(experimentoColectivo));
     }
 
     private boolean validador(ExperimentoPostForm experimentoPostForm) {
