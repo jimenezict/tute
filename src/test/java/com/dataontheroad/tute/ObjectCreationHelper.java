@@ -6,6 +6,7 @@ import com.dataontheroad.tute.juego.domain.cartas.Baraja;
 import com.dataontheroad.tute.juego.domain.cartas.Carta;
 import com.dataontheroad.tute.juego.domain.jugador.Jugador;
 import com.dataontheroad.tute.juego.service.jugador.strategy.StrategyAbstract;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +45,14 @@ public class ObjectCreationHelper {
     public static ExperimentoColectivo experimentoColectivo(int numExperimento) {
         ExperimentoColectivo experimentoColectivo = new ExperimentoColectivo(4, numExperimento);
         return experimentoColectivo;
+    }
+
+    public static String asJsonString(final Object obj) {
+        try {
+            return new ObjectMapper().writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

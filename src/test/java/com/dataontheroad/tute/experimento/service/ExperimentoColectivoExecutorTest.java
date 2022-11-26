@@ -17,7 +17,7 @@ import java.util.List;
 class ExperimentoColectivoExecutorTest {
 
     private static final int NUMERO_JUGADORES =4;
-    private static final int NUMERO_EXPERIMENTOS =10000;
+    private static final int NUMERO_EXPERIMENTOS =100;
 
     @Test
     void ExperimentoColectivoExecutorPrimeraCartaDeLaManoStrategy() {
