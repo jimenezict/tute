@@ -70,6 +70,95 @@ El POJO *ExperimentoColectivo* recoge los datos. Los campos más relevantes son:
 
 ## Ejecución de experimentos a través de API
 
+Se pueden hacer experimentos a través de peticiones POST
+
+```
+curl --location --request POST 'http://localhost:8080/experimento/' \
+--header 'Content-Type: application/json;charset=UTF-8' \
+--header 'Accept: application/json' \
+--data-raw '{"strategyList":<XXXXX>],"numExperimentos":<YYYYY>}'
+```
+
+Donde <XXXXX> es una array de enteros cuyo tamaño indica el número de jugadores y la estrategia que sigue cada jugador, por ejemplo [1,1,1,1] cuatro jugadores jugarán con la misma estratégia. Las estrategias posibles son:
+
+1) PrimeraCartaDeLaManoStrategy
+2) CualquierCartaDeLaManoAleatoriamenteStrategy
+3) UltimaCartaQuePuedeGanarSinoAleatoryStrategy
+4) UltimaCartaQuePuedeGanarSinoMenorValorStrategy
+
+<YYYYY> es el número de experimentos que se quieren hacer, por tanto, se tratará de un entero.
+
+Un ejemplo de resultado cuando cuatro jugadores juegan con la estratégia (1) es:
+
+```
+{
+    "listaDeResultados": [
+        [
+            12,
+            74,
+            27,
+            7,
+            0,
+            5,
+            65,
+            52,
+            16,
+            0
+        ],
+        [
+            43,
+            22,
+            23,
+            65,
+            0,
+            36,
+            0,
+            35,
+            12,
+            16
+        ],
+        [
+            32,
+            0,
+            60,
+            42,
+            59,
+            40,
+            15,
+            7,
+            21,
+            76
+        ],
+        [
+            33,
+            24,
+            10,
+            6,
+            61,
+            39,
+            40,
+            26,
+            71,
+            28
+        ]
+    ],
+    "listaGanadores": [
+        3,
+        2,
+        3,
+        2
+    ],
+    "listaMedias": [
+        25.8,
+        25.2,
+        35.2,
+        33.8
+    ],
+    "numeroDeJugadores": 4,
+    "numeroDeExperimentos": 10
+}
+```
+
 # Algoritmos de IA
 
 Como se ha dicho anteriormente, los algoritmos son extensiones de la classe AbstractStategy. 
