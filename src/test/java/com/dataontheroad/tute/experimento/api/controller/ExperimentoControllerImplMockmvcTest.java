@@ -41,7 +41,6 @@ class ExperimentoControllerImplMockmvcTest {
                 .andExpect(status().isOk());
     }
 
-    @Ignore
     @Test
     public void postExperimento_conStrategyListVacia_RetornaRespuestaIncorrecta() throws Exception{
         ExperimentoPostForm experimentoPostForm = creadorExperimentoPostForm(NUM_EXPERIMENTO);
@@ -56,7 +55,6 @@ class ExperimentoControllerImplMockmvcTest {
                 .andExpect(status().isBadRequest());
     }
 
-    @Ignore
     @Test
     public void postExperimento_conStrategyListFormada_RetornaRespuestaCorrecta() throws Exception{
         ExperimentoPostForm experimentoPostForm = creadorExperimentoPostForm(NUM_EXPERIMENTO);
