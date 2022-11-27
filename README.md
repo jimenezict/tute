@@ -37,7 +37,7 @@ Esta signatura puede variar en el futuro para que algoritmo tenga más datos par
 
 La Carta que retorna, es la carta que el jugador ha decidido jugar. La lógica sobre como esto impacta en la partida, está fuera de la responsabilidad de este método.
 
-## Ejecución de experimentos
+## Ejecución de experimentos a través de tests unitarios
 
 Existen dos objetos para crear experimentos, el individual y el colectivo. Des de un punto de vista práctico, solo explicaremos el colectivo.
 
@@ -68,6 +68,7 @@ El POJO *ExperimentoColectivo* recoge los datos. Los campos más relevantes son:
 * listaGanadores: es un array de Integer donde dice cuantas veces ha ganado cada jugador. La posición en la array indica el Jugador del que se trata.
 * listaDeResultados: matriz con el número de puntos hecho por partida y jugador. Las filas representan el jugador, la columna la partida, el valor, el puntaje.
 
+## Ejecución de experimentos a través de API
 
 # Algoritmos de IA
 
