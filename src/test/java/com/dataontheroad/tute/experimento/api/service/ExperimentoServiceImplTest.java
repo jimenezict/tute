@@ -1,20 +1,20 @@
 package com.dataontheroad.tute.experimento.api.service;
 
+import com.dataontheroad.tute.experimento.domain.ExperimentoColectivo;
 import com.dataontheroad.tute.juego.service.jugador.strategy.CualquierCartaDeLaManoAleatoriamenteStrategy;
 import com.dataontheroad.tute.juego.service.jugador.strategy.PrimeraCartaDeLaManoStrategy;
 import com.dataontheroad.tute.juego.service.jugador.strategy.UltimaCartaQuePuedeGanarSinoAleatorioStrategy;
 import com.dataontheroad.tute.juego.service.jugador.strategy.UltimaCartaQuePuedeGanarSinoMenorValorStrategy;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.hamcrest.Matchers.instanceOf;
-import static org.junit.Assert.assertEquals;
+import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static java.util.Arrays.asList;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.Assert.assertEquals;
 
 @ExtendWith(SpringExtension.class)
 class ExperimentoServiceImplTest {
@@ -33,5 +33,14 @@ class ExperimentoServiceImplTest {
         assertThat(experimentoService.identificadorStrategyConverter(3)).isInstanceOf(UltimaCartaQuePuedeGanarSinoAleatorioStrategy.class);
         assertThat(experimentoService.identificadorStrategyConverter(4)).isInstanceOf(UltimaCartaQuePuedeGanarSinoMenorValorStrategy.class);
     }
+
+    @Test
+    public void ejecutarExperimento_sobre4Jugadores() {
+        ArrayList<Integer> strategyList = new ArrayList<Integer>(asList(new Integer[]{1,1,1,1}));
+        ExperimentoColectivo experimentoCollectivo = experimentoService.ejecutarExperimento(strategyList, 10);
+        assertEquals(4, experimentoCollectivo.getNumeroDeJugadores());
+        assertEquals(10,experimentoCollectivo.getNumeroDeExperimentos());
+    }
+
 }
 
