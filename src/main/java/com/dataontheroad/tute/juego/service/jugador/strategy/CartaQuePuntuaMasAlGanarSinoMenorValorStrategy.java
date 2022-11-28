@@ -8,18 +8,17 @@ import com.dataontheroad.tute.juego.service.partida.CartaMasAltaHelper;
 import static com.dataontheroad.tute.juego.service.jugador.helper.StrategyHelper.cartaMenorPeso;
 import static java.util.Objects.isNull;
 
-public class UltimaCartaQuePuedeGanarSinoMenorValorStrategy extends StrategyAbstract {
+public class CartaQuePuntuaMasAlGanarSinoMenorValorStrategy extends StrategyAbstract {
 
     @Override
     public Carta jugarCarta(Ronda ronda, Carta cartaMuestra, Jugador jugador) {
-        Carta cartaJugada = ronda.getCartaMasAlta();
+        Carta cartaJugada = null;
         for (Carta carta : jugador.getMano()) {
-            if (CartaMasAltaHelper.cartaMasAlta(cartaJugada, cartaMuestra, carta)) {
+            if (CartaMasAltaHelper.cartaMasAlta(ronda.getCartaMasAlta(), cartaMuestra, carta)) {
                 cartaJugada = carta;
             }
         }
-
-        if(cartaJugada.equals(ronda.getCartaMasAlta())) {
+        if(isNull(cartaJugada)) {
             return cartaMenorPeso(cartaMuestra,jugador.getMano());
         }
 

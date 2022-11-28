@@ -1,4 +1,4 @@
-package com.dataontheroad.tute.juego.service.jugador;
+package com.dataontheroad.tute.juego.service.jugador.strategy;
 
 import com.dataontheroad.tute.juego.domain.cartas.Carta;
 import com.dataontheroad.tute.juego.domain.cartas.CartaEnum;
