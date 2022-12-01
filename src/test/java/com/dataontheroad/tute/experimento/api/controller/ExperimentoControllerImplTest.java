@@ -32,20 +32,20 @@ class ExperimentoControllerImplTest {
     ExperimentoService experimentoService;
 
     @Test
-    public void postExperimento_conStrategyListVacia_RetornaRespuestaIncorrecta() {
+    void postExperimento_conStrategyListVacia_RetornaRespuestaIncorrecta() {
         ExperimentoPostForm experimentoPostForm = creadorExperimentoPostForm(NUM_EXPERIMENTO);
         experimentoPostForm.setStrategyList(new ArrayList<>());
         ResponseEntity responseEntity = experimentoController.experimento(experimentoPostForm);
-        assertEquals(responseEntity.getStatusCode(), HttpStatus.BAD_REQUEST);
+        assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
     }
 
     @Test
-    public void postExperimento_conStrategyListFormada_RetornaRespuestaCorrecta() {
+    void postExperimento_conStrategyListFormada_RetornaRespuestaCorrecta() {
         ExperimentoPostForm experimentoPostForm = creadorExperimentoPostForm(NUM_EXPERIMENTO);
         when(experimentoService.ejecutarExperimento(experimentoPostForm.getStrategyList(), NUM_EXPERIMENTO))
                 .thenReturn(experimentoColectivo(NUM_EXPERIMENTO));
         ResponseEntity responseEntity = experimentoController.experimento(experimentoPostForm);
-        assertEquals(responseEntity.getStatusCode(), HttpStatus.OK);
+        assertEquals( HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals(4, ((ExperimentoColectivo) responseEntity.getBody()).getNumeroDeJugadores());
     }
 

@@ -3,7 +3,6 @@ package com.dataontheroad.tute.experimento.api.controller;
 import com.dataontheroad.tute.experimento.api.domain.ExperimentoPostForm;
 import com.dataontheroad.tute.experimento.api.service.ExperimentoService;
 import com.dataontheroad.tute.experimento.domain.ExperimentoColectivo;
-import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,6 +39,6 @@ public class ExperimentoControllerImpl implements ExperimentoController {
     private boolean validador(ExperimentoPostForm experimentoPostForm) {
         return nonNull(experimentoPostForm)
                 && nonNull(experimentoPostForm.getStrategyList())
-                && experimentoPostForm.getStrategyList().size() > 0;
+                && experimentoPostForm.getStrategyList().isEmpty();
     }
 }

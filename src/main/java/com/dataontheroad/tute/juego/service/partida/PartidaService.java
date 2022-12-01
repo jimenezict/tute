@@ -15,7 +15,6 @@ import java.util.Random;
 
 import static com.dataontheroad.tute.juego.service.partida.RondaService.*;
 import static org.slf4j.LoggerFactory.getLogger;
-import static org.springframework.util.Assert.notNull;
 
 public class PartidaService {
 
@@ -39,7 +38,7 @@ public class PartidaService {
         Carta cartaMuestra = partida.getMesa().getCartaMuestra();
         partida.setEstadoPartida(EstadoPartidaEnum.EN_CURSO);
 
-        logger.info("Iniciando partida con {} jugadores y carta de muestra {{}}", partida.getMesa().getJugadorList().size(), cartaMuestra.toString());
+        logger.info("Iniciando partida con {} jugadores y carta de muestra {{}}", partida.getMesa().getJugadorList().size(), cartaMuestra);
 
         do {
             int jugadorCount = 0;
@@ -50,14 +49,14 @@ public class PartidaService {
             do {
                 logger.info("\t Ronda {} - Orden Jugador {} - Jugador {}", numRonda, jugadorCount, jugadorActivo);
                 Carta carta = jugadorActivo.getStrategy().jugarCarta(ronda, cartaMuestra, jugadorActivo);
-                logger.info("\t\t Juega carta {}", carta.toString());
+                logger.info("\t\t Juega carta {}", carta);
                 if(ronda.getCartaMasAlta() != null) {
-                    logger.info("\t\t Antes de jugar la carta mas alta es {}", ronda.getCartaMasAlta().toString());
+                    logger.info("\t\t Antes de jugar la carta mas alta es {}", ronda.getCartaMasAlta());
                 }
                 jugadorJuegaCarta(ronda, jugadorActivo, carta, cartaMuestra);
                 jugadorActivo = getSiguienteJugadorActivo(partida, jugadorActivo);
                 jugadorCount++;
-                logger.info("\t\t Despues de jugar la carta mas alta es {}", ronda.getCartaMasAlta().toString());
+                logger.info("\t\t Despues de jugar la carta mas alta es {}", ronda.getCartaMasAlta());
 
             } while (hanJugadoTodosLosJugadoresEnEstaRonda(partida, jugadorCount));
 

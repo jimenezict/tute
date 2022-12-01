@@ -36,7 +36,8 @@ public class ExperimentoServiceImpl implements ExperimentoService {
                 return new UltimaCartaQuePuedeGanarSinoMenorValorStrategy();
             case 5:
                 return new CartaQuePuntuaMasAlGanarSinoMenorValorStrategy();
+            default:
+                return null;
         }
-        return null;
     }
 }

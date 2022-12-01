@@ -27,7 +27,7 @@ class ExperimentoServiceImplTest {
     }
 
     @Test
-    public void identificadorStrategyConverter1() {
+    void identificadorStrategyConverter1() {
         assertThat(experimentoService.identificadorStrategyConverter(1)).isInstanceOf(PrimeraCartaDeLaManoStrategy.class);
         assertThat(experimentoService.identificadorStrategyConverter(2)).isInstanceOf(CualquierCartaDeLaManoAleatoriamenteStrategy.class);
         assertThat(experimentoService.identificadorStrategyConverter(3)).isInstanceOf(UltimaCartaQuePuedeGanarSinoAleatorioStrategy.class);
@@ -35,7 +35,7 @@ class ExperimentoServiceImplTest {
     }
 
     @Test
-    public void ejecutarExperimento_sobre4Jugadores() {
+    void ejecutarExperimento_sobre4Jugadores() {
         ArrayList<Integer> strategyList = new ArrayList<Integer>(asList(new Integer[]{1,1,1,1}));
         ExperimentoColectivo experimentoCollectivo = experimentoService.ejecutarExperimento(strategyList, 10);
         assertEquals(4, experimentoCollectivo.getNumeroDeJugadores());

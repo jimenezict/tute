@@ -25,6 +25,6 @@ public class StrategyHelper {
 
     private static int evaluacionCarta(Carta carta, Carta cartaMuestra) {
         List<Integer> miLista = new ArrayList<>(Arrays.asList(2,4,5,6,7,10,11,12,3,1));
-        return miLista.indexOf(Integer.valueOf(carta.getNumero())) + (cartaMuestra.getPalo().equals(carta.getPalo()) ? 12 : 0);
+        return miLista.indexOf(carta.getNumero()) + (cartaMuestra.getPalo().equals(carta.getPalo()) ? 12 : 0);
     }
 }

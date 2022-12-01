@@ -2,7 +2,6 @@ package com.dataontheroad.tute.juego.service.jugador.strategy;
 
 import com.dataontheroad.tute.juego.domain.cartas.Carta;
 import com.dataontheroad.tute.juego.domain.jugador.Jugador;
-import com.dataontheroad.tute.juego.domain.mesa.Mesa;
 import com.dataontheroad.tute.juego.domain.partida.Ronda;
 
 public abstract class StrategyAbstract  {

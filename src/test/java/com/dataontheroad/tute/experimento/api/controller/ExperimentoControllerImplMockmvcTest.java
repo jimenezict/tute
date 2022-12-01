@@ -32,7 +32,7 @@ class ExperimentoControllerImplMockmvcTest {
     ExperimentoServiceImpl experimentoServiceImpl;
 
     @Test
-    public void getExperimento() throws Exception
+    void getExperimento() throws Exception
     {
         mvc.perform( MockMvcRequestBuilders
                 .get("/experimento/")
@@ -42,7 +42,7 @@ class ExperimentoControllerImplMockmvcTest {
     }
 
     @Test
-    public void postExperimento_conStrategyListVacia_RetornaRespuestaIncorrecta() throws Exception{
+    void postExperimento_conStrategyListVacia_RetornaRespuestaIncorrecta() throws Exception{
         ExperimentoPostForm experimentoPostForm = creadorExperimentoPostForm(NUM_EXPERIMENTO);
         experimentoPostForm.setStrategyList(new ArrayList<>());
 
@@ -56,7 +56,7 @@ class ExperimentoControllerImplMockmvcTest {
     }
 
     @Test
-    public void postExperimento_conStrategyListFormada_RetornaRespuestaCorrecta() throws Exception{
+    void postExperimento_conStrategyListFormada_RetornaRespuestaCorrecta() throws Exception{
         ExperimentoPostForm experimentoPostForm = creadorExperimentoPostForm(NUM_EXPERIMENTO);
 
         mvc.perform( MockMvcRequestBuilders

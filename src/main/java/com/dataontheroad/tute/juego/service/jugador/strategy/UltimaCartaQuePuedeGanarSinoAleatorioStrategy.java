@@ -18,7 +18,7 @@ public class UltimaCartaQuePuedeGanarSinoAleatorioStrategy extends StrategyAbstr
             if(CartaMasAltaHelper.cartaMasAlta(ronda.getCartaMasAlta(), cartaMuestra, carta)) {
                 cartaJugada = carta;
             }
-        };
+        }
 
         return cartaJugada;
     }
