@@ -34,7 +34,7 @@ public class ExperimentoControllerImpl implements ExperimentoController {
         }
 
         ExperimentoColectivo experimentoColectivo = experimentoService.ejecutarExperimento(experimentoPostForm.getStrategyList(), experimentoPostForm.getNumExperimentos());
-        return ResponseEntity.ok((new Gson()).toJson(experimentoColectivo));
+        return new ResponseEntity<>(experimentoColectivo, OK);
     }
 
     private boolean validador(ExperimentoPostForm experimentoPostForm) {

@@ -28,7 +28,7 @@ class CartaQuePuntuaMasAlGanarSinoMenorValorStrategyTest {
     }
 
     @Test
-    public void ningunaCartaSuperaMesaYEntregaLaPeor_1() {
+    void ningunaCartaSuperaMesaYEntregaLaPeor_1() {
         List<Carta> mano = new ArrayList<>();
         mano.add(crearCarta(CartaEnum.ESPADA,5));
         mano.add(crearCarta(CartaEnum.ORO, 3));
@@ -39,7 +39,7 @@ class CartaQuePuntuaMasAlGanarSinoMenorValorStrategyTest {
     }
 
     @Test
-    public void ningunaCartaSuperaMesaYEntregaLaPeor_2() {
+    void ningunaCartaSuperaMesaYEntregaLaPeor_2() {
         List<Carta> mano = new ArrayList<>();
         mano.add(crearCarta(CartaEnum.ORO, 7));
         mano.add(crearCarta(CartaEnum.ESPADA,5));
@@ -50,7 +50,7 @@ class CartaQuePuntuaMasAlGanarSinoMenorValorStrategyTest {
     }
 
     @Test
-    public void ningunaCartaSuperaMesaYEntregaLaPeor_3() {
+    void ningunaCartaSuperaMesaYEntregaLaPeor_3() {
         List<Carta> mano = new ArrayList<>();
         mano.add(crearCarta(CartaEnum.ESPADA,5));
         mano.add(crearCarta(CartaEnum.ORO, 7));

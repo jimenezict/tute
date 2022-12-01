@@ -2,6 +2,7 @@ package com.dataontheroad.tute.experimento.api.controller;
 
 import com.dataontheroad.tute.experimento.api.domain.ExperimentoPostForm;
 import com.dataontheroad.tute.experimento.api.service.ExperimentoService;
+import com.dataontheroad.tute.experimento.domain.ExperimentoColectivo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -11,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static com.dataontheroad.tute.ObjectCreationHelper.creadorExperimentoPostForm;
 import static com.dataontheroad.tute.ObjectCreationHelper.experimentoColectivo;
@@ -46,7 +46,7 @@ class ExperimentoControllerImplTest {
                 .thenReturn(experimentoColectivo(NUM_EXPERIMENTO));
         ResponseEntity responseEntity = experimentoController.experimento(experimentoPostForm);
         assertEquals(responseEntity.getStatusCode(), HttpStatus.OK);
-        assertTrue(responseEntity.getBody().toString().contains("numeroDeJugadores"));
+        assertEquals(4, ((ExperimentoColectivo) responseEntity.getBody()).getNumeroDeJugadores());
     }
 
 }
