@@ -240,7 +240,7 @@ Sobre 10000 experimentos:
 | | Jugador 1 | Jugador 2 | Jugador 3 | Jugador 4 |
 | -- | -- | -- | -- | -- |
 | Puntuación Media | 35.82 | 26.30 | 25.65 | 32.22 |
-| &Delta;MT | 5.82 | 3.70 | 4.35 | 2.22 |  
+| &Delta;MT | 5.82 | -3.70 | -4.35 | 2.22 |  
 
 ## UltimaCartaQuePuedeGanarSinoMenorValorStrategy
 
@@ -253,4 +253,4 @@ Sobre 10000 experimentos:
 | | Jugador 1 | Jugador 2 | Jugador 3 | Jugador 4 |
 | -- | -- | -- | -- | -- |
 | Puntuación Media | 38.91 | 24.09 | 23.89 | 33.12 |
-| &Delta;MT | 8.91 | 0.91 | 1.11 | 3.12 |  
+| &Delta;MT | 8.91 | -0.91 | -1.11 | 3.12 |  
