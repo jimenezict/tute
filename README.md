@@ -242,6 +242,8 @@ Sobre 10000 experimentos:
 | Puntuación Media | 35.82 | 26.30 | 25.65 | 32.22 |
 | &Delta;MT | 5.82 | -3.70 | -4.35 | 2.22 |  
 
+Esta resulta ser la primera estrategia donde el jugador intenta ganar, por tanto, es lógico que el jugador aumente el número de partidas ganadas casi un 10% respeto a los que juegan aleatóriamente.
+ 
 ## UltimaCartaQuePuedeGanarSinoMenorValorStrategy
 
 Sobre 10000 experimentos:
@@ -254,3 +256,5 @@ Sobre 10000 experimentos:
 | -- | -- | -- | -- | -- |
 | Puntuación Media | 38.91 | 24.09 | 23.89 | 33.12 |
 | &Delta;MT | 8.91 | -0.91 | -1.11 | 3.12 |  
+ 
+Respecto al experimento anterior, el jugador optimiza la carta a jugar cuando sabe que no puede ganar y por lo tanto, podrá jugarla en una jugada que le sea más propicia. De esta forma, se mejora un 5% más, y un acumulado de 15% respecto al algoritmo básico
